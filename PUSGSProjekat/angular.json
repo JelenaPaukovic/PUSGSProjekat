@@ -3,7 +3,7 @@
   "version": 1,
   "newProjectRoot": "projects",
   "projects": {
-    "PUSGSProjekat": {
+    "Forme": {
       "projectType": "application",
       "schematics": {},
       "root": "",
@@ -13,7 +13,7 @@
         "build": {
           "builder": "@angular-devkit/build-angular:browser",
           "options": {
-            "outputPath": "dist/PUSGSProjekat",
+            "outputPath": "dist/Forme",
             "index": "src/index.html",
             "main": "src/main.ts",
             "polyfills": "src/polyfills.ts",
@@ -62,18 +62,18 @@
         "serve": {
           "builder": "@angular-devkit/build-angular:dev-server",
           "options": {
-            "browserTarget": "PUSGSProjekat:build"
+            "browserTarget": "Forme:build"
           },
           "configurations": {
             "production": {
-              "browserTarget": "PUSGSProjekat:build:production"
+              "browserTarget": "Forme:build:production"
             }
           }
         },
         "extract-i18n": {
           "builder": "@angular-devkit/build-angular:extract-i18n",
           "options": {
-            "browserTarget": "PUSGSProjekat:build"
+            "browserTarget": "Forme:build"
           }
         },
         "test": {
@@ -110,19 +110,19 @@
           "builder": "@angular-devkit/build-angular:protractor",
           "options": {
             "protractorConfig": "e2e/protractor.conf.js",
-            "devServerTarget": "PUSGSProjekat:serve"
+            "devServerTarget": "Forme:serve"
           },
           "configurations": {
             "production": {
-              "devServerTarget": "PUSGSProjekat:serve:production"
+              "devServerTarget": "Forme:serve:production"
             }
           }
         }
       }
     }
   },
-  "defaultProject": "PUSGSProjekat",
+  "defaultProject": "Forme",
   "cli": {
-    "analytics": "57bfaa80-54b8-4393-a5a3-add29c799a7f"
+    "analytics": "38c75fa3-e4a0-4bd7-a6cf-7863a48d2535"
   }
 }

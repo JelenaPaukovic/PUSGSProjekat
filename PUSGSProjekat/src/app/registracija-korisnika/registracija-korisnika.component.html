@@ -1,0 +1,87 @@
+<div class="container">
+    <h1>Registracija korisnika</h1>
+    <form [formGroup]="registracijaForma" (ngSubmit)="onSubmit()">
+        <div class="row">
+            <div class="col-sm-6 form-group">
+                <label for="ime">Unesite ime:</label>
+                <input type="text" id="ime" class="form-control" formControlName="ime">
+                <div *ngIf="registracijaForma.controls.ime.invalid">
+                    Unesite ime:
+                </div>
+            </div>
+        </div>
+
+        <div class="row">
+            <div class="col-sm-6 form-group">
+                <label for="prezime">Unesite prezime:</label>
+                <input type="text" id="prezime" class="form-control" formControlName="prezime">
+                <div *ngIf="registracijaForma.controls.prezime.invalid">
+                    Unesite prezime:
+                </div>
+            </div>
+        </div>
+
+        <div class="row">
+            <div class="col-sm-6 form-group">
+                <label for="grad">Unesite grad:</label>
+                <input type="text" id="grad" class="form-control" formControlName="grad">
+                <div *ngIf="registracijaForma.controls.grad.invalid">
+                    Unesite grad:
+                </div>
+            </div>
+        </div>
+
+        <div class="row">
+            <div class="col-sm-6 form-group">
+                <label for="brTel">Unesite broj telefona:</label>
+                <input type="text" id="brTel" class="form-control" formControlName="brTel">
+                <div *ngIf="registracijaForma.controls.brTel.invalid">
+                    Unesite broj telefona:
+                </div>
+            </div>
+        </div>
+
+        <div class="row">
+            <div class="col-sm-6 form-group">
+                <label for="email">Unesite email adresu:</label>
+                <input type="text" id="email" class="form-control" formControlName="email">
+                <div *ngIf="registracijaForma.controls.email.invalid">
+                    Unesite email adresu:
+                </div>
+            </div>
+        </div>
+
+
+        <div class="row">
+            <div class="col-sm-6 form-group">
+                <label for="lozinka">Unesite lozinku:</label>
+                <input type="password" id="loznika" class="form-control" formControlName="lozinka">
+                <div *ngIf="registracijaForma.controls.lozinka.invalid">
+                    Unesite lozinku:
+                </div>
+            </div>
+        </div>
+
+        <div class="row">
+            <div class="col-sm-6 form-group">
+                <label for="lozinkaOpet">Ponovite lozinku:</label>
+                <input type="password" id="lozinkaOpet" class="form-control" formControlName="lozinkaOpet">
+                <div *ngIf="registracijaForma.controls.lozinkaOpet.invalid">
+                    Ponovite lozinku:
+                </div>
+            </div>
+        </div>
+
+        
+       
+        <div class="row">
+            <div class="col-1">
+                <button [disabled]="!registracijaForma.valid" class="btn btn-success" type="submit">Add</button>
+            </div>
+            <div class="col-1">
+                <button class="btn btn-primary" (click)="onClear()" type="button">Clear</button>
+            </div>
+        </div>
+    </form>
+
+</div>

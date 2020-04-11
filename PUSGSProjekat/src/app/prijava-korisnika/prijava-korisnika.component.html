@@ -1,0 +1,22 @@
+<div class="container">
+    <h1>Prijava korisnika</h1>
+    <form [formGroup]="prijavaForma" (ngSubmit)="onSubmit()">
+        <div class="row">
+            <div class="col-sm-6 form-group">
+                <label for="email">Unesite email adresu:</label>
+                <input type="text" id="email" class="form-control" formControlName="email">
+                <div *ngIf="prijavaForma.controls.email.invalid">
+                    Unesite email adresu:
+                </div>
+            </div>
+        </div>
+
+        <div class="row">
+            <div class="col-sm-6 form-group">
+                <label for="lozinka">Unesite lozinku:</label>
+                <input type="password" id="lozinka" class="form-control" formControlName="lozinka">
+                <div *ngIf="prijavaForma.controls.lozinka.invalid">
+                    Unesite lozinku:
+                </div>
+            </div>
+        </div>

@@ -1,0 +1,24 @@
+<h3>Pregled svih rent-a-car servisa</h3>
+
+<div>
+    <table class="table table-hover">
+        <thead>
+            <tr>
+                <th scope="col">Naziv rent-a-car servisa</th>
+                <th scope="col">Adresa rent-a-car servisa</th>
+                <th scope="col">Ocena rent-a-car servisa</th>
+                
+            </tr>
+        </thead>
+        <tbody>
+            <tr *ngFor="let rentacar of allRentacar">
+                <td>{{rentacar.naziv}}</td>
+                <td>{{rentacar.adresa}}</td>
+                <td>{{rentacar.ocena}}</td>
+                
+               
+            </tr>
+        </tbody>
+    </table>
+</div>
+
