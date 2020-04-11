@@ -9,6 +9,7 @@ import { RegistracijaKorisnikaComponent } from './registracija-korisnika/registr
 import { NavbarComponent } from './navbar/navbar.component';
 import { PrijavaKorisnikaComponent } from './prijava-korisnika/prijava-korisnika.component';
 import { RentacarServisComponent } from './rentacar-servis/rentacar-servis.component';
+import { AvioServisComponent } from './avio-servis/avio-servis.component';
 
 @NgModule({
   declarations: [
@@ -16,7 +17,8 @@ import { RentacarServisComponent } from './rentacar-servis/rentacar-servis.compo
     RegistracijaKorisnikaComponent,
     NavbarComponent,
     PrijavaKorisnikaComponent,
-    RentacarServisComponent
+    RentacarServisComponent,
+    AvioServisComponent
   ],
   imports: [
     BrowserModule,

@@ -1,0 +1,23 @@
+<h3>Pregled svih avio servisa</h3>
+
+<div>
+    <table class="table table-hover">
+        <thead>
+            <tr>
+                <th scope="col">Naziv avio servisa</th>
+                <th scope="col">Adresa avio servisa</th>
+                <th scope="col">Ocena avio servisa</th>
+                
+            </tr>
+        </thead>
+        <tbody>
+            <tr *ngFor="let avio of allAvio">
+                <td>{{avio.naziv}}</td>
+                <td>{{avio.adresa}}</td>
+                <td>{{avio.ocena}}</td>
+                
+               
+            </tr>
+        </tbody>
+    </table>
+</div>

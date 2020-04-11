@@ -4,7 +4,7 @@ import { Routes, RouterModule } from '@angular/router';
 import { RegistracijaKorisnikaComponent } from './registracija-korisnika/registracija-korisnika.component';
 import { PrijavaKorisnikaComponent } from './prijava-korisnika/prijava-korisnika.component';
 import { RentacarServisComponent } from './rentacar-servis/rentacar-servis.component';
-
+import { AvioServisComponent } from './avio-servis/avio-servis.component';
 
 const routes: Routes = [
   {
@@ -26,6 +26,10 @@ const routes: Routes = [
   {
     path: "rentacar-servis",
     component: RentacarServisComponent
+  },
+  {
+    path: "avio-servis",
+    component: AvioServisComponent
   },
 ];
 
