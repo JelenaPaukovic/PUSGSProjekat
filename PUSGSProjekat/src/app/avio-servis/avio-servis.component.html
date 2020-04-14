@@ -1,12 +1,12 @@
-<h3>Pregled svih avio servisa</h3>
+<h3>Pregled svih aviokompanija</h3>
 
 <div>
-    <table class="table table-hover">
+    <table class="table table-light">
         <thead>
             <tr>
-                <th scope="col">Naziv avio servisa</th>
-                <th scope="col">Adresa avio servisa</th>
-                <th scope="col">Ocena avio servisa</th>
+                <th scope="col">Naziv aviokompanije</th>
+                <th scope="col">Sedište aviokompanije</th>
+                <th scope="col">Ocena aviokompanije</th>
                 
             </tr>
         </thead>
@@ -16,6 +16,7 @@
                 <td>{{avio.adresa}}</td>
                 <td>{{avio.ocena}}</td>
                 
+                <td><button class="btn btn-success" routerLink = "/avio-servis/{{avio.naziv}}/avio-podaci">Više o aviokompaniji</button></td>
                
             </tr>
         </tbody>

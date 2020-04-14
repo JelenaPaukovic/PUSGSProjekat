@@ -16,6 +16,7 @@ import { AvioDodajComponent } from './avio-dodaj/avio-dodaj.component';
 import { RentacarDodajComponent } from './rentacar-dodaj/rentacar-dodaj.component';
 import { DodajAdminaRentComponent } from './dodaj-admina-rent/dodaj-admina-rent.component';
 import { DodajAdminaAvioComponent } from './dodaj-admina-avio/dodaj-admina-avio.component';
+import { AvioPodaciComponent } from './avio-podaci/avio-podaci.component';
 
 @NgModule({
   declarations: [
@@ -30,7 +31,8 @@ import { DodajAdminaAvioComponent } from './dodaj-admina-avio/dodaj-admina-avio.
     AvioDodajComponent,
     RentacarDodajComponent,
     DodajAdminaRentComponent,
-    DodajAdminaAvioComponent
+    DodajAdminaAvioComponent,
+    AvioPodaciComponent
   ],
   imports: [
     BrowserModule,

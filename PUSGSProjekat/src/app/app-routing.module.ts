@@ -5,6 +5,7 @@ import { PrijavaKorisnikaComponent } from './prijava-korisnika/prijava-korisnika
 import { RentacarServisComponent } from './rentacar-servis/rentacar-servis.component';
 import { AvioServisComponent } from './avio-servis/avio-servis.component';
 import { RentacarPodaciComponent } from './rentacar-podaci/rentacar-podaci.component';
+import { AvioPodaciComponent } from './avio-podaci/avio-podaci.component';
 import { PrelazComponent } from './prelaz/prelaz.component';
 import { AvioDodajComponent } from './avio-dodaj/avio-dodaj.component';
 import { RentacarDodajComponent } from './rentacar-dodaj/rentacar-dodaj.component';
@@ -44,6 +45,12 @@ const routes: Routes = [
   },
 
   {
+    path: "avio-servis",
+    children: [{ path: "", component: AvioServisComponent },
+    { path: ":naziv/avio-podaci", component: AvioPodaciComponent }]
+  },
+
+  {
     path: "prelaz",
     component: PrelazComponent
   },
@@ -72,6 +79,11 @@ const routes: Routes = [
     path: "rentacar-servis",
     children: [{ path: "", component: RentacarServisComponent },
     { path: ":naziv/rentacar-podaci", component: RentacarPodaciComponent }]
+  },
+  {
+    path: "avio-servis",
+    children: [{ path: "", component: AvioServisComponent },
+    { path: ":naziv/avio-podaci", component: AvioPodaciComponent }]
   },
 
 ];

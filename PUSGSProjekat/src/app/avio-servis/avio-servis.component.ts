@@ -16,6 +16,7 @@ export class AvioServisComponent implements OnInit {
   }
 
   ngOnInit(): void {
+    this.ucitavanjeAvio();
   }
 
   ucitavanjeAvio(): void {
