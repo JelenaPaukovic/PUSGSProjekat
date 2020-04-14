@@ -10,6 +10,12 @@ import { NavbarComponent } from './navbar/navbar.component';
 import { PrijavaKorisnikaComponent } from './prijava-korisnika/prijava-korisnika.component';
 import { RentacarServisComponent } from './rentacar-servis/rentacar-servis.component';
 import { AvioServisComponent } from './avio-servis/avio-servis.component';
+import { RentacarPodaciComponent } from './rentacar-podaci/rentacar-podaci.component';
+import { PrelazComponent } from './prelaz/prelaz.component';
+import { AvioDodajComponent } from './avio-dodaj/avio-dodaj.component';
+import { RentacarDodajComponent } from './rentacar-dodaj/rentacar-dodaj.component';
+import { DodajAdminaRentComponent } from './dodaj-admina-rent/dodaj-admina-rent.component';
+import { DodajAdminaAvioComponent } from './dodaj-admina-avio/dodaj-admina-avio.component';
 
 @NgModule({
   declarations: [
@@ -18,7 +24,13 @@ import { AvioServisComponent } from './avio-servis/avio-servis.component';
     NavbarComponent,
     PrijavaKorisnikaComponent,
     RentacarServisComponent,
-    AvioServisComponent
+    AvioServisComponent,
+    RentacarPodaciComponent,
+    PrelazComponent,
+    AvioDodajComponent,
+    RentacarDodajComponent,
+    DodajAdminaRentComponent,
+    DodajAdminaAvioComponent
   ],
   imports: [
     BrowserModule,

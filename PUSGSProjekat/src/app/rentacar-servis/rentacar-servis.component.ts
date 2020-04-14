@@ -21,6 +21,7 @@ export class RentacarServisComponent implements OnInit {
 
 
   ngOnInit(): void {
+    this.ucitavanjeRentacar();
   }
 
 

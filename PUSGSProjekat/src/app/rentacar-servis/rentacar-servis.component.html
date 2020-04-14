@@ -1,7 +1,7 @@
 <h3>Pregled svih rent-a-car servisa</h3>
 
 <div>
-    <table class="table table-hover">
+    <table class="table table-primary">
         <thead>
             <tr>
                 <th scope="col">Naziv rent-a-car servisa</th>
@@ -16,7 +16,7 @@
                 <td>{{rentacar.adresa}}</td>
                 <td>{{rentacar.ocena}}</td>
                 
-               
+                <td><button class="btn btn-success" routerLink = "/rentacar-servis/{{rentacar.naziv}}/rentacar-podaci">Više o servisu</button></td>
             </tr>
         </tbody>
     </table>

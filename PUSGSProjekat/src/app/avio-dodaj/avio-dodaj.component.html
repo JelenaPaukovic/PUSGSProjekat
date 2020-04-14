@@ -1,0 +1,30 @@
+<div class="container">
+    <h1>Prijava korisnika</h1>
+    <form [formGroup]="avioForma" (ngSubmit)="onSubmit()">
+        <div class="row">
+            <div class="col-sm-6 form-group">
+                <label for="naziv">Unesite naziv aviokompanije:</label>
+                <input type="text" id="naziv" class="form-control" formControlName="naziv">
+                <div *ngIf="avioForma.controls.naziv.invalid">
+                    Unesite naziv aviokompanije:
+                </div>
+            </div>
+        </div>
+
+        <div class="row">
+            <div class="col-sm-6 form-group">
+                <label for="adresa">Unesite adresu:</label>
+                <input type="text" id="adresa" class="form-control" formControlName="adresa">
+                <div *ngIf="avioForma.controls.adresa.invalid">
+                    Unesite adresu:
+                </div>
+            </div>
+        </div>
+
+        <div class="row">
+            <div class="col-2">
+                <button [disabled]="!avioForma.valid" class="btn btn-success" type="submit">REGISTRUJ AVIOKOMPNAIJU</button>
+            </div>
+        </div>
+
+

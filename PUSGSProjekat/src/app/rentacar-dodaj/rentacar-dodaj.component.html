@@ -1,0 +1,28 @@
+<div class="container">
+    <h1>Prijava korisnika</h1>
+    <form [formGroup]="rentacarForma" (ngSubmit)="onSubmit()">
+        <div class="row">
+            <div class="col-sm-6 form-group">
+                <label for="naziv">Unesite naziv rent-a-car servisa:</label>
+                <input type="text" id="naziv" class="form-control" formControlName="naziv">
+                <div *ngIf="rentacarForma.controls.naziv.invalid">
+                    Unesite naziv rent-a-car servisa:
+                </div>
+            </div>
+        </div>
+
+        <div class="row">
+            <div class="col-sm-6 form-group">
+                <label for="adresa">Unesite adresu:</label>
+                <input type="text" id="adresa" class="form-control" formControlName="adresa">
+                <div *ngIf="rentacarForma.controls.adresa.invalid">
+                    Unesite adresu:
+                </div>
+            </div>
+        </div>
+
+        <div class="row">
+            <div class="col-2">
+                <button [disabled]="!rentacarForma.valid" class="btn btn-success" type="submit">REGISTRUJ SERVIS</button>
+            </div>
+        </div>

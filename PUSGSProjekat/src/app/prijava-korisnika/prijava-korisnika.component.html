@@ -1,6 +1,10 @@
 <div class="container">
     <h1>Prijava korisnika</h1>
+    
     <form [formGroup]="prijavaForma" (ngSubmit)="onSubmit()">
+        <table class="table table-hover">
+            <thead>
+                <tr>
         <div class="row">
             <div class="col-sm-6 form-group">
                 <label for="email">Unesite email adresu:</label>
@@ -10,7 +14,10 @@
                 </div>
             </div>
         </div>
+    </tr>
 
+    
+            <tr>
         <div class="row">
             <div class="col-sm-6 form-group">
                 <label for="lozinka">Unesite lozinku:</label>
@@ -18,5 +25,14 @@
                 <div *ngIf="prijavaForma.controls.lozinka.invalid">
                     Unesite lozinku:
                 </div>
+            </div>
+        </div>
+</tr>
+</thead>
+</table>
+        <div class="row">
+            <div class="col-2">
+                <button [disabled]="!prijavaForma.valid" class="btn btn-success" type="submit">PRIJAVITE
+                    SE</button>
             </div>
         </div>
