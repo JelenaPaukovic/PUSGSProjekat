@@ -105,6 +105,5 @@ namespace ProjekatPUSGS.Controllers
         {
             return _context.Vozila.Any(e => e.IdVozilo == id);
         }
-
     }
 }

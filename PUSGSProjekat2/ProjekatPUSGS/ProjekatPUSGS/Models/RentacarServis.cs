@@ -16,6 +16,5 @@ namespace ProjekatPUSGS.Models
         public string CenovnikUsluga { get; set; }
         public string SpisakVozila { get; set; }
         public string Filijale { get; set; }
-
     }
 }

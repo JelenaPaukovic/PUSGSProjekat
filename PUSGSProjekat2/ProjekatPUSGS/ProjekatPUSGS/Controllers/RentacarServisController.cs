@@ -104,6 +104,5 @@ namespace ProjekatPUSGS.Controllers
         {
             return _context.Servisi.Any(e => e.IdServis == id);
         }
-
     }
 }

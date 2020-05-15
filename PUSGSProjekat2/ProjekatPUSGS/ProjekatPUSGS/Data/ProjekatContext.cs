@@ -19,4 +19,3 @@ namespace ProjekatPUSGS.Data
         public DbSet<Korisnik> Korisnici { get; set; }
     }
 }
-
