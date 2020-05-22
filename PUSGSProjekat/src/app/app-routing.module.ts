@@ -11,11 +11,12 @@ import { AvioDodajComponent } from './avio-dodaj/avio-dodaj.component';
 import { RentacarDodajComponent } from './rentacar-dodaj/rentacar-dodaj.component';
 import { DodajAdminaRentComponent } from './dodaj-admina-rent/dodaj-admina-rent.component';
 import { DodajAdminaAvioComponent } from './dodaj-admina-avio/dodaj-admina-avio.component';
+import { HomeComponent } from './home/home.component';
 
 const routes: Routes = [
   {
     path: "",
-    redirectTo: "/reactive",
+    redirectTo: "/home",
     pathMatch: 'full'
   },
   

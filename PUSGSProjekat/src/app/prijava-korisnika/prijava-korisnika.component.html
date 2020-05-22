@@ -1,33 +1,17 @@
-<div class="container">
-    <h1>Prijava korisnika</h1>
-    
-    <form [formGroup]="prijavaForma" (ngSubmit)="onSubmit()">
-        <table class="table table-hover">
-            
-        <div class="row">
-            <div class="col-sm-6 form-group">
-                <label for="email"><b>Unesite email adresu:</b></label>
-                <input type="text" id="email" class="form-control" formControlName="email">
-                <div *ngIf="prijavaForma.controls.email.invalid">
-                    Unesite email adresu:
-                </div>
-            </div>
-        </div>
-   
-        <div class="row">
-            <div class="col-sm-6 form-group">
-                <label for="lozinka"><b>Unesite lozinku:</b></label>
-                <input type="password" id="lozinka" class="form-control" formControlName="lozinka">
-                <div *ngIf="prijavaForma.controls.lozinka.invalid">
-                    Unesite lozinku:
-                </div>
-            </div>
-        </div>
 
-</table>
-        <div class="row">
-            <div class="col-2">
-                <button [disabled]="!prijavaForma.valid" class="btn btn-success" type="submit">PRIJAVITE
-                    SE</button>
-            </div>
-        </div>
+<form #form='ngForm' class="mb-4" autocomplete="off" (submit)="onSubmit(form)">
+  <div class="col-sm-6 form-group">
+    <label>Email adresa</label>
+    <input class="form-control" #EmailAdresa="ngModel" name="EmailAdresa" [(ngModel)]="formModel.EmailAdresa" required>
+  </div>
+  <div class="col-sm-6 form-group">
+    <label>Lozinka</label>
+    <input type="password" class="form-control" #Lozinka="ngModel" name="Lozinka" [(ngModel)]="formModel.Lozinka" required>
+  </div>
+  <div class="col-sm-6 form-row">
+    <div class="form-group col-md-8 offset-md-2">
+      <button type="submit" class="btn btn-lg btn-block" [disabled]="form.invalid">PRIJAVITE SE</button>
+    </div>
+  </div>
+</form>
+

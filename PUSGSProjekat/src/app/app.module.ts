@@ -1,6 +1,10 @@
 import { BrowserModule } from '@angular/platform-browser';
 import { NgModule } from '@angular/core';
-import { FormsModule, ReactiveFormsModule} from '@angular/forms';
+import { ReactiveFormsModule, FormsModule } from '@angular/forms';
+import { HttpClientModule, HTTP_INTERCEPTORS } from "@angular/common/http";
+import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
+import { ToastrModule } from 'ngx-toastr';
+import { TokenInterceptor } from './auth/tokenInterceptor';
 
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
@@ -17,6 +21,28 @@ import { RentacarDodajComponent } from './rentacar-dodaj/rentacar-dodaj.componen
 import { DodajAdminaRentComponent } from './dodaj-admina-rent/dodaj-admina-rent.component';
 import { DodajAdminaAvioComponent } from './dodaj-admina-avio/dodaj-admina-avio.component';
 import { AvioPodaciComponent } from './avio-podaci/avio-podaci.component';
+import { UserService } from './shared/user.service';
+import { AuthInterceptor } from './auth/auth.interceptor';
+import { CookieService } from 'ngx-cookie-service';
+import { HomeComponent } from './home/home.component';
+//import { SocialLoginModule, AuthServiceConfig, GoogleLoginProvider, FacebookLoginProvider, AuthService } from 'angular-6-social-login';  
+
+
+/*export function socialConfigs() {  
+  const config = new AuthServiceConfig(  
+    [  
+      {  
+        id: FacebookLoginProvider.PROVIDER_ID,  
+        provider: new FacebookLoginProvider('app -id')  
+      },  
+      {  
+        id: GoogleLoginProvider.PROVIDER_ID,  
+        provider: new GoogleLoginProvider('')  
+      }  
+    ]  
+  );  
+  return config;  
+}  */
 
 @NgModule({
   declarations: [
@@ -32,15 +58,42 @@ import { AvioPodaciComponent } from './avio-podaci/avio-podaci.component';
     RentacarDodajComponent,
     DodajAdminaRentComponent,
     DodajAdminaAvioComponent,
-    AvioPodaciComponent
+    AvioPodaciComponent,
+    HomeComponent
   ],
   imports: [
     BrowserModule,
     AppRoutingModule,
     FormsModule,
-    ReactiveFormsModule
+    ReactiveFormsModule,
+    HttpClientModule,
+    BrowserAnimationsModule,
+    ToastrModule.forRoot({
+      progressBar: true
+    })
+   
+    
   ],
-  providers: [],
+  providers: [
+    CookieService,
+    UserService, 
+    
+    {
+    provide: HTTP_INTERCEPTORS,
+    useClass: AuthInterceptor,
+    multi: true,
+    },
+    {
+      provide: HTTP_INTERCEPTORS,
+      useClass: TokenInterceptor,
+      multi: true,
+      },
+    /*AuthService,  
+    {  
+      provide: AuthServiceConfig,  
+      useFactory: socialConfigs  
+    }  */
+  ],
   bootstrap: [AppComponent]
 })
 export class AppModule { }
