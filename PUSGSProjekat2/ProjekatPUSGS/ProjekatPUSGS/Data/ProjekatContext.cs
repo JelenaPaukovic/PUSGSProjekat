@@ -17,5 +17,7 @@ namespace ProjekatPUSGS.Data
         public DbSet<RentacarServis> Servisi { get; set; }
         public DbSet<Vozilo> Vozila { get; set; }
         public DbSet<Korisnik> Korisnici { get; set; }
+        public DbSet<Aviokompanija> Kompanije { get; set; }
+        public DbSet<Letovi> Let { get; set; }
     }
 }
