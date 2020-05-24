@@ -1,11 +1,11 @@
 <div class="container">
     <h1>Registrovanje rent-a-car servisa</h1>
-    <form [formGroup]="service.formModel" autocomplete="off" (submit)="onSubmit()">
+    <form [formGroup]="service.formModel1" autocomplete="off" (submit)="onSubmit()">
         <div class="row">
             <div class="col-sm-6 form-group">
                 <label for="naziv"><b>Unesite naziv rent-a-car servisa:</b></label>
                 <input type="text" id="naziv" class="form-control" formControlName="naziv">
-                <div class = "text-danger" *ngIf="service.formModel.get('naziv').touched && service.formModel.get('naziv').errors?.required">
+                <div class = "text-danger" *ngIf="service.formModel1.get('naziv').errors?.required">
                     Ovo polje je obavezno!
                 </div>
             </div>
@@ -15,7 +15,7 @@
             <div class="col-sm-6 form-group">
                 <label for="adresa"><b>Unesite adresu rent-a-car servisa:</b></label>
                 <input type="text" id="adresa" class="form-control" formControlName="adresa">
-                <div class = "text-danger" *ngIf="service.formModel.get('adresa').touched && service.formModel.get('adresa').errors?.required">
+                <div class = "text-danger" *ngIf="service.formModel1.get('adresa').errors?.required">
                     Ovo polje je obavezno!
                 </div>
             </div>
@@ -23,6 +23,6 @@
 
         <div class="row">
             <div class="col-2">
-                <button [disabled]="!service.formModel.valid" class="btn btn-success" type="submit">REGISTRUJ SERVIS</button>
+                <button [disabled]="!service.formModel1.valid" class="btn btn-success" type="submit">REGISTRUJ SERVIS</button>
             </div>
         </div>

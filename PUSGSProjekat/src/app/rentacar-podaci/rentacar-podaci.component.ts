@@ -2,6 +2,8 @@ import { Component, OnInit } from '@angular/core';
 import { Rentacar } from 'src/app/entities/rentacar';
 import { RentacarService } from '../services/rentacar.service';
 import { ActivatedRoute, RouteConfigLoadEnd } from '@angular/router';
+import { UserService } from "./../shared/user.service";
+import { element } from 'protractor';
 
 @Component({
   selector: 'app-rentacar-podaci',
@@ -13,12 +15,13 @@ export class RentacarPodaciComponent implements OnInit {
   allRentacarPodaci: Array<Rentacar>;
   servis: Rentacar;
   naziv: string;
+  noviServis;
 
   
 
   
 
-  constructor(private rentacarService: RentacarService, private route:ActivatedRoute) {
+  constructor(private rentacarService: RentacarService, private route:ActivatedRoute, private service: UserService) {
     
     this.allRentacarPodaci = new Array<Rentacar>();
     route.params.subscribe( params => {this.naziv = params['naziv'];});
@@ -30,17 +33,27 @@ export class RentacarPodaciComponent implements OnInit {
 
   ngOnInit(): void {
     this.ucitavanjeRentacar();
+    
   }
 
 
   ucitavanjeRentacar(): void {
-    this.allRentacarPodaci = this.rentacarService.ucitavanjeRentacar();
-    this.allRentacarPodaci.forEach(element =>{
-      if(element.naziv = this.naziv){
-        this.servis = element;
+    
 
-      }
-    })
+    this.service.getServisi
+    ().subscribe(
+      (res: any) => {
+        if(res != null){
+          var temp = res;
+          temp.forEach(element =>{
+            console.log(element);
+            const ak = new Rentacar(element.id, element.naziv, element.adresa, element.opis, 2);
+            this.allRentacarPodaci.push(ak)
+          })
+        }
+      },
+    );
+  
   }
 
 

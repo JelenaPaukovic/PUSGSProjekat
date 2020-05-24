@@ -71,10 +71,11 @@ export class UserService {
 
   addServis() {
     var body = {
-      naziv: this.formModel.value.naziv,
-      adresa: this.formModel.value.adresa,
+      naziv: this.formModel1.value.naziv,
+      adresa: this.formModel1.value.adresa,
      
     };
+    console.log('nesto...');
     return this.http.post(this.BaseURI + '/RentacarServis/AddServis', body);
   }
 }

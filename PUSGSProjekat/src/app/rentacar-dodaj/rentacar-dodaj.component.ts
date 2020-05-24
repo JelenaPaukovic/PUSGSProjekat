@@ -27,28 +27,21 @@ export class RentacarDodajComponent implements OnInit {
   }
 
   onSubmit() {
-    this.service.register().subscribe(
+    console.log('dodavanje...');
+    this.service.addServis().subscribe(
       (res: any) => {
         if (res.succeeded) {
-          this.service.formModel.reset();
-          this.toastr.success('New user created!', 'Registration successful.');
-        } else {
-          res.errors.forEach(element => {
-            switch (element.code) {
-              case 'DuplicateUserName':
-                this.toastr.error('Username is already taken','Registration failed.');
-                break;
-
-              default:
-              this.toastr.error(element.description,'Registration failed.');
-                break;
-            }
-          });
+          console.log('ispisi nesto');
+          this.service.formModel1.reset();
+          this.toastr.success('New service created successful.');
+        
         }
+        console.log('rentacar');
       },
-      err => {
+      
+     /* err => {
         console.log(err);
-      }
+      }*/
     );
   }
 

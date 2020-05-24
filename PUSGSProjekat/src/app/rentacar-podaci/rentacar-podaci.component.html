@@ -1,29 +1,28 @@
 <h3>Više podataka o rent-a-car servisu</h3>
 
 <div>
-    <table class="table table-light">
+    <table class="table table-light" *ngIf="noviServis">
         <thead>
             <tr>
+                <th scope="col">ID rent-a-car servisa</th>
                 <th scope="col">Naziv rent-a-car servisa</th>
                 <th scope="col">Adresa rent-a-car servisa</th>
-                <th scope="col">Ocena rent-a-car servisa</th>
+               
                 <th scope="col">Opis rent-a-car servisa</th>
                 <th scope="col">Cenovnik rent-a-car servisa</th>
-                <th scope="col">Spisak vozila rent-a-car servisa</th>
-                <th scope="col">Filijale rent-a-car servisa</th>
+                
                 
             </tr>
         </thead>
         <tbody>
             <tr>
-                <td>{{servis.naziv}}</td>
-                <td>{{servis.adresa}}</td>
-                <td>{{servis.ocena}}</td>
-                <td>{{servis.opis}}</td>
-                <td>{{servis.cenovnik}}</td>
-                <td>{{servis.spisak}}</td>
-                <td>{{servis.filijale}}</td>
+                <td>{{noviServis.id}}</td>
+                <td>{{noviServis.naziv}}</td>
+                <td>{{noviServis.adresa}}</td>
             
+                <td>{{noviServis.opis}}</td>
+                <td>{{noviServis.cenovnik}}</td>
+               
             </tr>
         </tbody>
     </table>

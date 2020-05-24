@@ -14,7 +14,7 @@ export class RentacarServisComponent implements OnInit {
   
 
   constructor(private rentacarService: RentacarService) {
-    //alert("Upravo se pozvao konstruktor komponente Student");
+    
     this.allRentacar = new Array<Rentacar>();
     
   }
