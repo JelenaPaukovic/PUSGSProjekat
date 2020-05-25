@@ -1,29 +1,29 @@
 <div class="container">
     <h1>Registrovanje aviokompanije</h1>
-    <form [formGroup]="avioForma" (ngSubmit)="onSubmit()">
+    <form [formGroup]="service.formModel1" autocomplete="off" (ngSubmit)="onSubmit()">
         <div class="row">
             <div class="col-sm-6 form-group">
-                <label for="naziv">Unesite naziv aviokompanije:</label>
+                <label for="naziv"><b>Unesite naziv aviokompanije:</b></label>
                 <input type="text" id="naziv" class="form-control" formControlName="naziv">
-                <div *ngIf="avioForma.controls.naziv.invalid">
-                    Unesite naziv aviokompanije:
+                <div class = "text-danger" *ngIf="service.formModel1.get('naziv').errors?.required">
+                    Ovo polje je obavezno!
                 </div>
             </div>
         </div>
 
         <div class="row">
             <div class="col-sm-6 form-group">
-                <label for="adresa">Unesite adresu:</label>
+                <label for="adresa"><b>Unesite adresu aviokompanije:</b></label>
                 <input type="text" id="adresa" class="form-control" formControlName="adresa">
-                <div *ngIf="avioForma.controls.adresa.invalid">
-                    Unesite adresu:
+                <div class = "text-danger" *ngIf="service.formModel1.get('adresa').errors?.required">
+                    Ovo polje je obavezno!
                 </div>
             </div>
         </div>
 
         <div class="row">
             <div class="col-2">
-                <button [disabled]="!avioForma.valid" class="btn btn-success" type="submit">REGISTRUJ AVIOKOMPNAIJU</button>
+                <button [disabled]="!service.formModel1.valid" class="btn btn-success" type="submit">REGISTRUJ AVIOKOMPNAIJU</button>
             </div>
         </div>
 

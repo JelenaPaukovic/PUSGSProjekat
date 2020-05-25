@@ -8,7 +8,7 @@ import { HttpClient, HttpHeaders } from "@angular/common/http";
 export class UserService {
 
   constructor(private fb: FormBuilder, private http: HttpClient) { }
-  readonly BaseURI = 'http://localhost:44330/api';
+  readonly BaseURI = 'https://localhost:44330/api';
 
   formModel = this.fb.group({
     ime: ['', Validators.required],
@@ -78,4 +78,17 @@ export class UserService {
     console.log('nesto...');
     return this.http.post(this.BaseURI + '/RentacarServis/AddServis', body);
   }
+  getAvio(){
+    return this.http.get(this.BaseURI + '/Aviokompanija/GetAvio');
+  }
+  addAvio() {
+    var body = {
+      naziv: this.formModel1.value.naziv,
+      adresa: this.formModel1.value.adresa,
+     
+    };
+    console.log('nesto...');
+    return this.http.post(this.BaseURI + '/Aviokompanija/AddAvio', body);
+  }
+
 }

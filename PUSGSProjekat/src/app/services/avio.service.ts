@@ -17,7 +17,7 @@ export class AvioService {
   mockedAvio(): Array<Avio> {
     let allAvio = new Array<Avio>();
 
-    const av1 = new Avio('Air Serbia', 'Beograd, Srbija', 5, 'Letite udobno i bezbedno', 'Cenovnik', 'Spisak', 'Filijale');
+    /*const av1 = new Avio('Air Serbia', 'Beograd, Srbija', 5, 'Letite udobno i bezbedno', 'Cenovnik', 'Spisak', 'Filijale');
     const av2 = new Avio('Turkish Airlines', 'Istanbul, Turska', 5, 'Prosiri svoj svet', 'Cenovnik', 'Spisak', 'Filijale');
     const av3 = new Avio('Ryanair', 'Dablin, Irska', 5, 'Preletite svet sa nama', 'Cenovnik', 'Spisak', 'Filijale');
     const av4 = new Avio('Flydubai','Dubai, Ujedinjeni Arapski Emirati', 5, 'Letite sa uzivanjem', 'Cenovnik', 'Spisak', 'Filijale');
@@ -30,7 +30,7 @@ export class AvioService {
     allAvio.push(av2);
     allAvio.push(av3);
     allAvio.push(av4);
-    allAvio.push(av5);
+    allAvio.push(av5);*/
 
     return allAvio;
   }
