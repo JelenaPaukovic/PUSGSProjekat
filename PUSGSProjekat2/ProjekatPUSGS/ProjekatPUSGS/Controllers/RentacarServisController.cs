@@ -20,14 +20,14 @@ namespace ProjekatPUSGS.Controllers
             _context = context;
         }
 
-        // GET: api/Books
+        
         [HttpGet]
         public async Task<ActionResult<IEnumerable<RentacarServis>>> GetServisi()
         {
             return await _context.Servisi.ToListAsync();
         }
 
-        // GET: api/Books/5
+        
         [HttpGet("{id}")]
         public async Task<ActionResult<RentacarServis>> GetServisi(int id)
         {
@@ -41,9 +41,7 @@ namespace ProjekatPUSGS.Controllers
             return servisi;
         }
 
-        // PUT: api/Books/5
-        // To protect from overposting attacks, please enable the specific properties you want to bind to, for
-        // more details see https://aka.ms/RazorPagesCRUD.
+        
         [Route("UpdateServis")]
         public async Task<IActionResult> UpdateServis(RentacarServis servis)
         {
@@ -68,9 +66,6 @@ namespace ProjekatPUSGS.Controllers
             return NoContent();
         }
 
-        // POST: api/Books
-        // To protect from overposting attacks, please enable the specific properties you want to bind to, for
-        // more details see https://aka.ms/RazorPagesCRUD.
         [HttpPost]
         [Route("AddServis")]
         public async Task<ActionResult<RentacarServis>> AddServis(RentacarServis servis)
@@ -83,7 +78,7 @@ namespace ProjekatPUSGS.Controllers
             return CreatedAtAction("GetServisi", new { id = servis.IdServis }, servis);
         }
 
-        // DELETE: api/Books/5
+        
         [HttpDelete]
         [Route("DeleteServis/{id}")]
         public async Task<ActionResult<RentacarServis>> DeleteServis(int id)
