@@ -78,4 +78,17 @@ export class UserService {
     console.log('nesto...');
     return this.http.post(this.BaseURI + '/RentacarServis/AddServis', body);
   }
+  getAvio(){
+    return this.http.get(this.BaseURI + '/Aviokompanija/GetAvio');
+  }
+  addAvio() {
+    var body = {
+      naziv: this.formModel1.value.naziv,
+      adresa: this.formModel1.value.adresa,
+     
+    };
+    console.log('nesto...');
+    return this.http.post(this.BaseURI + '/Aviokompanija/AddAvio', body);
+  }
+
 }
