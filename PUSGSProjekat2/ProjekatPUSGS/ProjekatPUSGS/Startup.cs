@@ -47,84 +47,25 @@ namespace ProjekatPUSGS
             services.AddDbContext<ProjekatContext>(options =>
                     options.UseSqlServer(Configuration.GetConnectionString("Projekat")));
             services.Configure<ApplicationSettings>(Configuration.GetSection("ApplicationSettings"));
-
+            
             services.AddMvc().SetCompatibilityVersion(CompatibilityVersion.Version_2_2);
 
             services.AddDbContext<AuthenticationContext>(options =>
-            options.UseSqlServer(Configuration.GetConnectionString("IdentityConnection")));
+            options.UseSqlServer(Configuration.GetConnectionString("Projekat")));
 
-            services.AddDefaultIdentity<ApplicationUser>()
+            services.AddDefaultIdentity<Korisnik>()
                 .AddEntityFrameworkStores<AuthenticationContext>();
 
-            /*services.Configure<IdentityOptions>(options =>
-            {
-                options.Password.RequireDigit = false;
-                options.Password.RequireNonAlphanumeric = false;
-                options.Password.RequireLowercase = false;
-                options.Password.RequireUppercase = false;
-                options.Password.RequiredLength = 4;
-            }
-            );*/
 
-          /*  services.AddCors();
 
-            //Jwt Authentication
 
-            var key = Encoding.UTF8.GetBytes(Configuration["ApplicationSettings:JWT_Secret"].ToString());
 
-            services.AddAuthentication(x =>
-            {
-                x.DefaultScheme = JwtBearerDefaults.AuthenticationScheme;
-            }).AddJwtBearer(x =>
-            {
-                x.RequireHttpsMetadata = false;
-                x.SaveToken = false;
-                x.TokenValidationParameters = new Microsoft.IdentityModel.Tokens.TokenValidationParameters
-                {
-                    ValidateIssuerSigningKey = true,
-                    IssuerSigningKey = new SymmetricSecurityKey(key),
-                    ValidateIssuer = false,
-                    ValidateAudience = false,
-                    ClockSkew = TimeSpan.Zero
-                };
-            });*/
         }
 
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.
         public void Configure(IApplicationBuilder app, IWebHostEnvironment env)
         {
-            /* app.Use(async (ctx, next) =>
-             {
-                 await next();
-                 if (ctx.Response.StatusCode == 204)
-                 {
-                     ctx.Response.ContentLength = 0;
-                 }
-             });
 
-             if (env.IsDevelopment())
-             {
-                 app.UseDeveloperExceptionPage();
-             }
-
-             app.UseCors(builder =>
-             builder.WithOrigins(Configuration["ApplicationSettings:Client_URL"].ToString())
-             .AllowAnyHeader()
-             .AllowAnyMethod()
-
-             );
-
-             app.UseAuthentication();
-             app.UseMvc();
-
-             app.UseRouting();
-
-             app.UseAuthorization();
-
-             app.UseEndpoints(endpoints =>
-             {
-                 endpoints.MapControllers();
-             });*/
 
             if (env.IsDevelopment())
             {
@@ -139,7 +80,7 @@ namespace ProjekatPUSGS
 
             app.UseAuthentication();
 
-            //app.UseCors();
+            
             app.UseCors("CorsPolicy");
 
             app.UseEndpoints(endpoints =>

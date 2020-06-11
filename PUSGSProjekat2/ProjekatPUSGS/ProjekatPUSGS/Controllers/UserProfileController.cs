@@ -15,8 +15,8 @@ namespace ProjekatPUSGS.Controllers
     [ApiController]
     public class UserProfileController : ControllerBase
     {
-        private UserManager<ApplicationUser> _userManager;
-        public UserProfileController(UserManager<ApplicationUser> userManager)
+        private UserManager<Korisnik> _userManager;
+        public UserProfileController(UserManager<Korisnik> userManager)
         {
             _userManager = userManager;
         }
@@ -31,7 +31,7 @@ namespace ProjekatPUSGS.Controllers
             var user = await _userManager.FindByIdAsync(userId);
             return new
             {
-                user.FullName,
+                //user.FullName,
                 user.Email,
                 user.UserName
             };

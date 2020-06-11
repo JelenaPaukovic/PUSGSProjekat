@@ -1,0 +1,29 @@
+<h3>Podaci o administratoru</h3>
+
+<div>
+    <table class="table table-light" *ngIf="adminA">
+        <thead>
+            <tr>
+                <th scope="col">Ime</th>
+                <th scope="col">Prezime</th>
+                <th scope="col">Email adresa</th>
+               
+                <th scope="col">Grad</th>
+                <th scope="col">Broj telefona</th>
+                
+                
+            </tr>
+        </thead>
+        <tbody>
+            <tr>
+                <td>{{adminA.ime}}</td>
+                <td>{{adminA.prezime}}</td>
+                <td>{{adminA.grad}}</td>
+            
+                <td>{{adminA.brojTelefona}}</td>
+                <td>{{adminA.emailAdresa}}</td>
+               
+            </tr>
+        </tbody>
+    </table>
+    </div>

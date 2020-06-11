@@ -75,20 +75,87 @@ export class UserService {
       adresa: this.formModel1.value.adresa,
      
     };
-    console.log('nesto...');
+    
     return this.http.post(this.BaseURI + '/RentacarServis/AddServis', body);
   }
-  getAvio(){
-    return this.http.get(this.BaseURI + '/Aviokompanija/GetAvio');
-  }
-  addAvio() {
-    var body = {
-      naziv: this.formModel1.value.naziv,
-      adresa: this.formModel1.value.adresa,
-     
-    };
-    console.log('nesto...');
-    return this.http.post(this.BaseURI + '/Aviokompanija/AddAvio', body);
-  }
 
-}
+
+  comparePasswordsAdmin(fb: FormGroup) {
+    let confirmPswrdCtrl = fb.get('ConfirmPassword');}
+
+  formModel2 = this.fb.group({
+    ime: ['', Validators.required],
+    prezime: ['', Validators.required],
+    grad: ['', Validators.required],
+    brTel: ['', Validators.required],
+    email: ['', Validators.email],
+    Lozinke: this.fb.group({
+      lozinka: ['', [Validators.required, Validators.minLength(4)]],
+      ponovoLozinka: ['', Validators.required]
+    }, { validator: this.comparePasswordsAdmin })
+
+  });
+
+    dodajAdminaRent() {
+      var body = {
+        ime: this.formModel2.value.ime,
+        prezime: this.formModel2.value.prezime,
+        grad: this.formModel2.value.grad,
+        brTel: this.formModel2.value.brTel,
+        email: this.formModel2.value.email,
+        lozinka: this.formModel2.value.Lozinke.lozinka
+      };
+      return this.http.post(this.BaseURI + '/ApplicationUser/DodajAdminaRent', body);
+    }
+  
+
+
+   comparePasswordsAdminAvio(fb: FormGroup) {
+    let confirmPswrdCtrl = fb.get('ConfirmPassword');}
+
+  formModel3 = this.fb.group({
+    ime: ['', Validators.required],
+    prezime: ['', Validators.required],
+    grad: ['', Validators.required],
+    brTel: ['', Validators.required],
+    email: ['', Validators.email],
+    Lozinke: this.fb.group({
+      lozinka: ['', [Validators.required, Validators.minLength(4)]],
+      ponovoLozinka: ['', Validators.required]
+    }, { validator: this.comparePasswordsAdminAvio })
+
+  });
+
+
+
+
+    dodajAdminaAvio() {
+      var body = {
+        ime: this.formModel3.value.ime,
+        prezime: this.formModel3.value.prezime,
+        grad: this.formModel3.value.grad,
+        brTel: this.formModel3.value.brTel,
+        email: this.formModel3.value.email,
+        lozinka: this.formModel3.value.Lozinke.lozinka
+      };
+      return this.http.post(this.BaseURI + '/ApplicationUser/DodajAdminaAvio', body);
+    }
+  
+
+    getKorisnici(){
+      return this.http.get(this.BaseURI + '/Korisnik/GetKorisnici');
+    }
+
+
+    updateServis(){
+      var body = {
+        naziv: this.forma.value.naziv,
+        adresa: this.formModel3.value.adresa,
+        opis: this.formModel3.value.opis,
+        cenovnik: this.formModel3.value.cenovnik,
+        spisak: this.formModel3.value.spisak,
+        filijale: this.formModel3.value.filijale
+      };
+      return this.http.put(this.BaseURI + '/RentacarServis/UpdateServis', body);
+    }
+  }

@@ -1,5 +1,8 @@
 import { Component, OnInit } from '@angular/core';
 import { FormGroup, FormControl, Validators } from '@angular/forms';
+import { UserService } from './../shared/user.service';
+//import { ToastrService } from 'ngx-toastr';
+import { ToastrService } from 'ngx-toastr';
 
 @Component({
   selector: 'app-dodaj-admina-avio',
@@ -10,7 +13,7 @@ export class DodajAdminaAvioComponent implements OnInit {
 
   avioAdminForma :FormGroup;
 
-  constructor() { }
+  constructor(public service: UserService, private toastr: ToastrService) { }
 
   ngOnInit(): void {
   }
@@ -30,8 +33,29 @@ export class DodajAdminaAvioComponent implements OnInit {
   }
 
   onSubmit() {
-    console.log(this.avioAdminForma.value);
-    console.log(this.avioAdminForma);
+    this.service.dodajAdminaAvio().subscribe(
+      (res: any) => {
+        if (res.succeeded) {
+          this.service.formModel3.reset();
+          this.toastr.success('New user created!', 'Registration successful.');
+        } else {
+          res.errors.forEach(element => {
+            switch (element.code) {
+              case 'DuplicateUserName':
+                this.toastr.error('Username is already taken','Registration failed.');
+                break;
+
+              default:
+              this.toastr.error(element.description,'Registration failed.');
+                break;
+            }
+          });
+        }
+      },
+      err => {
+        console.log(err);
+      }
+    );
   }
 
   onClear() {

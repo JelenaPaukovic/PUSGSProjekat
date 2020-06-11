@@ -17,19 +17,13 @@ export class RentacarPodaciComponent implements OnInit {
   naziv: string;
   noviServis;
 
-  
-
-  
 
   constructor(private rentacarService: RentacarService, private route:ActivatedRoute, private service: UserService) {
     
     this.allRentacarPodaci = new Array<Rentacar>();
     route.params.subscribe( params => {this.naziv = params['naziv'];});
     
-    
-    
   }
-
 
   ngOnInit(): void {
     this.ucitavanjeRentacar();

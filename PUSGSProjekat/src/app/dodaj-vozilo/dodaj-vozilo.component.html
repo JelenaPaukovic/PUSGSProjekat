@@ -1,0 +1,72 @@
+<!--<div class="container">
+    <h1>Registrovanje rent-a-car servisa</h1>
+    <form [formGroup]="service.formModel4" autocomplete="off" (submit)="onSubmit()">
+        <div class="row">
+            <div class="col-sm-6 form-group">
+                <label for="naziv"><b>Unesite naziv vozila:</b></label>
+                <input type="text" id="naziv" class="form-control" formControlName="naziv">
+                <div class = "text-danger" *ngIf="service.formModel4.get('naziv').errors?.required">
+                    Ovo polje je obavezno!
+                </div>
+            </div>
+        </div>
+
+        <div class="row">
+            <div class="col-sm-6 form-group">
+                <label for="marka"><b>Unesite marku vozila:</b></label>
+                <input type="text" id="marka" class="form-control" formControlName="marka">
+                <div class = "text-danger" *ngIf="service.formModel4.get('marka').errors?.required">
+                    Ovo polje je obavezno!
+                </div>
+            </div>
+        </div>
+
+
+        <div class="row">
+            <div class="col-sm-6 form-group">
+                <label for="marka"><b>Unesite model vozila:</b></label>
+                <input type="text" id="model" class="form-control" formControlName="model">
+                <div class = "text-danger" *ngIf="service.formModel4.get('model').errors?.required">
+                    Ovo polje je obavezno!
+                </div>
+            </div>
+        </div>
+
+        <div class="row">
+            <div class="col-sm-6 form-group">
+                <label for="godinProizvodnje"><b>Unesite godinu proizvodnje vozila:</b></label>
+                <input type="text" id="godinaProizvodnje" class="form-control" formControlName="godinaProizvodnje">
+                <div class = "text-danger" *ngIf="service.formModel4.get('godinaProizvodnje').errors?.required">
+                    Ovo polje je obavezno!
+                </div>
+            </div>
+        </div>
+
+        <div class="row">
+            <div class="col-sm-6 form-group">
+                <label for="brojSedista"><b>Unesite broj sedista:</b></label>
+                <input type="text" id="brojSedista" class="form-control" formControlName="brojSedista">
+                <div class = "text-danger" *ngIf="service.formModel4.get('brojSedista').errors?.required">
+                    Ovo polje je obavezno!
+                </div>
+            </div>
+        </div>
+
+        <div class="row">
+            <div class="col-sm-6 form-group">
+                <label for="tipVozila"><b>Unesite tip vozila:</b></label>
+                <input type="text" id="tipVozila" class="form-control" formControlName="tipVozila">
+                <div class = "text-danger" *ngIf="service.formModel4.get('tipVozila').errors?.required">
+                    Ovo polje je obavezno!
+                </div>
+            </div>
+        </div>
+
+
+
+        <div class="row">
+            <div class="col-2">
+                <button [disabled]="!service.formModel4.valid" class="btn btn-success" type="submit">Dodaj vozilo</button>
+            </div>
+        </div>
+    -->

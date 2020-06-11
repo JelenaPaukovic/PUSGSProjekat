@@ -15,6 +15,6 @@ namespace ProjekatPUSGS.Data
 
         }
 
-        public DbSet<ApplicationUser> ApplicationUsers { get; set; }
+        public DbSet<Korisnik> ApplicationUsers { get; set; }
     }
 }

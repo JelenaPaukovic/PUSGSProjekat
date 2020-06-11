@@ -21,12 +21,12 @@ namespace ProjekatPUSGS.Controllers
     [ApiController]
     public class ApplicationUserController : ControllerBase
     {
-        private UserManager<ApplicationUser> _userManager;
-        private SignInManager<ApplicationUser> _signInManager;
+        private UserManager<Korisnik> _userManager;
+        private SignInManager<Korisnik> _signInManager;
         private readonly ApplicationSettings _appSettings;
 
-        public ApplicationUserController(UserManager<ApplicationUser> userManager,
-            SignInManager<ApplicationUser> signInManager, IOptions<ApplicationSettings> appSettings)
+        public ApplicationUserController(UserManager<Korisnik> userManager,
+            SignInManager<Korisnik> signInManager, IOptions<ApplicationSettings> appSettings)
         {
             _userManager = userManager;
             _signInManager = signInManager;
@@ -38,16 +38,18 @@ namespace ProjekatPUSGS.Controllers
         //POST : /api/ApplicationUser/Register
         public async Task<Object> PostApplicationUser(ApplicationUserModel model)
         {
-            var applicationUser = new ApplicationUser()
+            var applicationUser = new Korisnik()
             {
-                UserName = model.UserName,
-                Email = model.Email,
-                FullName = model.FullName
+                Ime = model.Ime,
+                Prezime = model.Prezime,
+                Grad = model.Grad,
+                BrojTelefona = model.BrojTelefona,
+                Email = model.EmailAdresa,
             };
 
             try
             {
-                var result = await _userManager.CreateAsync(applicationUser, model.Password);
+                var result = await _userManager.CreateAsync(applicationUser, model.Lozinka);
                 return Ok(result);
             }
             catch (Exception ex)
@@ -133,6 +135,82 @@ namespace ProjekatPUSGS.Controllers
             var googleApiTokenInfo = JsonConvert.DeserializeObject<GoogleApiTokenInfo>(response);
 
             return true;
+        }
+
+
+        [HttpPost]
+        [Route("DodajAdminaRent")]
+        //POST : /api/ApplicationUser/Register
+        public async Task<Object> DodajAdminaRent(ApplicationUserModel model)
+        {
+            model.Username = model.EmailAdresa;
+
+            var applicationUser = new Korisnik()
+            {
+                Ime = model.Ime,
+                Prezime = model.Prezime,
+                Grad = model.Grad,
+                BrojTelefona = model.BrojTelefona,
+                EmailAdresa = model.EmailAdresa,
+                UlogaKorisnika = Tip.RegistrovaniKorisnik
+            };
+
+            if(model.UlogaKorisnika == "AdminAvio")
+            {
+                applicationUser.UlogaKorisnika = Tip.AdminAvio;
+            }
+            else if(model.UlogaKorisnika == "AdminRentacar")
+            {
+                applicationUser.UlogaKorisnika = Tip.AdminRentacar;
+            }
+
+            try
+            {
+                var result = await _userManager.CreateAsync(applicationUser, model.Lozinka);
+                return Ok(result);
+            }
+            catch (Exception ex)
+            {
+
+                throw ex;
+            }
+        }
+
+
+        [HttpPost]
+        [Route("DodajAdminaAvio")]
+        //POST : /api/ApplicationUser/Register
+        public async Task<Object> DodajAdminaAvio(ApplicationUserModel model)
+        {
+            var applicationUser = new Korisnik()
+            {
+                Ime = model.Ime,
+                Prezime = model.Prezime,
+                Grad = model.Grad,
+                BrojTelefona = model.BrojTelefona,
+                EmailAdresa = model.EmailAdresa,
+            };
+
+            if (model.UlogaKorisnika == "AdminAvio")
+            {
+                applicationUser.UlogaKorisnika = Tip.AdminAvio;
+            }
+            else if (model.UlogaKorisnika == "AdminRentacar")
+            {
+                applicationUser.UlogaKorisnika = Tip.AdminRentacar;
+            }
+
+
+            try
+            {
+                var result = await _userManager.CreateAsync(applicationUser, model.Lozinka);
+                return Ok(result);
+            }
+            catch (Exception ex)
+            {
+
+                throw ex;
+            }
         }
     }
 }
