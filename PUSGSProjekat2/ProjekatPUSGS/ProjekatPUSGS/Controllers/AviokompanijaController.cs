@@ -14,8 +14,8 @@ namespace ProjekatPUSGS.Controllers
     [ApiController]
     public class AviokompanijaController : ControllerBase
     {
-        private readonly ProjekatContext _context;
-        public AviokompanijaController(ProjekatContext context)
+        private readonly AuthenticationContext _context;
+        public AviokompanijaController(AuthenticationContext context)
         {
             _context = context;
         }

@@ -1,6 +1,8 @@
 import { Injectable } from '@angular/core';
 import { FormBuilder, Validators, FormGroup } from '@angular/forms';
 import { HttpClient, HttpHeaders } from "@angular/common/http";
+import { stringify } from 'querystring';
+import { ActivatedRouteSnapshot } from '@angular/router';
 
 @Injectable({
   providedIn: 'root'
@@ -147,14 +149,15 @@ export class UserService {
     }
 
 
-    updateServis(){
+    updateServis(naziv, adresa, opis, cenovnik, spisak, filijale){
+ 
       var body = {
-        naziv: this.forma.value.naziv,
-        adresa: this.formModel3.value.adresa,
-        opis: this.formModel3.value.opis,
-        cenovnik: this.formModel3.value.cenovnik,
-        spisak: this.formModel3.value.spisak,
-        filijale: this.formModel3.value.filijale
+        naziv,
+        adresa,
+        opis,
+        cenovnik,
+        spisak,
+        filijale,
       };
       return this.http.put(this.BaseURI + '/RentacarServis/UpdateServis', body);
     }

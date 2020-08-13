@@ -44,7 +44,7 @@ namespace ProjekatPUSGS
 
             services.AddControllers();
 
-            services.AddDbContext<ProjekatContext>(options =>
+            services.AddDbContext<AuthenticationContext>(options =>
                     options.UseSqlServer(Configuration.GetConnectionString("Projekat")));
             services.Configure<ApplicationSettings>(Configuration.GetSection("ApplicationSettings"));
             

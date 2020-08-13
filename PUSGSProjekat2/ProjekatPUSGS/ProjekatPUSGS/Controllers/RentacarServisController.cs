@@ -14,8 +14,8 @@ namespace ProjekatPUSGS.Controllers
     [ApiController]
     public class RentacarServisController : ControllerBase
     {
-        private readonly ProjekatContext _context;
-        public RentacarServisController(ProjekatContext context)
+        private readonly AuthenticationContext _context;
+        public RentacarServisController(AuthenticationContext context)
         {
             _context = context;
         }

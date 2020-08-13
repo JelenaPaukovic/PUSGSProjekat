@@ -1,4 +1,6 @@
 import { Component, OnInit } from '@angular/core';
+import { environment }  from 'src/environments/environment';
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-navbar',
@@ -7,9 +9,32 @@ import { Component, OnInit } from '@angular/core';
 })
 export class NavbarComponent implements OnInit {
 
-  constructor() { }
+  static  uloga = environment.uloga;
+
+  constructor( private router: Router) {
+    if(environment.uloga == null)
+    {
+      environment.uloga = '0';
+      localStorage.setItem('uloga','0');
+    }
+   }
 
   ngOnInit(): void {
+  }
+
+  get Getuloga() {
+    return NavbarComponent.uloga;
+  }
+
+  odjaviSe():void{
+    environment.uloga = '0';
+    NavbarComponent.uloga = '0';
+    localStorage.removeItem('uloga');
+    localStorage.removeItem('token');
+    localStorage.removeItem('korisnickoIme');
+    localStorage.setItem('korisnickoIme','');
+    localStorage.setItem('uloga','0');
+    this.router.navigateByUrl('prijava');
   }
 
 }

@@ -1,8 +1,8 @@
 
 <form #form='ngForm' class="mb-4" autocomplete="off" (submit)="onSubmit(form)">
   <div class="col-sm-6 form-group">
-    <label>Email adresa</label>
-    <input class="form-control" #EmailAdresa="ngModel" name="EmailAdresa" [(ngModel)]="formModel.EmailAdresa" required>
+    <label>Korisnicko ime</label>
+    <input class="form-control" #KorisnickoIme="ngModel" name="KorisnickoIme" [(ngModel)]="formModel.KorisnickoIme" required>
   </div>
   <div class="col-sm-6 form-group">
     <label>Lozinka</label>
@@ -14,4 +14,8 @@
     </div>
   </div>
 </form>
+
+<div class="form-group col-md-8 offset-md-2">
+  <button (click)="LoginWithGoogle()" class="btn btn-lg btn-primary btn-block">Login with Google</button>
+</div>
 

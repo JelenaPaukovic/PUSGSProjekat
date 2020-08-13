@@ -29,6 +29,7 @@ import { ProfilRentacarAdminaComponent } from './profil-rentacar-admina/profil-r
 import { DodajVoziloComponent } from './dodaj-vozilo/dodaj-vozilo.component';
 import { ProfilAcioAdminaComponent } from './profil-acio-admina/profil-acio-admina.component';
 import { ProfilAvioAdminaComponent } from './profil-avio-admina/profil-avio-admina.component';
+import { PromenaLozinkeComponent } from './promena-lozinke/promena-lozinke.component';
 //import { SocialLoginModule, AuthServiceConfig, GoogleLoginProvider, FacebookLoginProvider, AuthService } from 'angular-6-social-login';  
 
 
@@ -67,7 +68,8 @@ import { ProfilAvioAdminaComponent } from './profil-avio-admina/profil-avio-admi
     ProfilRentacarAdminaComponent,
     DodajVoziloComponent,
     ProfilAcioAdminaComponent,
-    ProfilAvioAdminaComponent
+    ProfilAvioAdminaComponent,
+    PromenaLozinkeComponent
   ],
   imports: [
     BrowserModule,

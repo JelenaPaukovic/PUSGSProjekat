@@ -14,9 +14,9 @@ namespace ProjekatPUSGS.Controllers
     [ApiController]
     public class KorisnikController : ControllerBase
     {
-        private readonly ProjekatContext _context;
+        private readonly AuthenticationContext _context;
 
-        public KorisnikController(ProjekatContext context)
+        public KorisnikController(AuthenticationContext context)
         {
             _context = context;
         }

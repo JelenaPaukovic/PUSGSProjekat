@@ -14,9 +14,9 @@ namespace ProjekatPUSGS.Controllers
     [ApiController]
     public class VoziloController : ControllerBase
     {
-        private readonly ProjekatContext _context;
+        private readonly AuthenticationContext _context;
 
-        public VoziloController(ProjekatContext context)
+        public VoziloController(AuthenticationContext context)
         {
             _context = context;
         }

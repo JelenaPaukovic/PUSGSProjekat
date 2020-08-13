@@ -96,8 +96,8 @@ export class ProfilRentacarAdminaComponent implements OnInit {
   }
 
   azurirajServis(naziv:string, adresa:string, opis:string, cenovnik:string, spisak:string, filijale:string): void {
-    this.allRentacarPodaci
-    alert('Vaša izmena je sačuvana!');
+     
+    //alert('Vaša izmena je sačuvana!');
   }
 
 

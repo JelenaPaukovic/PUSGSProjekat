@@ -14,9 +14,9 @@ namespace ProjekatPUSGS.Controllers
     [ApiController]
     public class LetoviController : ControllerBase
     {
-        private readonly ProjekatContext _context;
+        private readonly AuthenticationContext _context;
 
-        public LetoviController(ProjekatContext context)
+        public LetoviController(AuthenticationContext context)
         {
             _context = context;
         }

@@ -9,7 +9,7 @@ namespace ProjekatPUSGS.Models
 {
     public class Korisnik : IdentityUser
     {
-        [Key]
+        
         public int IdKorisnik { get; set; }
         public string Ime { get; set; }
         public string Prezime { get; set; }
