@@ -21,5 +21,10 @@ namespace ProjekatPUSGS.Data
         public DbSet<Korisnik> Korisnici { get; set; }
         public DbSet<Aviokompanija> Kompanije { get; set; }
         public DbSet<Letovi> Let { get; set; }
+        public DbSet<Filijala> Filijale { get; set; }
+
+        public DbSet<RezervacijaVozila> RezervacijeVozila { get; set; }
+
+        public DbSet<BrzaRezervacijaVozila> BrzeRezervacijeVozila { get; set; }
     }
 }

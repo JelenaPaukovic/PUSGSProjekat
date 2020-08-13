@@ -13,8 +13,14 @@ namespace ProjekatPUSGS.Models
         public string Naziv { get; set; }
         public string Adresa { get; set; }
         public string PromotivniOpis { get; set; }
-        public string CenovnikUsluga { get; set; }
-        public string SpisakVozila { get; set; }
-        public string Filijale { get; set; }
+        public string Admin { get; set; }
+        public ICollection<Vozilo> Vozila { get; set; }
+        public double cenaPrviDan { get; set; }
+
+        public double cenaSledeciDan { get; set; }
+
+        public bool Odobreno { get; set; }
+
+        public double Ocena { get; set; }
     }
 }

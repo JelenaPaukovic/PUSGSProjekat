@@ -7,6 +7,18 @@ using System.Threading.Tasks;
 
 namespace ProjekatPUSGS.Models
 {
+
+    public enum Tip
+    {
+
+        AdminAvio,
+        AdminRentacar,
+        RegistrovaniKorisnik,
+        NeregistrovaniKorisnik,
+        Admin
+    }
+
+
     public class Korisnik : IdentityUser
     {
         
@@ -19,6 +31,7 @@ namespace ProjekatPUSGS.Models
         public string BrojTelefona { get; set; }
 
         public Tip UlogaKorisnika { get; set; }
+        public bool IzmenjenaLozinka { get; set; }
 
     }
 }

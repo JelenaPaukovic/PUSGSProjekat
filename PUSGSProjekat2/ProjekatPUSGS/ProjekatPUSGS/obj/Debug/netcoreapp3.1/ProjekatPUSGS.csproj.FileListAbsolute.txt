@@ -163,6 +163,12 @@ C:\Users\Dragas\Documents\GitHub\PUSGSProjekat\PUSGSProjekat2\ProjekatPUSGS\Proj
 C:\Users\Dragas\Documents\GitHub\PUSGSProjekat\PUSGSProjekat2\ProjekatPUSGS\ProjekatPUSGS\bin\Debug\netcoreapp3.1\Microsoft.IdentityModel.Tokens.dll
 C:\Users\Dragas\Documents\GitHub\PUSGSProjekat\PUSGSProjekat2\ProjekatPUSGS\ProjekatPUSGS\bin\Debug\netcoreapp3.1\System.IdentityModel.Tokens.Jwt.dll
 C:\Users\Dragas\Documents\GitHub\PUSGSProjekat\PUSGSProjekat2\ProjekatPUSGS\ProjekatPUSGS\obj\Debug\netcoreapp3.1\ProjekatPUSGS.MvcApplicationPartsAssemblyInfo.cs
+C:\Users\PC\Documents\GitHub\PUSGSProjekat\PUSGSProjekat2\ProjekatPUSGS\ProjekatPUSGS\obj\Debug\netcoreapp3.1\ProjekatPUSGS.csprojAssemblyReference.cache
+C:\Users\PC\Documents\GitHub\PUSGSProjekat\PUSGSProjekat2\ProjekatPUSGS\ProjekatPUSGS\obj\Debug\netcoreapp3.1\ProjekatPUSGS.csproj.CoreCompileInputs.cache
+C:\Users\PC\Documents\GitHub\PUSGSProjekat\PUSGSProjekat2\ProjekatPUSGS\ProjekatPUSGS\obj\Debug\netcoreapp3.1\ProjekatPUSGS.MvcApplicationPartsAssemblyInfo.cs
+C:\Users\PC\Documents\GitHub\PUSGSProjekat\PUSGSProjekat2\ProjekatPUSGS\ProjekatPUSGS\obj\Debug\netcoreapp3.1\ProjekatPUSGS.MvcApplicationPartsAssemblyInfo.cache
+C:\Users\PC\Documents\GitHub\PUSGSProjekat\PUSGSProjekat2\ProjekatPUSGS\ProjekatPUSGS\obj\Debug\netcoreapp3.1\ProjekatPUSGS.AssemblyInfoInputs.cache
+C:\Users\PC\Documents\GitHub\PUSGSProjekat\PUSGSProjekat2\ProjekatPUSGS\ProjekatPUSGS\obj\Debug\netcoreapp3.1\ProjekatPUSGS.AssemblyInfo.cs
 C:\Users\PC\Documents\GitHub\PUSGSProjekat\PUSGSProjekat2\ProjekatPUSGS\ProjekatPUSGS\bin\Debug\netcoreapp3.1\appsettings.Development.json
 C:\Users\PC\Documents\GitHub\PUSGSProjekat\PUSGSProjekat2\ProjekatPUSGS\ProjekatPUSGS\bin\Debug\netcoreapp3.1\appsettings.json
 C:\Users\PC\Documents\GitHub\PUSGSProjekat\PUSGSProjekat2\ProjekatPUSGS\ProjekatPUSGS\bin\Debug\netcoreapp3.1\Properties\launchSettings.json
@@ -315,12 +321,6 @@ C:\Users\PC\Documents\GitHub\PUSGSProjekat\PUSGSProjekat2\ProjekatPUSGS\Projekat
 C:\Users\PC\Documents\GitHub\PUSGSProjekat\PUSGSProjekat2\ProjekatPUSGS\ProjekatPUSGS\bin\Debug\netcoreapp3.1\runtimes\unix\lib\netcoreapp2.0\System.Runtime.Caching.dll
 C:\Users\PC\Documents\GitHub\PUSGSProjekat\PUSGSProjekat2\ProjekatPUSGS\ProjekatPUSGS\bin\Debug\netcoreapp3.1\runtimes\win\lib\netcoreapp2.0\System.Runtime.Caching.dll
 C:\Users\PC\Documents\GitHub\PUSGSProjekat\PUSGSProjekat2\ProjekatPUSGS\ProjekatPUSGS\bin\Debug\netcoreapp3.1\runtimes\win\lib\netstandard2.0\System.Security.Cryptography.ProtectedData.dll
-C:\Users\PC\Documents\GitHub\PUSGSProjekat\PUSGSProjekat2\ProjekatPUSGS\ProjekatPUSGS\obj\Debug\netcoreapp3.1\ProjekatPUSGS.csprojAssemblyReference.cache
-C:\Users\PC\Documents\GitHub\PUSGSProjekat\PUSGSProjekat2\ProjekatPUSGS\ProjekatPUSGS\obj\Debug\netcoreapp3.1\ProjekatPUSGS.csproj.CoreCompileInputs.cache
-C:\Users\PC\Documents\GitHub\PUSGSProjekat\PUSGSProjekat2\ProjekatPUSGS\ProjekatPUSGS\obj\Debug\netcoreapp3.1\ProjekatPUSGS.MvcApplicationPartsAssemblyInfo.cs
-C:\Users\PC\Documents\GitHub\PUSGSProjekat\PUSGSProjekat2\ProjekatPUSGS\ProjekatPUSGS\obj\Debug\netcoreapp3.1\ProjekatPUSGS.MvcApplicationPartsAssemblyInfo.cache
-C:\Users\PC\Documents\GitHub\PUSGSProjekat\PUSGSProjekat2\ProjekatPUSGS\ProjekatPUSGS\obj\Debug\netcoreapp3.1\ProjekatPUSGS.AssemblyInfoInputs.cache
-C:\Users\PC\Documents\GitHub\PUSGSProjekat\PUSGSProjekat2\ProjekatPUSGS\ProjekatPUSGS\obj\Debug\netcoreapp3.1\ProjekatPUSGS.AssemblyInfo.cs
 C:\Users\PC\Documents\GitHub\PUSGSProjekat\PUSGSProjekat2\ProjekatPUSGS\ProjekatPUSGS\obj\Debug\netcoreapp3.1\ProjekatPUSGS.RazorTargetAssemblyInfo.cache
 C:\Users\PC\Documents\GitHub\PUSGSProjekat\PUSGSProjekat2\ProjekatPUSGS\ProjekatPUSGS\obj\Debug\netcoreapp3.1\ProjekatPUSGS.csproj.CopyComplete
 C:\Users\PC\Documents\GitHub\PUSGSProjekat\PUSGSProjekat2\ProjekatPUSGS\ProjekatPUSGS\obj\Debug\netcoreapp3.1\staticwebassets\ProjekatPUSGS.StaticWebAssets.Manifest.cache

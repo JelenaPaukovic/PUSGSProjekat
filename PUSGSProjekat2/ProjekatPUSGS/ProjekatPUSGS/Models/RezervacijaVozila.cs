@@ -8,29 +8,36 @@ using System.Threading.Tasks;
 
 namespace ProjekatPUSGS.Models
 {
-    public class Vozilo
+    public class RezervacijaVozila
     {
         [Key]
-        public int IdVozilo { get; set; }
-        public string Naziv { get; set; }
-        public string Marka { get; set; }
-        public string Model { get; set; }
-        public int GodinaProizvodnje { get; set; }
-        public int BrojSedista { get; set; }
-        public string TipVozila { get; set; }
+        public int Id { get; set; }
+
         public int IdServisa { get; set; }
 
-        public int IdFilijale { get; set; }
+        public int IdVozila { get; set; }
 
-        public double Ocena { get; set; }
+        public double Cena { get; set; }
+
+        public bool Zavrseno { get; set; }
+
+        public string IdKlijenta { get; set; }
+
+        public DateTime PocetniDatum { get; set; }
+
+        public DateTime KrajnjiDatum { get; set; }
+
+        public int OcenaZaServis { get; set; }
+        public int OcenaZaVozilo { get; set; }
 
         [NotMapped]
         public List<DateTime> ZauzetiDatumi { get; set; }
 
         public string ZauzetiDatumiString { get; set; }
 
-        [Timestamp]
-        public byte[] RowVersion { get; set; }
+        [NotMapped]
+        public Vozilo Vozilo { get; set; }
+
 
         public void PretvoriUJson()
         {
@@ -44,10 +51,6 @@ namespace ProjekatPUSGS.Models
             {
                 List<DateTime> deserializedProduct = JsonConvert.DeserializeObject<List<DateTime>>(ZauzetiDatumiString);
                 ZauzetiDatumi = deserializedProduct;
-            }
-            else
-            {
-                ZauzetiDatumi = new List<DateTime>();
             }
         }
     }
