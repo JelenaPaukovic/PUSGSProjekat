@@ -24,7 +24,8 @@ namespace ProjekatPUSGS.Data
         public DbSet<Filijala> Filijale { get; set; }
 
         public DbSet<RezervacijaVozila> RezervacijeVozila { get; set; }
-
+        public DbSet<RezervacijaLetova> RezervacijeLetova { get; set; }
         public DbSet<BrzaRezervacijaVozila> BrzeRezervacijeVozila { get; set; }
+        public DbSet<BrzaRezervacijaLetova> BrzeRezervacijeLetova { get; set; }
     }
 }
