@@ -7,6 +7,7 @@ using Microsoft.AspNetCore.Mvc;
 using Microsoft.EntityFrameworkCore;
 using ProjekatPUSGS.Data;
 using ProjekatPUSGS.Models;
+using ProjekatPUSGS.Servisi;
 
 namespace ProjekatPUSGS.Controllers
 {
@@ -15,76 +16,45 @@ namespace ProjekatPUSGS.Controllers
     public class VoziloController : ControllerBase
     {
         private readonly AuthenticationContext _context;
+        private CarServis servis;
 
         public VoziloController(AuthenticationContext context)
         {
             _context = context;
+            servis = new CarServis(context);
         }
 
-        // GET: api/Books
         [HttpGet]
         public async Task<ActionResult<IEnumerable<Vozilo>>> GetVozila()
         {
-            return await _context.Vozila.ToListAsync();
+            //return await _context.Vozila.ToListAsync();
+
+            List<Vozilo> servisi = _context.Vozila.ToList();
+
+            foreach (Vozilo item in servisi.ToList())
+            {
+                item.Ocena = servis.ProsecnaOcenaZaVozilo(item.IdVozilo);
+            }
+
+            return servisi;
         }
 
-        // GET: api/Books/5
         [HttpGet("{id}")]
-        public async Task<ActionResult<Vozilo>> GetVozila(int id)
+        public async Task<ActionResult<Vozilo>> GetVozilo(int id)
         {
-            var vozila = await _context.Vozila.FindAsync(id);
+            var vozilo = await _context.Vozila.FindAsync(id);
 
-            if (vozila == null)
+            if (vozilo == null)
             {
                 return NotFound();
             }
 
-            return vozila;
+
+            vozilo.Ocena = servis.ProsecnaOcenaZaRentACar(id);
+
+            return vozilo;
         }
 
-        // PUT: api/Books/5
-        // To protect from overposting attacks, please enable the specific properties you want to bind to, for
-        // more details see https://aka.ms/RazorPagesCRUD.
-        [Route("UpdateVozilo")]
-        public async Task<IActionResult> UpdateVozilo(Vozilo vozilo)
-        {
-            _context.Entry(vozilo).State = EntityState.Modified;
-
-            try
-            {
-                await _context.SaveChangesAsync();
-            }
-            catch (DbUpdateConcurrencyException)
-            {
-                if (!VozilaExists(vozilo.IdVozilo))
-                {
-                    return NotFound();
-                }
-                else
-                {
-                    throw;
-                }
-            }
-
-            return NoContent();
-        }
-
-        // POST: api/Books
-        // To protect from overposting attacks, please enable the specific properties you want to bind to, for
-        // more details see https://aka.ms/RazorPagesCRUD.
-        [HttpPost]
-        [Route("AddVozilo")]
-        public async Task<ActionResult<Vozilo>> AddVozilo(Vozilo vozilo)
-        {
-
-            _context.Vozila.Add(vozilo);
-
-            await _context.SaveChangesAsync();
-
-            return CreatedAtAction("GetVozila", new { id = vozilo.IdVozilo }, vozilo);
-        }
-
-        // DELETE: api/Books/5
         [HttpDelete]
         [Route("DeleteVozilo/{id}")]
         public async Task<ActionResult<Vozilo>> DeleteVozilo(int id)
@@ -101,9 +71,117 @@ namespace ProjekatPUSGS.Controllers
             return vozila;
         }
 
-        private bool VozilaExists(int id)
+        private bool VoziloExists(int id)
         {
             return _context.Vozila.Any(e => e.IdVozilo == id);
         }
+
+        [HttpPost]
+        [Route("AddVozilo")]
+        public async Task<ActionResult<Vozilo>> AddVozilo(Vozilo vozilo)
+        {
+
+            _context.Vozila.Add(vozilo);
+
+            await _context.SaveChangesAsync();
+
+            return CreatedAtAction("GetVozilo", new { id = vozilo.IdVozilo }, vozilo);
+        }
+
+        [Route("UpdateVozilo")]
+        public async Task<IActionResult> UpdateVozilo(Vozilo vozilo)
+        {
+            _context.Entry(vozilo).State = EntityState.Modified;
+
+            try
+            {
+                await _context.SaveChangesAsync();
+            }
+            catch (DbUpdateConcurrencyException)
+            {
+                if (!VoziloExists(vozilo.IdVozilo))
+                {
+                    return NotFound();
+                }
+                else
+                {
+                    throw;
+                }
+            }
+
+            return NoContent();
+        }
+
+        [HttpGet]
+        [Route("GetVozilaZaOdredjeniServis/{id}")]
+        public async Task<ActionResult<IEnumerable<Vozilo>>> GetVozilaZaOdredjeniServis(int id)
+        {
+            List<Vozilo> vozila = await _context.Vozila.Where(x => x.IdServisa == id).ToListAsync();
+
+            if (vozila == null)
+            {
+                return NotFound();
+            }
+
+
+            return vozila;
+        }
+
+        public List<Vozilo> VozilaZaOdredjeniServis(int id)
+        {
+            List<Vozilo> vozila = _context.Vozila.Where(x => x.IdServisa == id).ToList();
+
+            if (vozila == null)
+            {
+                return new List<Vozilo>();
+            }
+
+
+            return vozila;
+        }
+
+        [Route("PretraziVozila")]
+        public List<Vozilo> PretraziVozila(PretragaVozila pretraga)
+        {
+            List<Vozilo> vozila = _context.Vozila.Where(x => x.IdServisa == pretraga.IdServisa).ToList();
+
+            foreach (Vozilo item in vozila.ToList())
+            {
+                if (item.TipVozila != pretraga.TipVozila)
+                {
+                    vozila.Remove(item);
+                }
+                else if (item.BrojSedista < pretraga.BrojPutnika)
+                {
+                    vozila.Remove(item);
+                }
+            }
+
+            foreach (Vozilo voz in vozila.ToList())
+            {
+                voz.PretvoriUListu();
+
+                bool postoji = false;
+
+                if (voz.ZauzetiDatumi != null)
+                {
+                    foreach (DateTime datum in voz.ZauzetiDatumi)
+                    {
+                        if (datum >= pretraga.DatumPreuzimanja && datum <= pretraga.DatumVracanja)
+                        {
+                            postoji = true;
+                        }
+                    }
+                }
+
+                if (postoji)
+                {
+                    vozila.Remove(voz);
+                }
+            }
+
+            return vozila;
+        }
+
     }
 }

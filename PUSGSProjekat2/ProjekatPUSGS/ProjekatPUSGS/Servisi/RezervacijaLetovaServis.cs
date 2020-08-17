@@ -27,11 +27,11 @@ namespace ProjekatPUSGS.Servisi
 
             double ukupnaCena = rentAcar.cenaPrviDan;
 
-            if(pocetni != krajnji)
+            if (pocetni != krajnji)
             {
                 TimeSpan ts = new TimeSpan(1, 0, 0, 0);
 
-                while(pocetni != krajnji)
+                while (pocetni != krajnji)
                 {
                     pocetni += ts;
                     ukupnaCena += rentAcar.cenaSledeciDan;
@@ -40,7 +40,7 @@ namespace ProjekatPUSGS.Servisi
 
             }
             return ukupnaCena;
-
+        
             public bool DodajDatumeLetu(RezervacijaLetova rezervacija)
             {
                 DateTime pocetni = rezervacija.PocetniDatum;
