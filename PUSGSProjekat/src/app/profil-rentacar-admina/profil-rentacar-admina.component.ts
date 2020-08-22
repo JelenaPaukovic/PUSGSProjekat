@@ -1,11 +1,11 @@
 import { Component, OnInit } from '@angular/core';
-import { Korisnik } from '../entities/korisnik';
+import { Korisnik } from '../entities/korisnik/korisnik';
 import { ActivatedRoute, RouteConfigLoadEnd, ActivatedRouteSnapshot } from '@angular/router';
 import { UserService } from "./../shared/user.service";
 import { element } from 'protractor';
 import { KorisnikService } from '../services/korisnik.service';
-import { RentacarService } from '../services/rentacar.service';
-import { Rentacar } from 'src/app/entities/rentacar';
+import { RentacarService } from '../services/rentacar/rentacar.service';
+import { Rentacar } from 'src/app/entities/rentacar/rentacar';
 
 @Component({
   selector: 'app-profil-rentacar-admina',

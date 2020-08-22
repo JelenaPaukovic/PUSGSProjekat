@@ -1,6 +1,6 @@
 import { Component, OnInit } from '@angular/core';
-import { Avio } from 'src/app/entities/avio';
-import { AvioService } from '../services/avio.service';
+import { Avio } from 'src/app/entities/avio/avio';
+import { AvioService } from '../services/avio/avio.service';
 
 @Component({
   selector: 'app-avio-servis',

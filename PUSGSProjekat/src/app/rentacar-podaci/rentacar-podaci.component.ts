@@ -1,6 +1,6 @@
 import { Component, OnInit } from '@angular/core';
-import { Rentacar } from 'src/app/entities/rentacar';
-import { RentacarService } from '../services/rentacar.service';
+import { Rentacar } from 'src/app/entities/rentacar/rentacar';
+import { RentacarService } from '../services/rentacar/rentacar.service';
 import { ActivatedRoute, RouteConfigLoadEnd } from '@angular/router';
 import { UserService } from "./../shared/user.service";
 import { element } from 'protractor';

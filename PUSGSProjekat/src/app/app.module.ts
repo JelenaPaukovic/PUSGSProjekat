@@ -27,7 +27,6 @@ import { CookieService } from 'ngx-cookie-service';
 import { HomeComponent } from './home/home.component';
 import { ProfilRentacarAdminaComponent } from './profil-rentacar-admina/profil-rentacar-admina.component';
 import { DodajVoziloComponent } from './dodaj-vozilo/dodaj-vozilo.component';
-import { ProfilAcioAdminaComponent } from './profil-acio-admina/profil-acio-admina.component';
 import { ProfilAvioAdminaComponent } from './profil-avio-admina/profil-avio-admina.component';
 import { PromenaLozinkeComponent } from './promena-lozinke/promena-lozinke.component';
 //import { SocialLoginModule, AuthServiceConfig, GoogleLoginProvider, FacebookLoginProvider, AuthService } from 'angular-6-social-login';  
@@ -67,7 +66,6 @@ import { PromenaLozinkeComponent } from './promena-lozinke/promena-lozinke.compo
     HomeComponent,
     ProfilRentacarAdminaComponent,
     DodajVoziloComponent,
-    ProfilAcioAdminaComponent,
     ProfilAvioAdminaComponent,
     PromenaLozinkeComponent
   ],
