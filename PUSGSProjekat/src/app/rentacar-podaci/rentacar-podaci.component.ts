@@ -2,7 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { Rentacar } from 'src/app/entities/rentacar/rentacar';
 import { RentacarService } from '../services/rentacar/rentacar.service';
 import { ActivatedRoute, RouteConfigLoadEnd } from '@angular/router';
-import { UserService } from "./../shared/user.service";
+import { UserService } from 'src/app/services/korisnik/user.service';
 import { element } from 'protractor';
 
 @Component({

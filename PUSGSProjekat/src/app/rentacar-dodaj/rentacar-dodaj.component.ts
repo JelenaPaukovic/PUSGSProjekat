@@ -1,6 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { FormGroup, FormControl, Validators } from '@angular/forms';
-import { UserService } from './../shared/user.service';
+import { UserService } from 'src/app/services/korisnik/user.service';
 import { ToastrService } from 'ngx-toastr';
 
 @Component({
@@ -77,9 +77,7 @@ export class RentacarDodajComponent implements OnInit {
   }
 
 
-  onClear() {
-    this.rentacarForma.reset();
-  }
+  
 
 
 }

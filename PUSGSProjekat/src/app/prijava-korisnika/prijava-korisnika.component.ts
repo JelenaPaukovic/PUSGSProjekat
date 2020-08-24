@@ -1,6 +1,6 @@
 
 import { ToastrService } from 'ngx-toastr';
-import { UserService } from './../shared/user.service';
+import { UserService } from 'src/app/services/korisnik/user.service';
 import { Component, OnInit, Inject } from '@angular/core';
 import { NgForm } from '@angular/forms';
 import { Router } from '@angular/router';

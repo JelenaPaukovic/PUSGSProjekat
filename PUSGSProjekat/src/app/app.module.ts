@@ -21,7 +21,7 @@ import { RentacarDodajComponent } from './rentacar-dodaj/rentacar-dodaj.componen
 import { DodajAdminaRentComponent } from './dodaj-admina-rent/dodaj-admina-rent.component';
 import { DodajAdminaAvioComponent } from './dodaj-admina-avio/dodaj-admina-avio.component';
 import { AvioPodaciComponent } from './avio-podaci/avio-podaci.component';
-import { UserService } from './shared/user.service';
+import { UserService } from 'src/app/services/korisnik/user.service';
 import { AuthInterceptor } from './auth/auth.interceptor';
 import { CookieService } from 'ngx-cookie-service';
 import { HomeComponent } from './home/home.component';
@@ -29,6 +29,7 @@ import { ProfilRentacarAdminaComponent } from './profil-rentacar-admina/profil-r
 import { DodajVoziloComponent } from './dodaj-vozilo/dodaj-vozilo.component';
 import { ProfilAvioAdminaComponent } from './profil-avio-admina/profil-avio-admina.component';
 import { PromenaLozinkeComponent } from './promena-lozinke/promena-lozinke.component';
+import { RentacarFiltriranjeComponent } from './rentacar-filtriranje/rentacar-filtriranje.component';
 //import { SocialLoginModule, AuthServiceConfig, GoogleLoginProvider, FacebookLoginProvider, AuthService } from 'angular-6-social-login';  
 
 
@@ -67,7 +68,8 @@ import { PromenaLozinkeComponent } from './promena-lozinke/promena-lozinke.compo
     ProfilRentacarAdminaComponent,
     DodajVoziloComponent,
     ProfilAvioAdminaComponent,
-    PromenaLozinkeComponent
+    PromenaLozinkeComponent,
+    RentacarFiltriranjeComponent
   ],
   imports: [
     BrowserModule,

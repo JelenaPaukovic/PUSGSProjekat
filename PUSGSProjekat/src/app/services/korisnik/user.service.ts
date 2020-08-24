@@ -118,7 +118,7 @@ export class UserService {
 
     return this.http.post(this.BaseURI + '/ApplicationUser/UpdateUser',korisnik);
   }
-
+}
   /*getServisi(){
     return this.http.get(this.BaseURI + '/RentacarServis/GetServisi');
   }
