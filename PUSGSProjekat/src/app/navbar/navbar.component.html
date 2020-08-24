@@ -4,11 +4,11 @@
     <div class="collapse navbar-collapse">
         <ul class="navbar-nav mr-auto">
            
-            <li class="nav-item">
+            <li class="nav-item" *ngIf="Getuloga == '3'">
                 <a class="btn btn-info my-2 my-sm-0" type="btn" routerLink="/registracija" style="margin-left :5px">Registracija korisnika</a>
             </li>
 
-            <li class="nav-item">
+            <li class="nav-item" *ngIf="Getuloga == '3'">
                 <a class="btn btn-info my-2 my-sm-0" type="btn" routerLink="/prijava" style="margin-left :5px">Prijava korisnika</a>
             </li>
 
@@ -23,6 +23,9 @@
             <li class="nav-item">
                 <a class="btn btn-info my-2 my-sm-0" type="btn" routerLink="/prelaz" style="margin-left :5px">ADMIN
                 </a>
+            </li>
+            <li class="nav-item" *ngIf="Getuloga != '3'" >
+                <button class="btn btn-outline-light  my-2 ml-5 my-sm-0" type="btn" (click)="odjaviSe()" style="margin-left :5px">Odjavite se</button>
             </li>
         </ul>
     </div>

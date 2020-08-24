@@ -8,6 +8,9 @@
                 <div class = "text-danger" *ngIf="service.formModel1.get('naziv').errors?.required">
                     Ovo polje je obavezno!
                 </div>
+                    <div *ngIf="service.formModel.get('naziv').touched && service.formModel.get('naziv').errors?.maxlength" class="text-danger">
+                        Naziv može sadržati maksimalno 30 karaktera
+                    </div>
             </div>
         </div>
 
@@ -18,6 +21,22 @@
                 <div class = "text-danger" *ngIf="service.formModel1.get('adresa').errors?.required">
                     Ovo polje je obavezno!
                 </div>
+                <div *ngIf="service.formModel.get('adresa').touched && service.formModel.get('adresa').errors?.maxlength" class="text-danger">
+                    Adresa može sadržati maksimalno 30 karaktera
+                </div>
+            </div>
+        </div>
+
+        <div class="row">
+            <div class="col-sm-6 form-group">
+                <label for="admin">Admin</label>
+                <select id="admin" class="form-control" formControlName="admin">
+                        <option *ngFor="let item of listItems" [value]="item" >{{item}}</option>
+                </select>
+                    <div *ngIf="service.formModel.get('admin').touched && service.formModel.get('admin').errors?.required" class="text-danger">
+                        Morate odabrati admina!
+                    </div>
+               
             </div>
         </div>
 
@@ -25,4 +44,9 @@
             <div class="col-2">
                 <button [disabled]="!service.formModel1.valid" class="btn btn-success" type="submit">REGISTRUJ SERVIS</button>
             </div>
+
+            <div class="col-1">
+                <button class="btn btn-primary" (click)="onClear()" type="button">OBRIŠI</button> 
+            </div>
+            
         </div>

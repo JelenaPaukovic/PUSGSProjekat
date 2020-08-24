@@ -1,18 +1,38 @@
 import { Injectable } from '@angular/core';
 import {Rentacar} from '../../entities/rentacar/rentacar';
+import { Vozilo } from '../../entities/vozilo/vozilo';
+import { AbstractFilterParam } from 'src/app/entities/abstract-filter-param/abstract-filter-param';
+import { StringFilterParam } from 'src/app/entities/string-filter-param/string-filter-param';
+import { NumberFilterParam } from 'src/app/entities/number-filter-param/number-filter-param';
+import { FormBuilder, Validators, FormGroup } from '@angular/forms';
+import { HttpClient, HttpHeaders } from "@angular/common/http";
+//import {map} from 'rxjs/add/operator/map';
+import {Observable,of, from } from 'rxjs'; 
 
 @Injectable({
   providedIn: 'root'
 })
 export class RentacarService {
 
-  constructor() { }
+  constructor(private fb: FormBuilder, private http: HttpClient) { }
+  readonly BaseURI = 'https://localhost:44308/api';
 
-  ucitavanjeRentacar() {
-    console.log('Učitavanje rent-a-car servisa...');
-    return this.mockedRentacar();
+  formModel = this.fb.group({
+    naziv: [''],
+    adresa: [''],
+    admin: [''],
+  });
+
+  dodaj() {
+    var body = {
+      Naziv: this.formModel.value.naziv,
+      Adresa: this.formModel.value.adresa,
+      Admin: this.formModel.value.admin,
+      Odobreno: false
+    };
+    console.log(body);
+    return this.http.post(this.BaseURI + '/RentACarServis/AddRentACarServis', body);
   }
-
 
   mockedRentacar(): Array<Rentacar> {
     let allRentacar = new Array<Rentacar>();

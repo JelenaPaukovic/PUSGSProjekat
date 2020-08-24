@@ -1,5 +1,5 @@
 import { Injectable } from '@angular/core';
-import { Korisnik } from '../entities/korisnik/korisnik';
+import { Korisnik } from 'src/app/entities/korisnik/korisnik';
 
 @Injectable({
   providedIn: 'root'
@@ -10,16 +10,20 @@ export class KorisnikService {
 
   ucitavanjeKorisnika() {
     console.log('Učitavanje korisnika...');
-    return this.mockedKorisnik();
+    return this.mockedAvio();
   }
 
 
   mockedKorisnik(): Array<Korisnik> {
     let allKorisnik = new Array<Korisnik>();
 
- 
+    const korisnik1 = new Korisnik('admin@uns.ac.rs', 'admin', 'Petar', 'Petrović', 'Novi Sad', '021 433-377','5 - prijatelja');
+
+    allKorisnik.push(korisnik1);
 
     return allKorisnik;
+
+    
   }
 
 }
