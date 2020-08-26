@@ -40,7 +40,7 @@ namespace ProjekatPUSGS.Servisi
 
             }
             return ukupnaCena;
-        
+        }
             public bool DodajDatumeLetu(RezervacijaLetova rezervacija)
             {
                 DateTime pocetni = rezervacija.PocetniDatum;
@@ -85,4 +85,4 @@ namespace ProjekatPUSGS.Servisi
 
         }
     }
-}
+

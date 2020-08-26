@@ -24,8 +24,8 @@ namespace ProjekatPUSGS.Controllers
             servis = new RezervacijaLetovaServis(_context);
         }
 
-        [HttpGet("{id}")]
-        public async Task<ActionResult<RezervacijaLetova>> GetRezervacijeLetova(int id)
+        [HttpGet]
+        public async Task<ActionResult<IEnumerable<RezervacijaLetova>>> GetRezervacijeLetova(int id)
         {
             return await _context.RezervacijeLetova.ToListAsync();
 
@@ -102,7 +102,7 @@ namespace ProjekatPUSGS.Controllers
         public async Task<ActionResult<RezervacijaLetova>> AddRezervacijaLetova(RezervacijaLetova rezervacija)
         {
             rezervacija.Cena = servis.UkupnaCena(rezervacija);
-            bool dozvola = servis.(rezervacija);
+            bool dozvola = servis.DodajDatumeLetu(rezervacija);
 
             if (dozvola)
             {

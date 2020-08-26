@@ -30,6 +30,7 @@ import { DodajVoziloComponent } from './dodaj-vozilo/dodaj-vozilo.component';
 import { ProfilAvioAdminaComponent } from './profil-avio-admina/profil-avio-admina.component';
 import { PromenaLozinkeComponent } from './promena-lozinke/promena-lozinke.component';
 import { RentacarFiltriranjeComponent } from './rentacar-filtriranje/rentacar-filtriranje.component';
+import { AvioFilteredComponent } from './avio-filtered/avio-filtered.component';
 //import { SocialLoginModule, AuthServiceConfig, GoogleLoginProvider, FacebookLoginProvider, AuthService } from 'angular-6-social-login';  
 
 
@@ -69,7 +70,8 @@ import { RentacarFiltriranjeComponent } from './rentacar-filtriranje/rentacar-fi
     DodajVoziloComponent,
     ProfilAvioAdminaComponent,
     PromenaLozinkeComponent,
-    RentacarFiltriranjeComponent
+    RentacarFiltriranjeComponent,
+    AvioFilteredComponent
   ],
   imports: [
     BrowserModule,

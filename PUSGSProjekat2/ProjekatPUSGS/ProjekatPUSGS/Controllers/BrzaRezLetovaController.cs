@@ -165,26 +165,27 @@ namespace ProjekatPUSGS.Controllers
         //    return NoContent();
         //}
     }
-    public double ukupnaCena(BrzaRezervacijaLetova rezervacija)
+    public double UkupnaCena(BrzaRezervacijaLetova rezervacija)
     {
         DateTime pocetni = rezervacija.PocetniDatum;
         DateTime krajnji = rezervacija.KrajnjiDatum;
 
-        Aviokompanija avioKomp = _context.Kompanije.Find(rezervacija.IdAvioKompanije);
+        
+        // Aviokompanija avioKomp = _context.Aviokomapanija.Find(rezervacija.IdAvioKompanije);
 
-        double ukupnaCena = avioKomp.CenaPrviDan;
+        //double ukupnaCena = avioKomp.CenaPrviDan;
 
-        if (pocetni != krajnji)
-        {
-            TimeSpan ts = new TimeSpan(1, 0, 0, 0);
+        //if (pocetni != krajnji)
+        //{
+        //    TimeSpan ts = new TimeSpan(1, 0, 0, 0);
 
-            while (pocetni != krajnji)
-            {
-                pocetni += ts;
-                ukupnaCena += avioKomp.CenaSledeciDan;
-            }
-        }
+        //    while (pocetni != krajnji)
+        //    {
+        //        pocetni += ts;
+        //        ukupnaCena += avioKomp.CenaSledeciDan;
+        //    }
+        //}
 
-        return ukupnaCena;
+        //return ukupnaCena;
     }
 }
