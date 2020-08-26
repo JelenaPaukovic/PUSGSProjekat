@@ -37,7 +37,7 @@ namespace ProjekatPUSGS.Controllers
         {
             var rezervacija = await _context.BrzeRezervacijeLetova.FindAsync(id);
 
-            if(rezervacija == null)
+            if (rezervacija == null)
             {
                 return NotFound();
 
@@ -141,6 +141,34 @@ namespace ProjekatPUSGS.Controllers
             return CreatedAtAction("GetBrzaRezervacijaVozila", new { id = rezervacija.IdRez }, rezervacija);
         }
 
+
+
+
+        public double UkupnaCena(BrzaRezervacijaLetova rezervacija)
+        {
+            DateTime pocetni = rezervacija.PocetniDatum;
+            DateTime krajnji = rezervacija.KrajnjiDatum;
+
+
+            RentacarServis rentacar = _context.Servisi.Find(rezervacija.IdAvioKompanije);
+
+            double ukupnaCena = rentacar.cenaPrviDan;
+
+            if (pocetni != krajnji)
+            {
+                TimeSpan ts = new TimeSpan(1, 0, 0, 0);
+
+                while (pocetni != krajnji)
+                {
+                    pocetni += ts;
+                    ukupnaCena += rentacar.cenaSledeciDan;
+                }
+            }
+
+            return ukupnaCena;
+        }
+
+
         //[Route("UpdateBrzaRezervacijaVozila")]
         //public async Task<IActionResult> UpdateBrzaRezervacijaVozila(BrzaRezervacijaVozila rezervacija)
         //{
@@ -165,27 +193,5 @@ namespace ProjekatPUSGS.Controllers
         //    return NoContent();
         //}
     }
-    public double UkupnaCena(BrzaRezervacijaLetova rezervacija)
-    {
-        DateTime pocetni = rezervacija.PocetniDatum;
-        DateTime krajnji = rezervacija.KrajnjiDatum;
-
-        
-        // Aviokompanija avioKomp = _context.Aviokomapanija.Find(rezervacija.IdAvioKompanije);
-
-        //double ukupnaCena = avioKomp.CenaPrviDan;
-
-        //if (pocetni != krajnji)
-        //{
-        //    TimeSpan ts = new TimeSpan(1, 0, 0, 0);
-
-        //    while (pocetni != krajnji)
-        //    {
-        //        pocetni += ts;
-        //        ukupnaCena += avioKomp.CenaSledeciDan;
-        //    }
-        //}
-
-        //return ukupnaCena;
-    }
+    
 }

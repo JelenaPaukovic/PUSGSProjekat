@@ -34,7 +34,7 @@ export class RentacarPodaciComponent implements OnInit {
   ucitavanjeRentacar(): void {
     
 
-    this.service.getServisi
+    /*this.service.getServisi
     ().subscribe(
       (res: any) => {
         if(res != null){
@@ -47,7 +47,7 @@ export class RentacarPodaciComponent implements OnInit {
         }
       },
     );
-  
+  */
   }
 
 

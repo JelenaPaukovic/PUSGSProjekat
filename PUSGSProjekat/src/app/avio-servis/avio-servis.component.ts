@@ -19,9 +19,9 @@ export class AvioServisComponent implements OnInit {
     this.ucitavanjeAvio();
   }
 
-  ucitavanjeAvio(): void {
+  /*ucitavanjeAvio(): void {
     this.allAvio = this.avioService.ucitavanjeAvio();
-  }
+  }*/
 
 }
 

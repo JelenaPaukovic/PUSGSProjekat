@@ -25,8 +25,8 @@ export class RentacarServisComponent implements OnInit {
   }
 
 
-  ucitavanjeRentacar(): void {
+ /* ucitavanjeRentacar(): void {
     this.allRentacar = this.rentacarService.ucitavanjeRentacar();
-  }
+  }*/
 
 }
