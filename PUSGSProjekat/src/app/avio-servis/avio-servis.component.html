@@ -1,4 +1,43 @@
-<h3>Pregled svih aviokompanija</h3>
+<div id="container" style="margin-left: 15px; margin-right: 15px; margin-top: 15px;">
+    <hr/>
+        <h3 style="background-color: aliceblue; border-style: double;" align="center">Pretraga aviokompanija</h3>
+        <div class="form-row">
+            <div class="col-md-4">
+                <div class="input-group form-group">
+                    <div class="input-group-prepend">
+                        <span class="input-group-text"><i class ="material-icons"></i></span>
+
+                    </div>
+                    <input type="text" class="form-control" placeholder="Naziv aviokomapnije" id="avioBrandFilter">
+                </div>
+            </div>
+            <div class="col-md-4">
+                <div class="input-group form-group">
+                    <div class="input-group-prepend">
+                        <span class="input-group-text"><i class="material-icons"></i></span>
+                    </div>
+                    <input type="number" class="form-control" placeholder="Minimalna ocena" id="avioMaxPerDayPriceFilter">
+                </div>
+            </div>
+            <div class="col-md-4">
+                <button type="button" class="btn btn-primary" style="margin-left: 30px" (click)="filterAvio()">Filtriraj</button>
+                <button type="button" class="btn btn-secondary" style="margin-left: 15px" (click)="resetFilter()">Resetuj</button>
+           
+            </div>
+        </div>
+
+        <div [hidden]="filteredAvio.length !== 0">
+            <hr/>
+            <h5 style="text-align: center;">Trenutno nema aviokompanija koje zadovoljavaju zadate parametre.</h5>
+        </div>
+        <div [hidden]="filteredAvio.length === 0">
+            <app-avio-filtered [filteredAvio]="filteredAvio"></app-avio-filtered>
+        </div>
+
+
+</div>
+
+<!--<h3>Pregled svih aviokompanija</h3>
 
 <div>
     <table class="table table-light">
@@ -22,3 +61,4 @@
         </tbody>
     </table>
 </div>
+-->

@@ -22,9 +22,25 @@
         </div>
 
         <div class="row">
-            <div class="col-2">
-                <button [disabled]="!service.formModel1.valid" class="btn btn-success" type="submit">REGISTRUJ AVIOKOMPNAIJU</button>
+            <div class="col-sm-6 form-group">
+                <label for="adresa"><b>Admin</b></label>
+                <select type="text" id="admin" class="form-control" formControlName="admin">
+                    <option *ngFor="let item of listItems" [value]="item">{{items}}</option>
+                </select>
+
+                <div class = "text-danger" *ngIf="service.formModel1.get('admin').errors?.required">
+                    Morate odabrati admina!
+                </div>
             </div>
         </div>
 
-
+        <div class="row">
+            <div class="col-2">
+                <button [disabled]="!service.formModel1.valid" class="btn btn-success" type="submit">REGISTRUJ AVIOKOMPNAIJU</button>
+            </div>
+            <div class="col-1">
+                <button class="btn btn-primary" (click)="onClear()" type="button">OBRISI</button>
+            </div>
+        </div>
+    </form>
+</div>
