@@ -52,4 +52,12 @@ export class RentacarService {
     return allRentacar;
   }
 
+  rentacarPosleAvio(lokacija: string, datum:string){
+    var body = {
+      Lokacija: lokacija,
+      Datum: datum,
+    };
+    return this.http.put(this.BaseURI + '/RentacarServis/GetRentacarServisPosleAvio', body);
+  }
+
 }
