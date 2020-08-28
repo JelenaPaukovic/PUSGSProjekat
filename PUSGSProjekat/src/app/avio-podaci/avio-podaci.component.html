@@ -1,4 +1,4 @@
-<h3>Više podataka o aviokompaniji</h3>
+<!--<h3>Više podataka o aviokompaniji</h3>
 
 <div>
     <table class="table table-light">
@@ -18,14 +18,50 @@
             <tr>
                 <td>{{servis.naziv}}</td>
                 <td>{{servis.adresa}}</td>
-                <td>{{servis.opis}}</td>
-                <td>{{servis.destinacije}}</td>
+                <td>{{servis.promotivniOpis}}</td>
+                <td>{{servis.destinacijePoslovanja}}</td>
                 <td>{{servis.letovi}}</td>
-                <td>{{servis.spisak}}</td>
-                <td>{{servis.mesta}}</td>
+                <td>{{servis.spisakKarataSaPopustom}}</td>
+                <td>{{servis.konfSegmenataIMesta}}</td>
                 <td>{{servis.cenovnik}}</td>
             
             </tr>
         </tbody>
     </table>
+</div>-->
+
+<div class="container">
+    <h1  style="background-color: #b8d9c1; border-style:double;">Profil aviokompanije {{servis.naziv}}</h1>
+    <br/> <br/>
+    <h3 style="background-color: #b8d9c1; border-style:double;">Spisak destinacija koja su u ponudi: </h3>
+     <table class="table" bgcolor="#b8d9c1" border="1">
+         <thead class="thead-dark">
+             <tr>
+                 <th>Destinacija</th>
+                 <th>Datum i vreme poletanja</th>
+                 <th>Datum i vreme sletanja</th>
+                 <th>Vreme putovanja</th>
+                 <th>Duzina putovanja</th>
+                 <th>Broj presedanja</th>
+                 <th>Lokacija presedanja</th>
+                 <th>Cena karte</th>
+                 <th></th>
+             </tr>
+         </thead>
+         <tbody>
+             <tr *ngFor="let item of servis.destinacije">
+                <td>{{item.nazivDestinacije}}</td>
+                <td>{{item.datumIVremePoletanja}}</td>
+                <td>{{item.datumIVremeSletanja}}</td>
+                <td>{{item.vremePutovanja}}</td>
+                <td>{{item.duzinaPutovanja}}</td>
+                <td>{{item.brojPresedanja}}</td>
+                <td>{{item.lokacijaPresedanja}}</td>
+                <td>{{item.cenaKarte}}</td>
+                <td><button   *ngIf="Getuloga() == '1'"  class="btn btn-success" (click)="rezervisi(item)">Rezerviši</button></td>
+         
+
+             </tr>
+         </tbody>
+     </table>
 </div>
