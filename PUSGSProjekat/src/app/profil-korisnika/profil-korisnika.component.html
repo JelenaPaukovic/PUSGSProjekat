@@ -1,0 +1,100 @@
+<div class="container" >
+    <h1 style="background-color: #b8d9c1; border-style:double;">Profil korisnika</h1>
+        <table class="table" border='12px' bgcolor="#b8d9c1">
+          <thead class="thead-light"> 
+              <tr>
+                  <th scope="col">Email: </th>
+                  <td>{{korisnik.emailAdresa}}</td>
+              </tr>
+              <tr>
+                  <th scope="col">Ime: </th>
+                  <td>{{korisnik.ime}}</td>
+              </tr>
+              <tr>
+                  <th scope="col">Prezime: </th>
+                  <td>{{korisnik.prezime}}</td>
+              </tr>
+              <tr>
+                  <th scope="col">Grad: </th>
+                  <td>{{korisnik.grad}}</td>
+              </tr>
+              <tr>
+                 <th scope="col">Telefon: </th>
+                 <td>{{korisnik.brojTelefona}}</td>
+              </tr>
+              <!--
+              <tr>
+                 <th scope="col">Prijatelji: </th>
+                 <td *ngFor="let korisnik of allKorisnik">{{korisnik.prijatelji}}</td>
+              </tr>-->
+              <tr >
+                <th>
+                  <button class="btn btn-success" data-toggle="modal" data-target="#korisnikEdit" (click)="editKorisnikModal(korisnik)">Izmena</button>
+                </th>
+                <td></td> 
+            </tr>
+          </thead>
+      </table>
+  
+  </div>
+  
+  <div class="modal fade" id="korisnikEdit" tabindex="-1" role="dialog" aria-labelledby="korisnikEdit" aria-hidden="true">
+    <div class="modal-dialog" role="document">
+      <div class="modal-content">
+        <div class="modal-header">
+          <h5 class="modal-title" id="korisnikEdit">Izmena podataka o korisniku</h5>
+          <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+            <span aria-hidden="true">&times;</span>
+          </button>
+        </div>
+        <div class="modal-body">
+          <div class="tab-content">
+            <form class="form">
+              <div class="form-group row">
+                <label for="lat" class="col-sm-3 col-form-label">E-mail: </label>
+                <div class="col-sm-6">
+                    <input type="email" readonly=true class="form-control" id="email" placeholder="Unesite e-mail " value="{{korisnik.emailAdresa}}" >
+                </div>
+              </div>
+  
+              <div class="form-group row">
+                <label for="lat" class="col-sm-3 col-form-label">Ime: </label>
+                <div class="col-sm-6">
+                    <input type="text" class="form-control" id="ime" placeholder="ime" value="{{korisnik.ime}}" >
+                </div>
+              </div>
+              <div class="form-group row">
+                <label for="lat" class="col-sm-3 col-form-label">Prezime: </label>
+                <div class="col-sm-6">
+                    <input type="text" class="form-control" id="prezime" placeholder="Unesite prezime"  value="{{korisnik.prezime}}" >
+                </div>
+              </div>
+              <div class="form-group row">
+                <label for="lat" class="col-sm-3 col-form-label">Grad: </label>
+                <div class="col-sm-6">
+                    <input type="text" class="form-control" id="grad" placeholder="Unesite grad"  value="{{korisnik.grad}}" >
+                </div>
+              </div>
+              <div class="form-group row">
+                <label for="lat" class="col-sm-3 col-form-label">Telefon: </label>
+                <div class="col-sm-6">
+                    <input type="number" class="form-control" id="telefon" placeholder="Unesite telefon" value="{{korisnik.brojTelefona}}" >
+                </div>
+              </div>
+              <!--
+              <div class="form-group row">
+                <label for="lat" class="col-sm-3 col-form-label">Prijatelji: </label>
+                <div class="col-sm-6">
+                    <input type="text" class="form-control" id="prijatelji" placeholder="Unesite prijatelje" min="0" max="100">
+                </div>
+              </div>-->
+            </form>
+          </div>
+          <div class="modal-footer">
+            <button type="button" class="btn btn-secondary" data-dismiss="modal">Odustani</button>
+            <button type="button" class="btn btn-primary" data-dismiss="modal" (click)="editKorisnikInfo()">Sačuvaj izmene</button>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>

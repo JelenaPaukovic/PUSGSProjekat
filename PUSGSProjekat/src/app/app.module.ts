@@ -31,6 +31,9 @@ import { ProfilAvioAdminaComponent } from './profil-avio-admina/profil-avio-admi
 import { PromenaLozinkeComponent } from './promena-lozinke/promena-lozinke.component';
 import { RentacarFiltriranjeComponent } from './rentacar-filtriranje/rentacar-filtriranje.component';
 import { AvioFilteredComponent } from './avio-filtered/avio-filtered.component';
+import { IzvestajRentacarComponent } from './izvestaj-rentacar/izvestaj-rentacar.component';
+import { MDBBootstrapModule } from 'angular-bootstrap-md';
+import { ProfilKorisnikaComponent } from './profil-korisnika/profil-korisnika.component';
 //import { SocialLoginModule, AuthServiceConfig, GoogleLoginProvider, FacebookLoginProvider, AuthService } from 'angular-6-social-login';  
 
 
@@ -71,7 +74,9 @@ import { AvioFilteredComponent } from './avio-filtered/avio-filtered.component';
     ProfilAvioAdminaComponent,
     PromenaLozinkeComponent,
     RentacarFiltriranjeComponent,
-    AvioFilteredComponent
+    AvioFilteredComponent,
+    IzvestajRentacarComponent,
+    ProfilKorisnikaComponent
   ],
   imports: [
     BrowserModule,
@@ -82,7 +87,8 @@ import { AvioFilteredComponent } from './avio-filtered/avio-filtered.component';
     BrowserAnimationsModule,
     ToastrModule.forRoot({
       progressBar: true
-    })
+    }),
+    MDBBootstrapModule.forRoot()
    
     
   ],

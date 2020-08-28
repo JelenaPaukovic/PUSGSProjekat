@@ -2,10 +2,10 @@ export class Korisnik{
 
    
     ime: string;
-    prezime: string
+    prezime: string;
     grad: string;
-    brojTelefona: string
-    emailAdresa: string
+    brojTelefona: string;
+    emailAdresa: string;
     lozinka: string;
     prijatelji: string;
    

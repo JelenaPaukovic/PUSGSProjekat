@@ -3,6 +3,7 @@ import { FormGroup, FormControl, Validators } from '@angular/forms';
 import { UserService } from 'src/app/services/korisnik/user.service';
 //import { ToastrService } from 'ngx-toastr';
 import { ToastrService } from 'ngx-toastr';
+import {RentacarService} from 'src/app/services/rentacar/rentacar.service';
 
 @Component({
   selector: 'app-dodaj-admina-rent',
@@ -13,7 +14,7 @@ export class DodajAdminaRentComponent implements OnInit {
 
   rentAdminForma :FormGroup;
 
-  constructor(public service: UserService, private toastr: ToastrService) { }
+  constructor(public service: RentacarService, private toastr: ToastrService) { }
   
 
   ngOnInit(): void {
@@ -34,10 +35,10 @@ export class DodajAdminaRentComponent implements OnInit {
   }
 
  onSubmit() {
-    this.service.dodajAdminaRent().subscribe(
+  /*  this.service.dodajAdminaRent().subscribe(
       (res: any) => {
         if (res.succeeded) {
-          this.service.formModel2.reset();
+          this.service.formModel.reset();
           this.toastr.success('New user created!', 'Registration successful.');
         } else {
           res.errors.forEach(element => {
@@ -56,7 +57,7 @@ export class DodajAdminaRentComponent implements OnInit {
       err => {
         console.log(err);
       }
-    );
+    );*/
   }
 
 

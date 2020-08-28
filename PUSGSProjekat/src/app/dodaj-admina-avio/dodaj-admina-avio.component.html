@@ -1,11 +1,11 @@
 <div class="container">
     <h1>Dodavanje administratora aviokompanije</h1>
-    <form [formGroup]="service.formModel3" autocomplete="off" (submit)="onSubmit()">
+    <form [formGroup]="service.formModel" autocomplete="off" (submit)="onSubmit()">
         <div class="row" >
             <div class="col-sm-6 form-group required" >
                 <label for="ime"><b>Unesite ime:</b></label>
                 <input type = "text" id="ime" class="form-control" formControlName="ime">
-                <div class = "text-danger" *ngIf="service.formModel3.get('ime').touched && service.formModel3.get('ime').errors?.required">
+                <div class = "text-danger" *ngIf="service.formModel.get('ime').touched && service.formModel.get('ime').errors?.required">
                     Ovo polje je obavezno!
                 </div>
             </div>
@@ -15,7 +15,7 @@
             <div class="col-sm-6 form-group">
                 <label for="prezime"><b>Unesite prezime:</b></label>
                 <input type="text" id="prezime" class="form-control" formControlName="prezime">
-                <div class = "text-danger" *ngIf="service.formModel3.get('prezime').touched && service.formModel3.get('prezime').errors?.required">
+                <div class = "text-danger" *ngIf="service.formModel.get('prezime').touched && service.formModel.get('prezime').errors?.required">
                     Ovo polje je obavezno!
                 </div>
             </div>
@@ -25,7 +25,7 @@
             <div class="col-sm-6 form-group">
                 <label for="grad"><b>Unesite grad:</b></label>
                 <input type="text" id="grad" class="form-control" formControlName="grad">
-                <div class = "text-danger" *ngIf="service.formModel3.get('grad').touched && service.formModel3.get('grad').errors?.required">
+                <div class = "text-danger" *ngIf="service.formModel.get('grad').touched && service.formModel.get('grad').errors?.required">
                     Ovo polje je obavezno!
                 </div>
             </div>
@@ -35,7 +35,7 @@
             <div class="col-sm-6 form-group">
                 <label for="brTel"><b>Unesite broj telefona:</b></label>
                 <input type="text" id="brTel" class="form-control" formControlName="brTel">
-                <div class = "text-danger" *ngIf="service.formModel3.get('brTel').touched && service.formModel3.get('brTel').errors?.required">
+                <div class = "text-danger" *ngIf="service.formModel.get('brTel').touched && service.formModel.get('brTel').errors?.required">
                     Ovo polje je obavezno!
                 </div>
             </div>
@@ -45,7 +45,7 @@
             <div class="col-sm-6 form-group">
                 <label for="email"><b>Unesite email adresu:</b></label>
                 <input type="text" id="email" class="form-control" formControlName="email">
-                <div class = text-danger *ngIf="service.formModel3.get('email').touched && service.formModel3.get('email').errors?.email">
+                <div class = text-danger *ngIf="service.formModel.get('email').touched && service.formModel.get('email').errors?.email">
                     Unesite email adresu:
                 </div>
             </div>
@@ -56,14 +56,14 @@
             <div class="col-sm-6 form-group required">
               <label><b>Unesite lozinku:</b></label>
               <input type="password" class="form-control" formControlName="lozinka">
-              <label class="text-danger" *ngIf="service.formModel3.get('Lozinke.lozinka').touched && service.formModel3.get('Lozinke.lozinka').errors?.required">Ovo polje je obavezno!</label>
-              <label class="text-danger" *ngIf="service.formModel3.get('Lozinke.lozinka').touched && service.formModel3.get('Lozinke.lozinka').errors?.minlength">Lozinka mora sadrzati minimum 4 karaktera!</label>
+              <label class="text-danger" *ngIf="service.formModel.get('Lozinke.lozinka').touched && service.formModel.get('Lozinke.lozinka').errors?.required">Ovo polje je obavezno!</label>
+              <label class="text-danger" *ngIf="service.formModel.get('Lozinke.lozinka').touched && service.formModel.get('Lozinke.lozinka').errors?.minlength">Lozinka mora sadrzati minimum 4 karaktera!</label>
             </div>
             <div class="col-sm-6 form-group required">
               <label><b>Ponovite lozinku:</b></label>
               <input type="password" class="form-control" formControlName="ponovoLozinka">
-              <label class="text-danger" *ngIf="service.formModel3.get('Lozinke.ponovoLozinka').touched && service.formModel3.get('Lozinke.ponovoLozinka').errors?.required">Ovo polje je obave.</label>
-              <label class="text-danger" *ngIf="service.formModel3.get('Lozinke.ponovoLozinka').touched && service.formModel3.get('Lozinke.ponovoLozinka').errors?.passwordMismatch">Potvrdite lozinku!</label>
+              <label class="text-danger" *ngIf="service.formModel.get('Lozinke.ponovoLozinka').touched && service.formModel.get('Lozinke.ponovoLozinka').errors?.required">Ovo polje je obave.</label>
+              <label class="text-danger" *ngIf="service.formModel.get('Lozinke.ponovoLozinka').touched && service.formModel.get('Lozinke.ponovoLozinka').errors?.passwordMismatch">Potvrdite lozinku!</label>
             </div>
           </div>
         

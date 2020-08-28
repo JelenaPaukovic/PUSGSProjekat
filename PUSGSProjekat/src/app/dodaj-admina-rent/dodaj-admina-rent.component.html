@@ -1,11 +1,11 @@
-<div class="container">
+<!--<div class="container">
     <h1>Registracija korisnika</h1>
-    <form [formGroup]="service.formModel2" autocomplete="off" (submit)="onSubmit()">
+    <form [formGroup]="service.formModel" autocomplete="off" (submit)="onSubmit()">
         <div class="row" >
             <div class="col-sm-6 form-group required" >
                 <label for="ime"><b>Unesite ime:</b></label>
                 <input type = "text" id="ime" class="form-control" formControlName="ime">
-                <div class = "text-danger" *ngIf="service.formModel2.get('ime').touched && service.formModel2.get('ime').errors?.required">
+                <div class = "text-danger" *ngIf="service.formModel.get('ime').touched && service.formModel.get('ime').errors?.required">
                     Ovo polje je obavezno!
                 </div>
             </div>
@@ -15,7 +15,7 @@
             <div class="col-sm-6 form-group">
                 <label for="prezime"><b>Unesite prezime:</b></label>
                 <input type="text" id="prezime" class="form-control" formControlName="prezime">
-                <div class = "text-danger" *ngIf="service.formModel2.get('prezime').touched && service.formModel2.get('prezime').errors?.required">
+                <div class = "text-danger" *ngIf="service.formModel.get('prezime').touched && service.formModel.get('prezime').errors?.required">
                     Ovo polje je obavezno!
                 </div>
             </div>
@@ -45,7 +45,7 @@
             <div class="col-sm-6 form-group">
                 <label for="email"><b>Unesite email adresu:</b></label>
                 <input type="text" id="email" class="form-control" formControlName="email">
-                <div class = text-danger *ngIf="service.formModel2.get('email').touched && service.formModel2.get('email').errors?.email">
+                <div class = text-danger *ngIf="service.formModel2.get('email').touched && service.formModel.get('email').errors?.email">
                     Unesite email adresu:
                 </div>
             </div>
@@ -56,14 +56,14 @@
             <div class="col-sm-6 form-group required">
               <label><b>Unesite lozinku:</b></label>
               <input type="password" class="form-control" formControlName="lozinka">
-              <label class="text-danger" *ngIf="service.formModel2.get('Lozinke.lozinka').touched && service.formModel2.get('Lozinke.lozinka').errors?.required">Ovo polje je obavezno!</label>
-              <label class="text-danger" *ngIf="service.formModel2.get('Lozinke.lozinka').touched && service.formModel2.get('Lozinke.lozinka').errors?.minlength">Lozinka mora sadrzati minimum 4 karaktera!</label>
+              <label class="text-danger" *ngIf="service.formModel.get('Lozinke.lozinka').touched && service.formModel.get('Lozinke.lozinka').errors?.required">Ovo polje je obavezno!</label>
+              <label class="text-danger" *ngIf="service.formModel.get('Lozinke.lozinka').touched && service.formModel.get('Lozinke.lozinka').errors?.minlength">Lozinka mora sadrzati minimum 4 karaktera!</label>
             </div>
             <div class="col-sm-6 form-group required">
               <label><b>Ponovite lozinku:</b></label>
               <input type="password" class="form-control" formControlName="ponovoLozinka">
-              <label class="text-danger" *ngIf="service.formModel2.get('Lozinke.ponovoLozinka').touched && service.formModel2.get('Lozinke.ponovoLozinka').errors?.required">Ovo polje je obave.</label>
-              <label class="text-danger" *ngIf="service.formModel2.get('Lozinke.ponovoLozinka').touched && service.formModel2.get('Lozinke.ponovoLozinka').errors?.passwordMismatch">Potvrdite lozinku!</label>
+              <label class="text-danger" *ngIf="service.formModel.get('Lozinke.ponovoLozinka').touched && service.formModel.get('Lozinke.ponovoLozinka').errors?.required">Ovo polje je obave.</label>
+              <label class="text-danger" *ngIf="service.formModel.get('Lozinke.ponovoLozinka').touched && service.formModel.get('Lozinke.ponovoLozinka').errors?.passwordMismatch">Potvrdite lozinku!</label>
             </div>
           </div>
         
@@ -75,7 +75,7 @@
        
         <div class="row">
             <div class="form-group col-4">
-                <button [disabled]="!service.formModel2.valid" class="btn btn-success" type="submit">Dodaj admina rent-a-car servisa</button>
+                <button [disabled]="!service.formModel.valid" class="btn btn-success" type="submit">Dodaj admina rent-a-car servisa</button>
             </div>
             <div class="col-1">
                 <button class="btn btn-primary" (click)="onClear()" type="button">OBRIŠI</button>
@@ -84,3 +84,4 @@
     </form>
 
 </div>
+-->

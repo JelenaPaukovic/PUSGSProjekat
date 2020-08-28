@@ -1,24 +1,42 @@
-<h3>Pregled svih rent-a-car servisa</h3>
+<div class="container" >
+    <h1>RENT-A-CAR</h1>
 
-<div>
-    <table class="table table-light">
-        <thead>
-            <tr>
-                <th scope="col">Naziv rent-a-car servisa</th>
-                <th scope="col">Adresa rent-a-car servisa</th>
-                <th scope="col">Ocena rent-a-car servisa</th>
-                
-            </tr>
-        </thead>
-        <tbody>
-            <tr *ngFor="let rentacar of allRentacar">
-                <td>{{rentacar.naziv}}</td>
-                <td>{{rentacar.adresa}}</td>
-                <td>{{rentacar.ocena}}</td>
-                
-                <td><button class="btn btn-success" routerLink = "/rentacar-servis/{{rentacar.naziv}}/rentacar-podaci">Više o servisu</button></td>
-            </tr>
-        </tbody>
-    </table>
+<p>U tabeli su prikazi svi rent-a-car servsi, odaberite koji Vam najviše odgovara. Srećan put!</p>
+
+
+       <div class="form-row">
+        <div class="col-md-4">
+            <div class="input-group form-group">
+                <div class="input-group-prepend">
+                    <span class="input-group-text"><i class="material-icons"></i></span>
+                </div>
+                <input type="text" class="form-control" placeholder="Naziv servisa ili lokacija filijale" id="nazivFilter">
+            </div>
+        </div>
+        <div class="col-md-4">
+            <div class="input-group form-group">
+                <div class="input-group-prepend">
+                    <span class="input-group-text"><i class="material-icons">Datum od</i></span>
+                </div>
+                <input type="date" class="form-control" placeholder="Vremenski period od" id="vremeFilterOd">
+            </div>
+        </div>
+
+        <div class="col-md-4">
+            <div class="input-group form-group">
+                <div class="input-group-prepend">
+                    <span class="input-group-text"><i class="material-icons">Datum do</i></span>
+                </div>
+                <input type="date" class="form-control" placeholder="Vremenski period do" id="vremeFilterDo">
+            </div>
+        </div>
+
+        <div class="col-md-4">
+            <button type="button" class="btn btn-primary" style="margin-left: 30px" (click)="filterRentacar()">Pretrazi</button>
+            <button type="button" class="btn btn-secondary" style="margin-left: 15px" (click)="resetFilter()">Resetuj</button>
+        </div>
+    </div>
+
+ <app-rentacar-filtriranje [allRentacarServisFilter]="filterRentacarServis"></app-rentacar-filtriranje> 
+
 </div>
-

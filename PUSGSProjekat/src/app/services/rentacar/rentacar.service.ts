@@ -1,5 +1,5 @@
 import { Injectable } from '@angular/core';
-import {Rentacar} from '../../entities/rentacar/rentacar';
+import { Rentacar } from '../../entities/rentacar/rentacar';
 import { Vozilo } from '../../entities/vozilo/vozilo';
 import { AbstractFilterParam } from 'src/app/entities/abstract-filter-param/abstract-filter-param';
 import { StringFilterParam } from 'src/app/entities/string-filter-param/string-filter-param';
@@ -7,7 +7,7 @@ import { NumberFilterParam } from 'src/app/entities/number-filter-param/number-f
 import { FormBuilder, Validators, FormGroup } from '@angular/forms';
 import { HttpClient, HttpHeaders } from "@angular/common/http";
 //import {map} from 'rxjs/add/operator/map';
-import {Observable,of, from } from 'rxjs'; 
+import {Observable,of, from } from 'rxjs';
 
 @Injectable({
   providedIn: 'root'
@@ -15,7 +15,7 @@ import {Observable,of, from } from 'rxjs';
 export class RentacarService {
 
   constructor(private fb: FormBuilder, private http: HttpClient) { }
-  readonly BaseURI = 'https://localhost:44308/api';
+  readonly BaseURI = 'https://localhost:44330/api';
 
   formModel = this.fb.group({
     naziv: [''],
@@ -31,33 +31,177 @@ export class RentacarService {
       Odobreno: false
     };
     console.log(body);
-    return this.http.post(this.BaseURI + '/RentACarServis/AddRentACarServis', body);
+    return this.http.post(this.BaseURI + '/RentacarServis/AddRentACarServis', body);
   }
 
-  mockedRentacar(): Array<Rentacar> {
-    let allRentacar = new Array<Rentacar>();
-
-   /* const rac1 = new Rentacar('Drive safe', 'Bulevar kralja Petra 120', 5, 'Vozite sa nama i vozite bezbedno!', '1000 dinara', 'Audi i mercedes', 'Filijale u Novom Sadu i Beogradu');
-    const rac2 = new Rentacar('Sedi i vozi', 'Dimitrija Tucovića 10', 5, 'Vozite sa nama i vozite bezbedno!', 'Cenovnik', 'Spisak', 'Filijale');
-    const rac3 = new Rentacar('Formula 1', 'Bulevar Oslobođenja 139', 5, 'Vozite sa nama i vozite bezbedno!', 'Cenovnik', 'Spisak', 'Filijale');
-    const rac4 = new Rentacar('Golf', 'Vojvođanska 30', 5, 'Vozite sa nama i vozite bezbedno!', 'Cenovnik', 'Spisak', 'Filijale');
-    const rac5 = new Rentacar('Auto robot', 'Futoška 15', 5, 'Vozite sa nama i vozite bezbedno!', 'Cenovnik', 'Spisak', 'Filijale');
-
-    allRentacar.push(rac1);
-    allRentacar.push(rac2);
-    allRentacar.push(rac3);
-    allRentacar.push(rac4);
-    allRentacar.push(rac5);*/
-
-    return allRentacar;
+  odobri(id:number) {
+    console.log(id);
+    return this.http.get(this.BaseURI + '/RentacarServis/OdobriRentACarServis/' + id);
   }
 
-  rentacarPosleAvio(lokacija: string, datum:string){
+  pretrazi(naziv: string, datumOd:string, datumDo:string) {
+    var body = {
+      Naziv: naziv,
+      DatumOd: datumOd,
+      DatumDo: datumDo
+    };
+    console.log(body);
+    return this.http.put(this.BaseURI + '/RentacarServis/PretragaRentACarServis', body);
+  }
+
+  izmeniRentACarServis(servis: Rentacar)
+  {
+    return this.http.post(this.BaseURI + '/RentacarServis/UpdateRentACarServis', servis);
+  }
+
+  loadRentACar() {
+    console.log('Učitavanje rent-a-car servisa...');
+    return this.mockedRentACar();
+  }
+
+
+  mockedRentACar(): Array<Rentacar> {
+    let allRentACarServis = new Array<Rentacar>();
+
+    //const ak1 = new RentacarService(1,'Balkan', 'Jurija Gagarina 25, Novi Beograd', 'Najpovoljniji rent-a-car servis u gradu', 5);
+    //const ak2 = new RentACarServis(2,'Novi Sad - rentAcar', 'Bulevar Oslobodjenja 123, Novi Sad', 'Servis za rent-a-car sa najnovijim modelima vozila', 5);
+    //const ak3 = new RentACarServis(3,'Europa', 'Jovana Dučica 22, Loznica', 'Servis po vašoj meri', 3);
+    //const ak4 = new RentACarServis(4,'Novi', 'Ive Andrića 25, Nis', 'servis za rent-a-car', 5);
+    //const ak5 = new RentACarServis(5,'Servis BG', 'Karadjordjeva 254, Beograd', 'Posedujemo najnovija vozila', 4);
+
+    //ak1.vozila = this.mockedVozilo();
+    //ak2.vozila = this.mockedVozilo();
+    //ak3.vozila = this.mockedVozilo();
+   // ak4.vozila = this.mockedVozilo();
+    //ak5.vozila = this.mockedVozilo();
+
+    //allRentACarServis.push(ak1);
+    //allRentACarServis.push(ak2);
+    //allRentACarServis.push(ak3);
+    //allRentACarServis.push(ak4);
+    //allRentACarServis.push(ak5);
+
+    return allRentACarServis;
+  }
+
+  mockedVozilo(): Array<Vozilo> {
+    let allAvion = new Array<Vozilo>();
+
+    //const ak1 = new Vozilo(1,'vozilo1','BMW','12',2012,5,'automobil');
+    //const ak2 = new Vozilo(2,'vozilo2','BMW','09',2015,5,'automobil');
+    //const ak3 = new Vozilo(3,'vozilo3','BMW','11',2010,5,'automobil');
+
+    //allAvion.push(ak1);
+    //allAvion.push(ak2);
+    //allAvion.push(ak3);
+
+    return allAvion;
+  }
+
+  filterRentCarServise(allRentACar: Rentacar[], filterParams: AbstractFilterParam[]): Rentacar[] {
+    let filteredRentACar = new Array<Rentacar>();
+    for (const item of allRentACar) {
+      let addAirCompany = true;
+      for (const filterParam of filterParams) {
+        if (this.checkNazivFilter(item, filterParam)) {
+          addAirCompany = false;
+            break;
+        }
+        /*
+        if (this.checkVremeFilter(item, filterParam)) {
+          addAirCompany = false;
+          break;
+        }*/
+      }
+
+      if (addAirCompany)
+      filteredRentACar.push(item);
+    }
+
+    return filteredRentACar;
+  }
+
+  checkNazivFilter(rent: Rentacar, filterParam: AbstractFilterParam): boolean {
+    //console.log(filterParam instanceof StringFilterParam && filterParam.getFilterParamName() === 'nazivFilter' && !rent.naziv.toLowerCase().includes(filterParam.getFilterParamValue().toLowerCase()));
+    return filterParam instanceof StringFilterParam && filterParam.getFilterParamName() === 'nazivFilter' && !rent.naziv.toLowerCase().includes(filterParam.getFilterParamValue().toLowerCase());
+  }
+
+  checkVremeFilter(rent: Rentacar, filterParam: AbstractFilterParam): boolean {
+    //return filterParam instanceof NumberFilterParam && filterParam.getFilterParamName() === 'vremeFilter' && (aircompany.cenaKarte > filterParam.getFilterParamValue());
+    return true;
+  }
+
+  ucitajAdmineRent()
+  {
+    return this.http.get('https://localhost:44330/api' + '/ApplicationUser/GetAdminRent');
+  }
+
+  ucitajRentACarServise()
+  {
+    let allRentACarServis = new Array<Rentacar>();
+
+    var array = this.http.get<Rentacar[]>(this.BaseURI + '/RentacarServis');
+
+    //this.http.get(this.BaseURI + '/RentACarServis').pipe(map((res: RentACarServis) => res.json()));
+
+    //allRentACarServis = Observable.create(observer => { this.http.get(this.BaseURI + '/RentACarServis').map(response => response.json(); })
+
+    return array;
+
+  }
+
+  ucitajRentACarServiseOdobrene()
+  {
+    var array = this.http.get<Rentacar[]>(this.BaseURI + '/RentacarServis/GetRentACarServisiOdobreni');
+    return array;
+
+  }
+
+  ucitajOdredjeniRentACarServis(id:Number)
+  {
+     return this.http.get<Rentacar>(this.BaseURI + '/RentacarServis/'+id);
+  }
+
+  ucitajRentACarServisZaAdmina(id:string)
+  {
+     return this.http.get<Rentacar>(this.BaseURI + '/RentacarServis/GetRentACarServisiZaAdmina/'+id);
+  }
+  
+  rentacarPosleAvio(lokacija:string,datum:string)
+  {
     var body = {
       Lokacija: lokacija,
       Datum: datum,
     };
-    return this.http.put(this.BaseURI + '/RentacarServis/GetRentacarServisPosleAvio', body);
+    //console.log(body);
+    return this.http.put(this.BaseURI + '/RentacarServis/GetRentACarServisPosleAvio', body);
   }
 
+  mesecniIzvestaj(id:Number)
+  {
+     return this.http.get<Number>(this.BaseURI + '/RentacarServis/GetMesecniIzvestaj/'+id);
+  }
+
+  nedeljniIzvestaj(id:Number)
+  {
+    return this.http.get<Number>(this.BaseURI + '/RentacarServis/GetNedeljniIzvestaj/'+id);
+  }
+
+  dnevniIzvestaj(id:Number)
+  {
+    return this.http.get<Number>(this.BaseURI + '/RentacarServis/GetDnevniIzvestaj/'+id);
+  }
+
+  odrediPrihode(id:Number,datumOd:String,DatumDo:string)
+  {
+    var body = {
+      IdRentACar: +id,
+      PocetniDatum: datumOd,
+      KrajnjiDatum: DatumDo
+    };
+
+    console.log(body);
+    return this.http.post(this.BaseURI + '/RentacarServis/Prihodi', body);
+  }
+  
 }

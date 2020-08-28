@@ -9,7 +9,7 @@ export class Vozilo {
     godinaProizvodnje: number;
     brojSedista: number;
     tipVozila: string;
-    rentACarId:number;
+    rentacarId:number;
     filijalaId:number;
     rowVersion:any[];
     ocena:number;

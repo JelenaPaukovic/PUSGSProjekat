@@ -14,7 +14,7 @@ export class Rentacar{
     odobreno:boolean;
     admin:string;
 
-    constructor(id:number, naziv: string, adresa: string, promotivniOpis: string, ocena: number,admin:string) {
+    constructor(id:number, naziv: string, adresa: string, promotivniOpis: string, ocena: number, admin:string) {
         this.id = id;
         this.naziv = naziv;
         this.adresa = adresa;

@@ -6,7 +6,7 @@ export class Filijala {
     ulica: string;
     broj: number;
     mesto: string;
-    rentACarId:number;
+    rentacarId:number;
 
     constructor(id:number, ulica: string, broj: number, mesto: string) {
         this.id = id;

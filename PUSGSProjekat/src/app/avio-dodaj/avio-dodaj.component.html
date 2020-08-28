@@ -1,11 +1,11 @@
 <div class="container">
     <h1>Registrovanje aviokompanije</h1>
-    <form [formGroup]="service.formModel1" autocomplete="off" (ngSubmit)="onSubmit()">
+    <form [formGroup]="service.formModel" autocomplete="off" (ngSubmit)="onSubmit()">
         <div class="row">
             <div class="col-sm-6 form-group">
                 <label for="naziv"><b>Unesite naziv aviokompanije:</b></label>
                 <input type="text" id="naziv" class="form-control" formControlName="naziv">
-                <div class = "text-danger" *ngIf="service.formModel1.get('naziv').errors?.required">
+                <div class = "text-danger" *ngIf="service.formModel.get('naziv').errors?.required">
                     Ovo polje je obavezno!
                 </div>
             </div>
@@ -15,7 +15,7 @@
             <div class="col-sm-6 form-group">
                 <label for="adresa"><b>Unesite adresu aviokompanije:</b></label>
                 <input type="text" id="adresa" class="form-control" formControlName="adresa">
-                <div class = "text-danger" *ngIf="service.formModel1.get('adresa').errors?.required">
+                <div class = "text-danger" *ngIf="service.formModel.get('adresa').errors?.required">
                     Ovo polje je obavezno!
                 </div>
             </div>
@@ -28,7 +28,7 @@
                     <option *ngFor="let item of listItems" [value]="item">{{items}}</option>
                 </select>
 
-                <div class = "text-danger" *ngIf="service.formModel1.get('admin').errors?.required">
+                <div class = "text-danger" *ngIf="service.formModel.get('admin').errors?.required">
                     Morate odabrati admina!
                 </div>
             </div>
@@ -36,7 +36,7 @@
 
         <div class="row">
             <div class="col-2">
-                <button [disabled]="!service.formModel1.valid" class="btn btn-success" type="submit">REGISTRUJ AVIOKOMPNAIJU</button>
+                <button [disabled]="!service.formModel.valid" class="btn btn-success" type="submit">REGISTRUJ AVIOKOMPNAIJU</button>
             </div>
             <div class="col-1">
                 <button class="btn btn-primary" (click)="onClear()" type="button">OBRISI</button>

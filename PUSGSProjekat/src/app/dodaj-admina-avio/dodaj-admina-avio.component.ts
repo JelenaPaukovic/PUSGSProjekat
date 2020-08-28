@@ -33,10 +33,10 @@ export class DodajAdminaAvioComponent implements OnInit {
   }
 
   onSubmit() {
-    this.service.dodajAdminaAvio().subscribe(
+   /* this.service.dodajAdminaAvio().subscribe(
       (res: any) => {
         if (res.succeeded) {
-          this.service.formModel3.reset();
+          this.service.formModel.reset();
           this.toastr.success('New user created!', 'Registration successful.');
         } else {
           res.errors.forEach(element => {
@@ -55,7 +55,7 @@ export class DodajAdminaAvioComponent implements OnInit {
       err => {
         console.log(err);
       }
-    );
+    );*/
   }
 
   onClear() {

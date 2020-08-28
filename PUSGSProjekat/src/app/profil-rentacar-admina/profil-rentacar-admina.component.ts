@@ -19,19 +19,19 @@ export class ProfilRentacarAdminaComponent implements OnInit {
   adminR: Korisnik;
   servisZaIzmenu: Rentacar;
 
-  constructor(private korisnikServis: KorisnikService, private rentacarService: RentacarService, private route:ActivatedRoute, private service: UserService) {
+  constructor(/*private korisnikServis: KorisnikService, */private rentacarService: RentacarService, private route:ActivatedRoute, private service: UserService) {
     
     this.allAdminRentacar = new Array<Korisnik>();
     this.allRentacarPodaci = new Array<Rentacar>();
   }
 
   ngOnInit(): void {
-    this.ucitavanjeKorisnika();
-    this.ucitavanjeRentacar();
+    //this.ucitavanjeKorisnika();
+  //  this.ucitavanjeRentacar();
   }
 
 
-  ucitavanjeKorisnika(): void {
+ /* ucitavanjeKorisnika(): void {
     
     this.service.getKorisnici
     ().subscribe(
@@ -100,5 +100,5 @@ export class ProfilRentacarAdminaComponent implements OnInit {
     //alert('Vaša izmena je sačuvana!');
   }
 
-
+*/
 }
