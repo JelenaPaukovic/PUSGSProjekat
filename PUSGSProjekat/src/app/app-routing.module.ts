@@ -12,6 +12,8 @@ import { RentacarDodajComponent } from './rentacar-dodaj/rentacar-dodaj.componen
 import { DodajAdminaRentComponent } from './dodaj-admina-rent/dodaj-admina-rent.component';
 import { DodajAdminaAvioComponent } from './dodaj-admina-avio/dodaj-admina-avio.component';
 import { HomeComponent } from './home/home.component';
+import { ProfilAvioAdminaComponent } from './profil-avio-admina/profil-avio-admina.component';
+import { ProfilKorisnikaComponent } from './profil-korisnika/profil-korisnika.component';
 
 const routes: Routes = [
   {
@@ -85,6 +87,15 @@ const routes: Routes = [
     path: "avio-servis",
     children: [{ path: "", component: AvioServisComponent },
     { path: ":naziv/avio-podaci", component: AvioPodaciComponent }]
+  },
+  {
+    path: "profilAdminAvio",
+    children:[
+      { path: "", component: ProfilAvioAdminaComponent},
+      { path: "profilKorisnika", component: ProfilKorisnikaComponent},
+      { path: "avio", component: AvioPocetnaComponent},
+      ]
+
   },
 
 ];

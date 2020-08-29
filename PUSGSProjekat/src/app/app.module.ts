@@ -34,6 +34,7 @@ import { AvioFilteredComponent } from './avio-filtered/avio-filtered.component';
 import { IzvestajRentacarComponent } from './izvestaj-rentacar/izvestaj-rentacar.component';
 import { MDBBootstrapModule } from 'angular-bootstrap-md';
 import { ProfilKorisnikaComponent } from './profil-korisnika/profil-korisnika.component';
+import { HomepageFormaComponent } from './homepage-forma/homepage-forma.component';
 //import { SocialLoginModule, AuthServiceConfig, GoogleLoginProvider, FacebookLoginProvider, AuthService } from 'angular-6-social-login';  
 
 
@@ -76,7 +77,8 @@ import { ProfilKorisnikaComponent } from './profil-korisnika/profil-korisnika.co
     RentacarFiltriranjeComponent,
     AvioFilteredComponent,
     IzvestajRentacarComponent,
-    ProfilKorisnikaComponent
+    ProfilKorisnikaComponent,
+    HomepageFormaComponent
   ],
   imports: [
     BrowserModule,

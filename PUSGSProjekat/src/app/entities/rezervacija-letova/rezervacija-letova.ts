@@ -2,7 +2,7 @@ import {NumberValueAccessor} from '@angular/forms';
 import {Letovi} from '../letovi/letovi';
 
 export class RezervacijaLetova{
-    id:Number;
+    id:number;
     idAvioKompanije:number;
     idLeta:number;
     idKlijenta:string;
