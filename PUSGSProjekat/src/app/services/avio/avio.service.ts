@@ -144,4 +144,31 @@ export class AvioService {
     return allLetovi;
   }
 
+  mesecniIzvestaj(id:Number)
+  {
+     return this.http.get<Number>(this.BaseURI + '/AvioServis/GetMesecniIzvestaj/'+id);
+  }
+
+  nedeljniIzvestaj(id:Number)
+  {
+    return this.http.get<Number>(this.BaseURI + '/AvioServis/GetNedeljniIzvestaj/'+id);
+  }
+
+  dnevniIzvestaj(id:Number)
+  {
+    return this.http.get<Number>(this.BaseURI + '/AvioServis/GetDnevniIzvestaj/'+id);
+  }
+
+  odrediPrihode(id:Number,datumOd:String,DatumDo:string)
+  {
+    var body = {
+      IdRentACar: +id,
+      PocetniDatum: datumOd,
+      KrajnjiDatum: DatumDo
+    };
+
+    console.log(body);
+    return this.http.post(this.BaseURI + '/AvioServis/Prihodi', body);
+  }
+
 }

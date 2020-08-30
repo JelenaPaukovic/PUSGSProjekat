@@ -34,5 +34,6 @@ export class BrzaRezervacijaLetovaService {
 
   ucitajSveBrzeRez(){
     var array = this.http.get<BrzaRezervacijaLetova[]>(this.BaseUri + '/BrzaRezLetova');
+    return array;
   }
 }
