@@ -30,6 +30,8 @@ namespace ProjekatPUSGS.Models
         public string DestinacijePoslovanja {get;set;}
         public string Admin {get;set;}
 
-        
+        public double Ocena { get; set; }
+
+
     }
 }
