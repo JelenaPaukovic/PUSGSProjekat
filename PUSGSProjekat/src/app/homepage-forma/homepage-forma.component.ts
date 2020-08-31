@@ -102,7 +102,7 @@ export class HomepageFormaComponent implements OnInit {
       );
   }
 
-  oceniDestinaciju(rez:RezervacijaLetova):void{
+  oceniLet(rez:RezervacijaLetova):void{
     this.rezervacijaLetovaZaOcenjivanje=rez;
   }
 

@@ -5,6 +5,7 @@ import { HttpClientModule, HTTP_INTERCEPTORS } from "@angular/common/http";
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { ToastrModule } from 'ngx-toastr';
 import { TokenInterceptor } from './auth/tokenInterceptor';
+import {animate, trigger, state, style, transition} from '@angular/animations';
 
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
@@ -37,7 +38,12 @@ import { ProfilKorisnikaComponent } from './profil-korisnika/profil-korisnika.co
 import { HomepageFormaComponent } from './homepage-forma/homepage-forma.component';
 import { AdminRegistracijaComponent } from './admin-registracija/admin-registracija.component';
 import { IzvestajAvioComponent } from './izvestaj-avio/izvestaj-avio.component';
-//import { SocialLoginModule, AuthServiceConfig, GoogleLoginProvider, FacebookLoginProvider, AuthService } from 'angular-6-social-login';  
+//import { SocialLoginModule, AuthServiceConfig, GoogleLoginProvider } from 'angular-6-social-login';  
+import {AdminSistemComponent} from './admin-sistem/admin-sistem.component';
+////import { GoogleLoginProvider, FacebookLoginProvider, AuthService } from 'angular-6-social-login';  
+//import { SocialLoginModule, AuthServiceConfig } from 'angular-6-social-login';  
+import { ChartsModule, WavesModule } from 'angular-bootstrap-md';
+//import { AuthServiceConfig } from 'angular-6-social-login';
 
 
 /*export function socialConfigs() {  
@@ -55,6 +61,23 @@ import { IzvestajAvioComponent } from './izvestaj-avio/izvestaj-avio.component';
   );  
   return config;  
 }  */
+
+/*let config = new AuthServiceConfig([
+  {
+     id: GoogleLoginProvider.PROVIDER_ID,
+     provider: new GoogleLoginProvider('219104745928-b057e5erdn5hs4b1bshsr8g42kgl7453.apps.googleusercontent.com')
+  },
+{
+     id: FacebookLoginProvider.PROVIDER_ID,
+     provider: new FacebookLoginProvider(Facebook AppId)
+  },
+]);
+export function provideConfig()
+ {
+    return config;
+ }*/
+
+
 
 @NgModule({
   declarations: [
@@ -86,19 +109,22 @@ import { IzvestajAvioComponent } from './izvestaj-avio/izvestaj-avio.component';
   ],
   imports: [
     BrowserModule,
+    ChartsModule,
     AppRoutingModule,
     FormsModule,
     ReactiveFormsModule,
     HttpClientModule,
     BrowserAnimationsModule,
     ToastrModule.forRoot({
-      progressBar: true
+      positionClass: 'toast-top-right',
+      //progressBar: true
     }),
     MDBBootstrapModule.forRoot()
    
     
   ],
   providers: [
+    //AuthService,
     CookieService,
     UserService, 
     
@@ -117,6 +143,10 @@ import { IzvestajAvioComponent } from './izvestaj-avio/izvestaj-avio.component';
       provide: AuthServiceConfig,  
       useFactory: socialConfigs  
     }  */
+    /*{
+      provide: AuthServiceConfig,
+      useFactory: provideConfig
+    }*/
   ],
   bootstrap: [AppComponent]
 })

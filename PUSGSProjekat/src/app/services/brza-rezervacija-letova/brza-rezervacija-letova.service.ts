@@ -10,7 +10,7 @@ import {BrzaRezervacijaLetova} from 'src/app/entities/brza-rezervacija-letova/br
 export class BrzaRezervacijaLetovaService {
 
   constructor(private fb: FormBuilder, private http: HttpClient) { }
-  readonly BaseUri = 'https://localhost:44308/api';
+  readonly BaseUri = 'https://localhost:44330/api';
 
   dodajBrzuRez(rez:BrzaRezervacijaLetova){
     var body={

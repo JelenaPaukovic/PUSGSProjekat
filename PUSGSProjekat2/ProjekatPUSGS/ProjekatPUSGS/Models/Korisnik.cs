@@ -28,7 +28,7 @@ namespace ProjekatPUSGS.Models
         //public string EmailAdresa { get; set; }
         // public string Lozinka { get; set; }
         public string Grad { get; set; }
-        public string BrojTelefona { get; set; }
+        public string Telefon { get; set; }
 
         public Tip UlogaKorisnika { get; set; }
         public bool IzmenjenaLozinka { get; set; }

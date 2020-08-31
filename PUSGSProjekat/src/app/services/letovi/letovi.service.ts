@@ -9,7 +9,7 @@ import { HttpClient, HttpHeaders } from "@angular/common/http";
 export class LetoviService {
 
   constructor(private fb: FormBuilder, private http: HttpClient) { }
-  readonly BaseURI = 'https://localhost:44308/api';
+  readonly BaseURI = 'https://localhost:44330/api';
 
   loadLetovi() {
     console.log('Učitavanje destinacija...');

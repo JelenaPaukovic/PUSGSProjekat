@@ -11,7 +11,7 @@ export class SocialloginService {
 
   Savesresponse(responce)
   {
-    this.url =  'http://localhost:44308/api/ApplicationUser/SocialLogin';
+    this.url =  'http://localhost:44330/api/ApplicationUser/SocialLogin';
     return this.http.post(this.url,responce);
   }
 }

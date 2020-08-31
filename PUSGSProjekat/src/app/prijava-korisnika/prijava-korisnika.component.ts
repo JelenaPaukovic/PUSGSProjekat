@@ -4,7 +4,7 @@ import { UserService } from 'src/app/services/korisnik/user.service';
 import { Component, OnInit, Inject } from '@angular/core';
 import { NgForm } from '@angular/forms';
 import { Router } from '@angular/router';
-import { AuthService, GoogleLoginProvider, FacebookLoginProvider } from 'angular-6-social-login';
+//import { AuthService, GoogleLoginProvider, FacebookLoginProvider } from 'angular-6-social-login';
 import { DOCUMENT } from '@angular/common';
 import { CookieService } from 'ngx-cookie-service';
 import { environment } from 'src/environments/environment';
@@ -20,9 +20,9 @@ export class PrijavaKorisnikaComponent implements OnInit {
     KorisnickoIme: '',
     Lozinka: ''
   }
-  socialProvider = "google";
+  //socialProvider = "google";
   constructor(public service: UserService, private router: Router, private toastr: ToastrService,
-    public OAuth: AuthService,
+    /*public OAuth: AuthService,*/
     private cookieService: CookieService, @Inject(DOCUMENT) private document: Document) { }
 
   ngOnInit() {
@@ -30,7 +30,7 @@ export class PrijavaKorisnikaComponent implements OnInit {
       //this.router.navigateByUrl('/home');
   }
 
-  LoginWithGoogle(){
+  /*LoginWithGoogle(){
     let socialPlatformProvider;  
     if (this.socialProvider === 'facebook') {  
       socialPlatformProvider = FacebookLoginProvider.PROVIDER_ID;  
@@ -54,7 +54,7 @@ export class PrijavaKorisnikaComponent implements OnInit {
       console.log(socialusers);  
     });  
 
-  }
+  }*/
 
   onSubmit(form: NgForm) {
     this.service.login(form.value).subscribe(

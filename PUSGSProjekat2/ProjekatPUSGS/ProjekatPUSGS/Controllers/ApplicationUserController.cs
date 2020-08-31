@@ -43,16 +43,16 @@ namespace ProjekatPUSGS.Controllers
         //POST : /api/ApplicationUser/Register
         public async Task<Object> Register(ApplicationUserModel model)
         {
-            model.Username = model.EmailAdresa;
+            model.Username = model.Email;
             var applicationUser = new Korisnik()
             {
                 UserName = model.Username,
                 Ime = model.Ime,
                 Prezime = model.Prezime,
                 Grad = model.Grad,
-                BrojTelefona = model.BrojTelefona,
-                Email = model.EmailAdresa,
-                IzmenjenaLozinka = false
+                Telefon = model.Telefon,
+                Email = model.Email,
+                //IzmenjenaLozinka = false
                  
             };
 
@@ -95,7 +95,7 @@ namespace ProjekatPUSGS.Controllers
                 var tokenHandler = new JwtSecurityTokenHandler();
                 var securityToken = tokenHandler.CreateToken(tokenDescriptor);
                 var token = tokenHandler.WriteToken(securityToken);
-                return Ok(new { token, model.UserName, user.UlogaKorisnika, user.IzmenjenaLozinka });
+                return Ok(new { token, model.UserName, user.UlogaKorisnika });
             }
             else
                 return BadRequest(new { message = "Username or password is incorrect." });
@@ -171,16 +171,16 @@ namespace ProjekatPUSGS.Controllers
         //POST : /api/ApplicationUser/Register
         public async Task<Object> DodajAdmina(ApplicationUserModel model)
         {
-            model.Username = model.EmailAdresa;
+            model.Username = model.Email;
 
             var applicationUser = new Korisnik()
             {
-                UserName = model.EmailAdresa,
+                UserName = model.Email,
                 Ime = model.Ime,
                 Prezime = model.Prezime,
                 Grad = model.Grad,
-                BrojTelefona = model.BrojTelefona,
-                Email = model.EmailAdresa,
+                Telefon = model.Telefon,
+                Email = model.Email,
                // UlogaKorisnika = Tip.RegistrovaniKorisnik
             };
 
@@ -252,14 +252,14 @@ namespace ProjekatPUSGS.Controllers
                 string code = await _userManager.GenerateEmailConfirmationTokenAsync(k);
                 //string codeHtmlVersion = HttpUtility.UrlEncode(code);
 
-                //string toMail = "https://localhost:44308/api/ApplicationUser/PotvrdiMejl?userId=" + k.Id + "&code=" + code;
+                //string toMail = "https://localhost:44330/api/ApplicationUser/PotvrdiMejl?userId=" + k.Id + "&code=" + code;
 
 
                 //  string s = Url.Link("PotvrdiMejl", new { userId = k.Id, codee = code });
 
-                //   var callbackUrl = new Uri(Url.Link("https://localhost:44308/api/ApplicationUser/PotvrdiMejl", new { userId = k.Id, code = code }));
+                //   var callbackUrl = new Uri(Url.Link("https://localhost:44330/api/ApplicationUser/PotvrdiMejl", new { userId = k.Id, code = code }));
 
-                string toMail = "https://localhost:44308/api/ApplicationUser/PotvrdiMejl/" + k.Id;
+                string toMail = "https://localhost:44330/api/ApplicationUser/PotvrdiMejl/" + k.Id;
 
                 mail.From = new MailAddress("webprojekatpusgs@gmail.com");
                 mail.To.Add(k.Email);
@@ -313,7 +313,7 @@ namespace ProjekatPUSGS.Controllers
             try
             {
                 _userManager.ChangePasswordAsync(user, pl.StaraLozinka, pl.NovaLozinka);
-                user.IzmenjenaLozinka = true;
+                //user.IzmenjenaLozinka = true;
                 CarServis servis = new CarServis(_context);
                 servis.potvrdi(user);
                 //_userManager.UpdateAsync(user);

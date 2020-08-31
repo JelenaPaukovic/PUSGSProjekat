@@ -61,7 +61,7 @@ export class ProfilKorisnikaComponent implements OnInit {
     this.korisnik.ime = ime;
     this.korisnik.prezime = prezime;
     this.korisnik.grad = grad;
-    this.korisnik.brojTelefona = telefon;
+    this.korisnik.telefon = telefon;
 
     //izmeni korisnika
     this.userService.izmeniKorisnika(this.korisnik).subscribe(
@@ -76,7 +76,7 @@ export class ProfilKorisnikaComponent implements OnInit {
     let promena: boolean = false;
     if(email != "")
     {
-      this.allKorisnik[index].emailAdresa = email;
+      this.allKorisnik[index].email = email;
       promena = true;
     }
     if(lozinka != "")
@@ -101,7 +101,7 @@ export class ProfilKorisnikaComponent implements OnInit {
     }
     if(telefon != "")
     {
-      this.allKorisnik[index].brojTelefona = telefon;
+      this.allKorisnik[index].telefon = telefon;
       promena = true;
     }
     if(prijatelji != "")

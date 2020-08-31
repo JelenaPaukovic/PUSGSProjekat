@@ -19,28 +19,28 @@ export class UserService {
     email: ['', Validators.email],
     Lozinke: this.fb.group({
       lozinka: ['', [Validators.required, Validators.minLength(4), Validators.maxLength(20)]],
-      ponovoLozinka: ['', Validators.required, Validators.minLength(4), Validators.maxLength(20)]
-    }, { validator: this.comparePasswords })
+      
+    }, {  })
 
   });
 
-  comparePasswords(fb: FormGroup) {
+  /*comparePasswords(fb: FormGroup) {
     let confirmPswrdCtrl = fb.get('ponovoLozinka');
     //passwordMismatch
     //confirmPswrdCtrl.errors={passwordMismatch:true}
-   /* if (confirmPswrdCtrl.errors == null || 'passwordMismatch' in confirmPswrdCtrl.errors) {
+    if (confirmPswrdCtrl.errors == null || 'passwordMismatch' in confirmPswrdCtrl.errors) {
       if (fb.get('Password').value != confirmPswrdCtrl.value)
         confirmPswrdCtrl.setErrors({ passwordMismatch: true });
       else
         confirmPswrdCtrl.setErrors(null);
     }*/
-    if (confirmPswrdCtrl.errors == null || 'passwordMismatch' in confirmPswrdCtrl.errors) {
+    /*if (confirmPswrdCtrl.errors == null || 'passwordMismatch' in confirmPswrdCtrl.errors) {
       if (fb.get('lozinka').value != confirmPswrdCtrl.value)
         confirmPswrdCtrl.setErrors({ passwordMismatch: true });
       else
         confirmPswrdCtrl.setErrors(null);
-    }
-  }
+    }*/
+  
 
   register() {
     var body = {

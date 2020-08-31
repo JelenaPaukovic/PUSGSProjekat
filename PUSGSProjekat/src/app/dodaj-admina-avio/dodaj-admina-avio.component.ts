@@ -24,7 +24,7 @@ export class DodajAdminaAvioComponent implements OnInit {
       'ime': new FormControl('ime', Validators.required),
       'prezime': new FormControl('prezime', Validators.required),
       'grad': new FormControl('grad', Validators.required),
-      'brTel': new FormControl('brTel', Validators.required),
+      'telefon': new FormControl('telefon', Validators.required),
       'email': new FormControl('email', Validators.required),
       'lozinka': new FormControl('lozinka', Validators.required),
       'lozinkaOpet': new FormControl('lozinkaOpet', Validators.required)

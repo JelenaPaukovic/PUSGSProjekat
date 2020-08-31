@@ -9,7 +9,7 @@ import { RezervacijaLetova} from 'src/app/entities/rezervacija-letova/rezervacij
 export class RezervacijaLetovaService {
 
   constructor(private fb : FormBuilder, private http: HttpClient) { }
-  readonly BaseURI = 'https://localhost:44308/api';
+  readonly BaseURI = 'https://localhost:44330/api';
 
   rezervisiLet(rezervacija: RezervacijaLetova)
   {

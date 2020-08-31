@@ -16,7 +16,7 @@ import { HttpClient, HttpHeaders} from "@angular/common/http";
 export class AvioService {
 
   constructor(private fb: FormBuilder, private http: HttpClient) { }
-  readonly BaseURI = 'https://localhost:44308/api';
+  readonly BaseURI = 'https://localhost:44330/api';
 
   formModel = this.fb.group({
     naziv: [''],
