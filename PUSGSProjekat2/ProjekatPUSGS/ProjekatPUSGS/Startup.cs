@@ -33,6 +33,7 @@ namespace ProjekatPUSGS
         // This method gets called by the runtime. Use this method to add services to the container.
         public void ConfigureServices(IServiceCollection services)
         {
+
             services.AddCors(options =>
             {
                 options.AddPolicy("CorsPolicy",
@@ -41,31 +42,19 @@ namespace ProjekatPUSGS
                         .AllowAnyHeader());
             });
 
-
             services.AddControllers();
 
             services.AddDbContext<AuthenticationContext>(options =>
                     options.UseSqlServer(Configuration.GetConnectionString("Projekat")));
-            services.Configure<ApplicationSettings>(Configuration.GetSection("ApplicationSettings"));
-            
-            services.AddMvc().SetCompatibilityVersion(CompatibilityVersion.Version_2_2);
-
-            services.AddDbContext<AuthenticationContext>(options =>
-            options.UseSqlServer(Configuration.GetConnectionString("Projekat")));
 
             services.AddDefaultIdentity<Korisnik>()
                 .AddEntityFrameworkStores<AuthenticationContext>();
-
-
-
-
 
         }
 
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.
         public void Configure(IApplicationBuilder app, IWebHostEnvironment env)
         {
-
 
             if (env.IsDevelopment())
             {
@@ -80,7 +69,7 @@ namespace ProjekatPUSGS
 
             app.UseAuthentication();
 
-            
+            //app.UseCors();
             app.UseCors("CorsPolicy");
 
             app.UseEndpoints(endpoints =>
