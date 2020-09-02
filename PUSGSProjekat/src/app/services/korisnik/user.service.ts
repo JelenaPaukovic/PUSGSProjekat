@@ -47,7 +47,7 @@ export class UserService {
       ime: this.formModel.value.ime,
       prezime: this.formModel.value.prezime,
       grad: this.formModel.value.grad,
-      brTel: this.formModel.value.brTel,
+      telefon: this.formModel.value.telefon,
       email: this.formModel.value.email,
       lozinka: this.formModel.value.Lozinke.lozinka
     };
@@ -59,7 +59,7 @@ export class UserService {
       ime: this.formModel.value.ime,
       prezime: this.formModel.value.prezime,
       grad: this.formModel.value.grad,
-      brTel: this.formModel.value.brTel,
+      telefon: this.formModel.value.telefon,
       email: this.formModel.value.email,
       lozinka: this.formModel.value.Lozinke.lozinka,
       uloga: ""

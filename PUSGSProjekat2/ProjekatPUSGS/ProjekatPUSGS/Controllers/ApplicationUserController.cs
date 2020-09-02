@@ -53,6 +53,7 @@ namespace ProjekatPUSGS.Controllers
                 Telefon = model.Telefon,
                 Email = model.Email,
                 //IzmenjenaLozinka = false
+                UlogaKorisnika = Tip.RegistrovaniKorisnik,
                  
             };
 

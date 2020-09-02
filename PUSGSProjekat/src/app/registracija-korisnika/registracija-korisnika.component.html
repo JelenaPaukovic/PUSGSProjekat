@@ -43,11 +43,11 @@
         <div class="row">
             <div class="col-sm-6 form-group">
                 <label for="brTel"><b>Unesite broj telefona:</b></label>
-                <input type="text" id="brTel" class="form-control" formControlName="brTel">
-                <div class = "text-danger" *ngIf="service.formModel.get('brTel').touched && service.formModel.get('brTel').errors?.required">
+                <input type="text" id="telefon" class="form-control" formControlName="telefon">
+                <div class = "text-danger" *ngIf="service.formModel.get('telefon').touched && service.formModel.get('telefon').errors?.required">
                     Ovo polje je obavezno!
                 </div>
-                <div *ngIf="service.formModel.get('brTel').touched && service.formModel.get('brTel').errors?.maxlength" class="text-danger">
+                <div *ngIf="service.formModel.get('telefon').touched && service.formModel.get('telefon').errors?.maxlength" class="text-danger">
                     Telefon može sadržati maksimalno 20 karaktera!
                 </div>
             </div>
