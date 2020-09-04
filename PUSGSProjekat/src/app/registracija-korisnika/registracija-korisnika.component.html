@@ -39,7 +39,7 @@
                 </div>
             </div>
         </div>
-
+<!--
         <div class="row">
             <div class="col-sm-6 form-group">
                 <label for="brTel"><b>Unesite broj telefona:</b></label>
@@ -51,7 +51,7 @@
                     Telefon može sadržati maksimalno 20 karaktera!
                 </div>
             </div>
-        </div>
+        </div>-->
 
         <div class="row">
             <div class="col-sm-6 form-group">
@@ -72,38 +72,23 @@
         </div>
 
 
-        <div formGroupName="Lozinke">
-            <div class="col-sm-6 form-group required">
-              <label><b>Unesite lozinku:</b></label>
-              <input type="password" class="form-control" formControlName="lozinka">
-              <div *ngIf="service.formModel.get('Lozinke.lozinka').touched && service.formModel.get('Lozinke.lozinka').errors?.maxlength" class="text-danger">
-                Lozinka može sadržati maksimalno 20 karaktera!
+        <div class="row">
+            <div class="col-sm-6 form-group">
+                <label for="lozinka"><b>Unesite lozinku:</b></label>
+                <input type="password" id="lozinka" class="form-control" formControlName="lozinka">
+                <div class = text-danger *ngIf="service.formModel.get('lozinka').touched && service.formModel.get('lozinka').errors?.email">
+                    Morate uneti lozinku!
+                </div>
+
+                <div *ngIf="service.formModel.get('lozinka').touched && service.formModel.get('lozinka').errors?.maxlength" class="text-danger">
+                    lozinka može sadržati maksimalno 30 karaktera!
+                </div>
+                <div *ngIf="service.formModel.get('lozinka').touched && service.formModel.get('lozinka').errors?.required" class="text-danger">
+                    Ovo polje je obavezno!
+                </div>
+                
             </div>
-            <div *ngIf="service.formModel.get('Lozinke.lozinka').touched && service.formModel.get('Lozinke.lozinka').errors?.required" class="text-danger">
-                Ovo polje je obavezno!
-            </div>
-            <div *ngIf="service.formModel.get('Lozinke.lozinka').touched && service.formModel.get('Lozinke.lozinka').errors?.minlength" class="text-danger">
-                Lozinka mora sadržati minimalno 4 karaktera!
-            </div>
-          
-          </div>
-            <div class="col-sm-6 form-group required">
-              <label><b>Ponovite lozinku:</b></label>
-              <input type="password" class="form-control" formControlName="lozinka">
-              <div *ngIf="service.formModel.get('Lozinke.lozinka').touched && service.formModel.get('Lozinke.lozinka').errors?.maxlength" class="text-danger">
-                Lozinka može sadržati maksimalno 20 karaktera!
-            </div>
-            <div *ngIf="service.formModel.get('Lozinke.lozinka').touched && service.formModel.get('Lozinke.lozinka').errors?.required" class="text-danger">
-                Ovo polje je obavezno!
-            </div>
-            <div *ngIf="service.formModel.get('Lozinke.lozinka').touched && service.formModel.get('Lozinke.lozinka').errors?.minlength" class="text-danger">
-                Lozinka mora sadržati minimalno 4 karaktera!
-            </div>
-            <div *ngIf="service.formModel.get('Lozinke.lozinka').touched && service.formModel.get('Lozinke.lozinka').errors?.passwordMismatch" class="text-danger">
-                Morate uneti istu lozinku!
-            </div>
-            </div>
-          </div>
+        </div>
         
         
        

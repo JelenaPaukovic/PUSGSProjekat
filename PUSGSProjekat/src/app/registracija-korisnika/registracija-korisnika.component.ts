@@ -10,7 +10,7 @@ import { ToastrService } from 'ngx-toastr';
 })
 export class RegistracijaKorisnikaComponent implements OnInit {
 
-  registracijaForma: FormGroup;
+  
 
   constructor(public service: UserService, private toastr: ToastrService) { }
 

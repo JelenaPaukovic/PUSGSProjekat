@@ -10,11 +10,12 @@ namespace ProjekatPUSGS.Models
 
     public enum Tip
     {
-
+        NeregistrovaniKorisnik,
+        RegistrovaniKorisnik,
         AdminAvio,
         AdminRentacar,
-        RegistrovaniKorisnik,
-        NeregistrovaniKorisnik,
+
+
         Admin
     }
 

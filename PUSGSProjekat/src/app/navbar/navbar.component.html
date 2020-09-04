@@ -33,7 +33,7 @@
 -->
 
 <nav class="navbar navbar-expand-sm navbar-dark bg-dark">
-    <a routerLink="" class="navbar-brand"> °°° AvioAuto agencija J&B °°° Dobrodošli!  </a>
+    <a routerLink="" class="navbar-brand">°°° AvioAuto agencija J&B °°° Dobrodošli! </a>
     <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
       <span class="navbar-toggler-icon"></span>
     </button>
@@ -50,24 +50,24 @@
             <a class="btn btn-outline-light my-2 my-sm-0" type="btn" routerLink="/profil" style="margin-left :5px">Profil administratora sistema</a>
         </li>
        
-        <li *ngIf="Getuloga == '1'">
+        <li *ngIf="Getuloga == '3'">
           <a class="btn btn-outline-light my-2 my-sm-0" type="btn" routerLink="/profilRentAdmina" >Profil rent-a-car administratora</a>
         </li>
-        <li *ngIf="Getuloga == '0'">
+        <li *ngIf="Getuloga == '2'">
             <a class="btn btn-outline-light my-2 my-sm-0" type="btn" routerLink="/profilAdminAvio">Profil administratora avio-kompanije</a>
         </li>
 
-        <li *ngIf="Getuloga != '3' ">
+        <li *ngIf="Getuloga != '0' ">
           <a class="btn btn-outline-light my-2 my-sm-0" type="btn" routerLink="/homepage-forma">Homepage</a>
       </li>
 
-        <li class="nav-item" *ngIf="Getuloga == '3'">
+        <li class="nav-item" *ngIf="Getuloga == '0'">
             <a class="btn btn-outline-light my-2 ml-5 my-sm-0" type="btn" routerLink="/registracija" style="margin-left :5px">Registracija</a>
         </li>
-        <li class="nav-item" *ngIf="Getuloga == '3'">
+        <li class="nav-item" *ngIf="Getuloga == '0'">
             <a class="btn btn-outline-light my-2 my-sm-0" type="btn" routerLink="/prijava" style="margin-left :5px">Prijava</a>
         </li>
-        <li class="nav-item" *ngIf="Getuloga != '3'" >
+        <li class="nav-item" *ngIf="Getuloga != '0'" >
           <button class="btn btn-outline-light  my-2 ml-5 my-sm-0" type="btn" (click)="odjaviSe()" style="margin-left :5px">Odjavite se</button>
       </li>
       </ul>

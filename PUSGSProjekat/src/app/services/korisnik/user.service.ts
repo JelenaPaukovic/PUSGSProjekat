@@ -1,3 +1,4 @@
+
 import { Injectable } from '@angular/core';
 import { FormBuilder, Validators, FormGroup } from '@angular/forms';
 import { HttpClient, HttpHeaders } from "@angular/common/http";
@@ -15,12 +16,10 @@ export class UserService {
     ime: ['', Validators.required],
     prezime: ['', Validators.required],
     grad: ['', Validators.required],
-    brTel: ['', Validators.required],
+    //telefon: ['', Validators.required],
     email: ['', Validators.email],
-    Lozinke: this.fb.group({
-      lozinka: ['', [Validators.required, Validators.minLength(4), Validators.maxLength(20)]],
-      
-    }, {  })
+   lozinka: ['', [Validators.required]],
+
 
   });
 
@@ -47,10 +46,11 @@ export class UserService {
       ime: this.formModel.value.ime,
       prezime: this.formModel.value.prezime,
       grad: this.formModel.value.grad,
-      telefon: this.formModel.value.telefon,
+      //telefon: this.formModel.value.telefon,
       email: this.formModel.value.email,
-      lozinka: this.formModel.value.Lozinke.lozinka
+      lozinka: this.formModel.value.lozinka
     };
+    console.log(body);
     return this.http.post(this.BaseURI + '/ApplicationUser/Register', body);
   }
 
@@ -59,9 +59,9 @@ export class UserService {
       ime: this.formModel.value.ime,
       prezime: this.formModel.value.prezime,
       grad: this.formModel.value.grad,
-      telefon: this.formModel.value.telefon,
-      email: this.formModel.value.email,
-      lozinka: this.formModel.value.Lozinke.lozinka,
+      //telefon: this.formModel.value.telefon,
+      //email: this.formModel.value.email,
+      lozinka: this.formModel.value.lozinka,
       uloga: ""
     };
     if(this.formModel.value.uloga=="adminAvio")
