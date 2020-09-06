@@ -1,12 +1,12 @@
 
 <form #form='ngForm' class="mb-4" autocomplete="off" (submit)="onSubmit(form)">
   <div class="col-sm-6 form-group">
-    <label>Korisnicko ime</label>
-    <input class="form-control" #KorisnickoIme="ngModel" name="KorisnickoIme" [(ngModel)]="formModel.KorisnickoIme" required>
+    <label>Username</label>
+    <input class="form-control" #UserName="ngModel" name="#UserName" [(ngModel)]="formModel.UserName" required>
   </div>
   <div class="col-sm-6 form-group">
-    <label>Lozinka</label>
-    <input type="password" class="form-control" #Lozinka="ngModel" name="Lozinka" [(ngModel)]="formModel.Lozinka" required>
+    <label>Password</label>
+    <input type="password" class="form-control" #Password="ngModel" name="Password" [(ngModel)]="formModel.Password" required>
   </div>
   <div class="col-sm-6 form-row">
     <div class="form-group col-md-8 offset-md-2">

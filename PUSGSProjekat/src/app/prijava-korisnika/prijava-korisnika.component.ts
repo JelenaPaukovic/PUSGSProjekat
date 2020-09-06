@@ -17,8 +17,8 @@ import { NavbarComponent } from '../navbar/navbar.component';
 })
 export class PrijavaKorisnikaComponent implements OnInit {
   formModel = {
-    KorisnickoIme: '',
-    Lozinka: ''
+    UserName: '',
+    Password: ''
   }
   //socialProvider = "google";
   constructor(public service: UserService, private router: Router, private toastr: ToastrService,
@@ -60,7 +60,7 @@ export class PrijavaKorisnikaComponent implements OnInit {
     this.service.login(form.value).subscribe(
       (res: any) => {
         localStorage.setItem('token', res.token);
-        localStorage.setItem('userName', res.userName);
+        localStorage.setItem('UserName', res.UserName);
         localStorage.setItem('uloga', res.uloga);
         localStorage.setItem('sifraIzmenjena', res.izmenjenaLozinka);
         this.router.navigateByUrl('/homepage-forma');

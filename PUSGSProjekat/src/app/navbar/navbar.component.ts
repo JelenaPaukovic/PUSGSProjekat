@@ -31,8 +31,8 @@ export class NavbarComponent implements OnInit {
     NavbarComponent.uloga = '0';
     localStorage.removeItem('uloga');
     localStorage.removeItem('token');
-    localStorage.removeItem('korisnickoIme');
-    localStorage.setItem('korisnickoIme','');
+    localStorage.removeItem('UserName');
+    localStorage.setItem('UserName','');
     localStorage.setItem('uloga','0');
     this.router.navigateByUrl('prijava');
   }
