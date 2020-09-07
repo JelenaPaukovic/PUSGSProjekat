@@ -20,6 +20,7 @@ import { AppComponent } from './app.component';
 import { ProfilRentacarAdminaComponent } from './profil-rentacar-admina/profil-rentacar-admina.component';
 import { IzvestajRentacarComponent } from './izvestaj-rentacar/izvestaj-rentacar.component';
 import {HomepageFormaComponent} from './homepage-forma/homepage-forma.component';
+import {AdminSistemComponent} from './admin-sistem/admin-sistem.component';
 
 
 const routes: Routes = [
@@ -58,10 +59,10 @@ const routes: Routes = [
     path: "admin-rent",
     component: RentacarDodajComponent
   },
- /* {
+  {
     path: "profil",
-    component: AdminSistemProfilComponent
-  },*/
+    component: AdminSistemComponent
+  },
   /*{
     path: "rentacar-servis",
     component: RentacarServisComponent
