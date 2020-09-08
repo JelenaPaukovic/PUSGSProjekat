@@ -61,11 +61,11 @@ export class PrijavaKorisnikaComponent implements OnInit {
       (res: any) => {
         localStorage.setItem('token', res.token);
         localStorage.setItem('UserName', res.UserName);
-        localStorage.setItem('uloga', res.uloga);
+        localStorage.setItem('uloga', res.ulogaKorisnika);
         localStorage.setItem('sifraIzmenjena', res.izmenjenaLozinka);
         this.router.navigateByUrl('/homepage-forma');
-        environment.uloga = res.uloga;
-        NavbarComponent.uloga = res.uloga;
+        environment.uloga = res.ulogaKorisnika;
+        NavbarComponent.uloga = res.ulogaKorisnika;
       },
       err => {
         if (err.status == 400)

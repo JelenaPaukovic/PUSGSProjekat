@@ -64,11 +64,11 @@ export class UserService {
       lozinka: this.formModel.value.lozinka,
       uloga: ""
     };
-    if(this.formModel.value.uloga=="adminAvio")
+    if(this.formModel.value.ulogaKorisnika=="adminAvio")
     {
       body.uloga = "AdminAvioKompanije";
     }
-    else if((this.formModel.value.uloga=="adminRent"))
+    else if((this.formModel.value.ulogaKorisnika=="adminRent"))
     {
       body.uloga = "AdminRentACarServisa";
     }
@@ -77,7 +77,7 @@ export class UserService {
       body.uloga = "Administrator";
     }
 
-    return this.http.post(this.BaseURI + '/ApplicationUser/RegisterAdmin', body);
+    return this.http.post(this.BaseURI + '/ApplicationUser/DodajAdmina', body);
   }
   
   login(formData) {

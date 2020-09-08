@@ -52,11 +52,11 @@ const routes: Routes = [
 
 
   {
-    path: "admin-avio",
+    path: "dodaj-avio",
     component: AvioDodajComponent
   },
   {
-    path: "admin-rent",
+    path: "dodaj-rentacar",
     component: RentacarDodajComponent
   },
   {
