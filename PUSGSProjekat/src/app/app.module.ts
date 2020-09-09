@@ -105,7 +105,8 @@ export function provideConfig()
     ProfilKorisnikaComponent,
     HomepageFormaComponent,
     AdminRegistracijaComponent,
-    IzvestajAvioComponent
+    IzvestajAvioComponent,
+    AdminSistemComponent
   ],
   imports: [
     BrowserModule,
