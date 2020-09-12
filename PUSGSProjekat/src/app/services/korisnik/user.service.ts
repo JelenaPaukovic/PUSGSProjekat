@@ -19,7 +19,7 @@ export class UserService {
     //telefon: ['', Validators.required],
     email: ['', Validators.email],
    lozinka: ['', [Validators.required]],
-
+   uloga:[]
 
   });
 
@@ -60,23 +60,23 @@ export class UserService {
       prezime: this.formModel.value.prezime,
       grad: this.formModel.value.grad,
       //telefon: this.formModel.value.telefon,
-      //email: this.formModel.value.email,
+      email: this.formModel.value.email,
       lozinka: this.formModel.value.lozinka,
-      uloga: ""
+      ulogaKorisnika: ""
     };
-    if(this.formModel.value.ulogaKorisnika=="adminAvio")
+    if(this.formModel.value.uloga=="adminAvio")
     {
-      body.uloga = "AdminAvioKompanije";
+      body.ulogaKorisnika = "AdminAvio";
     }
-    else if((this.formModel.value.ulogaKorisnika=="adminRent"))
+    else if((this.formModel.value.uloga=="adminRent"))
     {
-      body.uloga = "AdminRentACarServisa";
+      body.ulogaKorisnika = "AdminRentacar";
     }
     else
     {
-      body.uloga = "Administrator";
+      body.ulogaKorisnika = "Administrator";
     }
-
+    console.log(body);
     return this.http.post(this.BaseURI + '/ApplicationUser/DodajAdmina', body);
   }
   

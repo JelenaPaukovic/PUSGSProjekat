@@ -83,7 +83,7 @@ export class AvioService {
   }
 
   ucitajAdminAvio(){
-    return this.http.get('https://localhost:44308/api' + 'ApplicationUser/GetAdminAvio');
+    return this.http.get(this.BaseURI + '/ApplicationUser/GetAdminAvio');
   }
 
   ucitajAvio() {

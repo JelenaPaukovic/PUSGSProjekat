@@ -1,23 +1,23 @@
 {
   "format": 1,
   "restore": {
-    "C:\\Users\\Jelena\\Documents\\GitHub\\PUSGSProjekat\\PUSGSProjekat2\\ProjekatPUSGS\\ProjekatPUSGS\\ProjekatPUSGS.csproj": {}
+    "C:\\Users\\Dragas\\Documents\\GitHub\\PUSGSProjekat\\PUSGSProjekat2\\ProjekatPUSGS\\ProjekatPUSGS\\ProjekatPUSGS.csproj": {}
   },
   "projects": {
-    "C:\\Users\\Jelena\\Documents\\GitHub\\PUSGSProjekat\\PUSGSProjekat2\\ProjekatPUSGS\\ProjekatPUSGS\\ProjekatPUSGS.csproj": {
+    "C:\\Users\\Dragas\\Documents\\GitHub\\PUSGSProjekat\\PUSGSProjekat2\\ProjekatPUSGS\\ProjekatPUSGS\\ProjekatPUSGS.csproj": {
       "version": "1.0.0",
       "restore": {
-        "projectUniqueName": "C:\\Users\\Jelena\\Documents\\GitHub\\PUSGSProjekat\\PUSGSProjekat2\\ProjekatPUSGS\\ProjekatPUSGS\\ProjekatPUSGS.csproj",
+        "projectUniqueName": "C:\\Users\\Dragas\\Documents\\GitHub\\PUSGSProjekat\\PUSGSProjekat2\\ProjekatPUSGS\\ProjekatPUSGS\\ProjekatPUSGS.csproj",
         "projectName": "ProjekatPUSGS",
-        "projectPath": "C:\\Users\\Jelena\\Documents\\GitHub\\PUSGSProjekat\\PUSGSProjekat2\\ProjekatPUSGS\\ProjekatPUSGS\\ProjekatPUSGS.csproj",
-        "packagesPath": "C:\\Users\\Jelena\\.nuget\\packages\\",
-        "outputPath": "C:\\Users\\Jelena\\Documents\\GitHub\\PUSGSProjekat\\PUSGSProjekat2\\ProjekatPUSGS\\ProjekatPUSGS\\obj\\",
+        "projectPath": "C:\\Users\\Dragas\\Documents\\GitHub\\PUSGSProjekat\\PUSGSProjekat2\\ProjekatPUSGS\\ProjekatPUSGS\\ProjekatPUSGS.csproj",
+        "packagesPath": "C:\\Users\\Dragas\\.nuget\\packages\\",
+        "outputPath": "C:\\Users\\Dragas\\Documents\\GitHub\\PUSGSProjekat\\PUSGSProjekat2\\ProjekatPUSGS\\ProjekatPUSGS\\obj\\",
         "projectStyle": "PackageReference",
         "fallbackFolders": [
           "C:\\Program Files\\dotnet\\sdk\\NuGetFallbackFolder"
         ],
         "configFilePaths": [
-          "C:\\Users\\Jelena\\AppData\\Roaming\\NuGet\\NuGet.Config",
+          "C:\\Users\\Dragas\\AppData\\Roaming\\NuGet\\NuGet.Config",
           "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.Offline.config"
         ],
         "originalTargetFrameworks": [
