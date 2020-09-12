@@ -43,10 +43,10 @@ namespace ProjekatPUSGS.Controllers
         //POST : /api/ApplicationUser/Register
         public async Task<Object> Register(ApplicationUserModel model)
         {
-            model.Username = model.Email;
+            model.UserName = model.Email;
             var applicationUser = new Korisnik()
             {
-                UserName = model.Username,
+                UserName = model.UserName,
                 Ime = model.Ime,
                 Prezime = model.Prezime,
                 Grad = model.Grad,
@@ -172,15 +172,15 @@ namespace ProjekatPUSGS.Controllers
         //POST : /api/ApplicationUser/Register
         public async Task<Object> DodajAdmina(ApplicationUserModel model)
         {
-            model.Username = model.Email;
+            model.UserName = model.Email;
 
             var applicationUser = new Korisnik()
             {
-                UserName = model.Email,
+                UserName = model.UserName,
                 Ime = model.Ime,
                 Prezime = model.Prezime,
                 Grad = model.Grad,
-                Telefon = model.Telefon,
+               // Telefon = model.Telefon,
                 Email = model.Email,
                // UlogaKorisnika = Tip.RegistrovaniKorisnik
             };

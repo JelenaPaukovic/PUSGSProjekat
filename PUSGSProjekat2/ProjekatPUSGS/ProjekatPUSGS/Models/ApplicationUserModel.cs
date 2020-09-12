@@ -7,7 +7,7 @@ namespace ProjekatPUSGS.Models
 {
     public class ApplicationUserModel
     {
-        public string Username { get; set; }
+        public string UserName { get; set; }
 
         public string Ime { get; set; }
         public string Prezime { get; set; }

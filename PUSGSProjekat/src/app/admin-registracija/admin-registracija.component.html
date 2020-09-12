@@ -1,14 +1,16 @@
 <div class="container">
     <h1>Registracija korisnika</h1>
     <form [formGroup]="service.formModel" autocomplete="off" (submit)="onSubmit()">
-        <div class="row" >
-            <div class="col-sm-6 form-group required" >
+        <div class="row">
+            <div class="col-sm-6 form-group required">
                 <label for="ime"><b>Unesite ime:</b></label>
-                <input type = "text" id="ime" class="form-control" formControlName="ime">
-                <div class="text-danger" *ngIf = "service.formModel.get('ime').touched && service.formModel.get('ime').errors?.required">
+                <input type="text" id="ime" class="form-control" formControlName="ime">
+                <div class="text-danger"
+                    *ngIf="service.formModel.get('ime').touched && service.formModel.get('ime').errors?.required">
                     Ovo polje je obavezno!
                 </div>
-                <div *ngIf="service.formModel.get('ime').touched && service.formModel.get('ime').errors?.maxlength" class="text-danger">
+                <div *ngIf="service.formModel.get('ime').touched && service.formModel.get('ime').errors?.maxlength"
+                    class="text-danger">
                     Ime može sadržati maksimalno 20 karaktera!
                 </div>
             </div>
@@ -18,10 +20,12 @@
             <div class="col-sm-6 form-group">
                 <label for="prezime"><b>Unesite prezime:</b></label>
                 <input type="text" id="prezime" class="form-control" formControlName="prezime">
-                <div class = "text-danger" *ngIf="service.formModel.get('prezime').touched && service.formModel.get('prezime').errors?.required">
+                <div class="text-danger"
+                    *ngIf="service.formModel.get('prezime').touched && service.formModel.get('prezime').errors?.required">
                     Ovo polje je obavezno!
                 </div>
-                <div *ngIf="service.formModel.get('prezime').touched && service.formModel.get('prezime').errors?.maxlength" class="text-danger">
+                <div *ngIf="service.formModel.get('prezime').touched && service.formModel.get('prezime').errors?.maxlength"
+                    class="text-danger">
                     Prezime može sadržati maksimalno 20 karaktera
                 </div>
             </div>
@@ -31,18 +35,20 @@
             <div class="col-sm-6 form-group">
                 <label for="grad"><b>Unesite grad:</b></label>
                 <input type="text" id="grad" class="form-control" formControlName="grad">
-                <div class = "text-danger" *ngIf="service.formModel.get('grad').touched && service.formModel.get('grad').errors?.required">
+                <div class="text-danger"
+                    *ngIf="service.formModel.get('grad').touched && service.formModel.get('grad').errors?.required">
                     Ovo polje je obavezno!
                 </div>
-                <div *ngIf="service.formModel.get('grad').touched && service.formModel.get('grad').errors?.maxlength" class="text-danger">
+                <div *ngIf="service.formModel.get('grad').touched && service.formModel.get('grad').errors?.maxlength"
+                    class="text-danger">
                     Grad može sadrvati maksimalno 20 karaktera!
                 </div>
             </div>
         </div>
-
+        <!--
         <div class="row">
             <div class="col-sm-6 form-group">
-                <label for="telefon"><b>Unesite broj telefona:</b></label>
+                <label for="brTel"><b>Unesite broj telefona:</b></label>
                 <input type="text" id="telefon" class="form-control" formControlName="telefon">
                 <div class = "text-danger" *ngIf="service.formModel.get('telefon').touched && service.formModel.get('telefon').errors?.required">
                     Ovo polje je obavezno!
@@ -51,87 +57,82 @@
                     Telefon može sadržati maksimalno 20 karaktera!
                 </div>
             </div>
-        </div>
+        </div>-->
 
         <div class="row">
             <div class="col-sm-6 form-group">
                 <label for="email"><b>Unesite email adresu:</b></label>
                 <input type="text" id="email" class="form-control" formControlName="email">
-                <div class = text-danger *ngIf="service.formModel.get('email').touched && service.formModel.get('email').errors?.email">
+                <div class=text-danger
+                    *ngIf="service.formModel.get('email').touched && service.formModel.get('email').errors?.email">
                     Morate uneti validnu e-mail adresu!
                 </div>
 
-                <div *ngIf="service.formModel.get('email').touched && service.formModel.get('email').errors?.maxlength" class="text-danger">
+                <div *ngIf="service.formModel.get('email').touched && service.formModel.get('email').errors?.maxlength"
+                    class="text-danger">
                     E-mail adresa može sadržati maksimalno 30 karaktera!
                 </div>
-                <div *ngIf="service.formModel.get('email').touched && service.formModel.get('email').errors?.required" class="text-danger">
+                <div *ngIf="service.formModel.get('email').touched && service.formModel.get('email').errors?.required"
+                    class="text-danger">
                     Ovo polje je obavezno!
                 </div>
-                
+
             </div>
         </div>
 
 
-        <div formGroupName="Lozinke">
-            <div class="col-sm-6 form-group required">
-              <label><b>Unesite lozinku:</b></label>
-              <input type="password" class="form-control" formControlName="lozinka">
-              <div *ngIf="service.formModel.get('Lozinke.lozinka').touched && service.formModel.get('Passwords.lozinka').errors?.maxlength" class="text-danger">
-                Lozinka može sadržati maksimalno 20 karaktera!
+        <div class="row">
+            <div class="col-sm-6 form-group">
+                <label for="lozinka"><b>Unesite lozinku:</b></label>
+                <input type="password" id="lozinka" class="form-control" formControlName="lozinka">
+                <div class=text-danger
+                    *ngIf="service.formModel.get('lozinka').touched && service.formModel.get('lozinka').errors?.email">
+                    Morate uneti lozinku!
+                </div>
+
+                <div *ngIf="service.formModel.get('lozinka').touched && service.formModel.get('lozinka').errors?.maxlength"
+                    class="text-danger">
+                    lozinka može sadržati maksimalno 30 karaktera!
+                </div>
+                <div *ngIf="service.formModel.get('lozinka').touched && service.formModel.get('lozinka').errors?.required"
+                    class="text-danger">
+                    Ovo polje je obavezno!
+                </div>
+
             </div>
-            <div *ngIf="service.formModel.get('Lozinke.lozinka').touched && service.formModel.get('Passwords.lozinka').errors?.required" class="text-danger">
-                Ovo polje je obavezno!
-            </div>
-            <div *ngIf="service.formModel.get('Lozinke.lozinka').touched && service.formModel.get('Passwords.lozinka').errors?.minlength" class="text-danger">
-                Lozinka mora sadržati minimalno 4 karaktera!
-            </div>
-          
-            </div>
-            <div class="col-sm-6 form-group required">
-              <label><b>Ponovite lozinku:</b></label>
-              <input type="password" class="form-control" formControlName="ponovoLozinka">
-              <div *ngIf="service.formModel.get('Lozinke.ponovoLozinka').touched && service.formModel.get('Passwords.lozinka').errors?.maxlength" class="text-danger">
-                Lozinka može sadržati maksimalno 20 karaktera!
-            </div>
-            <div *ngIf="service.formModel.get('Lozinke.ponovoLozinka').touched && service.formModel.get('Passwords.lozinka').errors?.required" class="text-danger">
-                Ovo polje je obavezno!
-            </div>
-            <div *ngIf="service.formModel.get('Lozinke.ponovoLozinka').touched && service.formModel.get('Passwords.lozinka').errors?.minlength" class="text-danger">
-                Lozinka mora sadržati minimalno 4 karaktera!
-            </div>
-            <div *ngIf="service.formModel.get('Lozinke.ponovoLozinka').touched && service.formModel.get('Passwords.lozinka2').errors?.passwordMismatch" class="text-danger">
-                Morate uneti istu lozinku!
-            </div>
-            </div>
-          </div>
-        
-       
-        
+        </div>
+
+
+
+
+
 
         <div class="row">
             <div class="col-sm-6 form-group">
-               <label for="uloga">Vrsta admina</label> 
-               <select class="form-control" formControlName="uloga">
+                <label for="uloga">Vrsta admina</label>
+                <select class="form-control" formControlName="uloga">
                     <option value="adminAvio">Administrator avio kompanije</option>
                     <option value="adminRent">Administrator rent-a-car servisa</option>
                     <option value="adminSist">Administrator sistema</option>
-               </select>
-                    <div *ngIf="service.formModel.get('uloga').touched && service.formModel.get('uloga').errors?.required" class="text-danger">
-                        Morate odabrati ulogu
-                    </div>
-             
+                </select>
+                <div *ngIf="service.formModel.get('uloga').touched && service.formModel.get('uloga').errors?.required"
+                    class="text-danger">
+                    Morate odabrati ulogu
+                </div>
+
             </div>
         </div>
         <div class="row">
             <div class="col-3">
-                <button class="btn btn-success" [disabled]="!service.formModel.valid" type="submit">Registrujte se</button> <!-- routerLink="/homepage-forma"--> <!--[disabled]="!courseForm.valid" -->
+                <button class="btn btn-success" [disabled]="!service.formModel.valid" type="submit">Registrujte
+                    se</button> <!-- routerLink="/homepage-forma"-->
+                <!--[disabled]="!courseForm.valid" -->
             </div>
             <div class="col-1">
-                <button class="btn btn-primary" (click)="onClear()" type="button">Obriši</button> 
+                <button class="btn btn-primary" (click)="onClear()" type="button">Obriši</button>
             </div>
         </div>
 
 
-    </form>
-
+</form>
 </div>
