@@ -1,0 +1,147 @@
+<div class="container">
+    <h1>Profil rent-a-car servisa {{profil.naziv}}</h1>
+
+    <div class="border border-danger rounded rounded-lg w-50">
+    <h3>Nalazimo se na adresi {{profil.adresa}}</h3>
+    <h4>{{profil.promotivniOpis}}</h4>
+    <h3>Ocena: {{profil.ocena}}</h3>   
+    <button  class="btn btn-success"  (click)="brzeRezervacije()">Vozila na popustu</button>
+    </div> 
+
+    <br/>
+
+    <div *ngIf="brzeRez"> 
+        <h3 colspan="3" class="text-center">Spisak brzih rezervacija</h3>
+        <table class=" table table-secondary" border="1">
+            <thead class="thead-dark">
+                <th class="text-center">Vozilo</th>
+                <th class="text-center">Pocetni datum</th>
+                <th class="text-center">Krajnji datum</th>
+                <th class="text-center">Pocetna cena</th>
+                <th class="text-center">Popust</th>
+                <th class="text-center">Cena sa popustom</th>
+                <th></th>
+            </thead>
+            <tbody>
+                <tr *ngFor="let rez of brzeRez">
+                    <td  class="text-center"></td>  
+                    <td  class="text-center">{{rez.pocetniDatum}}</td> 
+                    <td  class="text-center">{{rez.krajnjiDatum}}</td> 
+                    <td  class="text-center">{{rez.pocetnaCena}}</td> 
+                    <td  class="text-center">{{rez.popust}}</td>  
+                    <td  class="text-center">{{rez.novaCena}}</td>
+                    <button  *ngIf="Getuloga() == '1'"  class="btn btn-success"  (click)="RezervisiBrzuRezervaciju(rez)">Rezervisi</button>
+                </tr>
+                </tbody> 
+        </table>
+    </div>
+    <br/>
+  
+    <h2>Unesite sledece podatke i prikazace Vam se vozila koja Vam odgovaraju!</h2>
+    <form [formGroup]="formModel" autocomplete="off" (submit)="pretragaVozila()">
+    <div class="form-row">
+        <div class="col-md-4">
+            <div class="input-group form-group">
+                <div class="input-group-prepend">
+                    <span class="input-group-text"><i class="material-icons"></i></span>
+                </div>
+                <input type="text" class="form-control" placeholder="Mesto preuzimanja" id="MestoPreFilter" formControlName="MestoPreFilter">
+            </div>
+        </div>
+        <div class="col-md-4">
+            <div class="input-group form-group">
+                <div class="input-group-prepend">
+                    <span class="input-group-text"><i class="material-icons">Datum preuzimanja</i></span>
+                </div>
+                <input type="date" class="form-control" placeholder="Datum preuzimanja" id="DatumPreFilter" formControlName="DatumPreFilter">
+            </div>
+        </div>
+
+        <div class="col-md-4">
+            <div class="input-group form-group">
+                <div class="input-group-prepend">
+                    <span class="input-group-text"><i class="material-icons"></i></span>
+                </div>
+                <input type="text" class="form-control" placeholder="Tip vozila" id="TipVozilaFilter" formControlName="TipVozilaFilter">
+            </div>
+        </div>
+
+        <div class="col-md-4">
+            <div class="input-group form-group">
+                <div class="input-group-prepend">
+                    <span class="input-group-text"><i class="material-icons"></i></span>
+                </div>
+                <input type="text" class="form-control" placeholder="Mesto vracanja" id="MestoVraFilter" formControlName="MestoVraFilter">
+            </div>
+        </div>
+        <div class="col-md-4">
+            <div class="input-group form-group">
+                <div class="input-group-prepend">
+                    <span class="input-group-text"><i class="material-icons">Datum vracanja</i></span>
+                </div>
+                <input type="date" class="form-control" placeholder="Datum vracanja" id="DatumVraFilter" formControlName="DatumVraFilter">
+            </div>
+        </div>
+       
+        <div class="col-md-4">
+            <div class="input-group form-group">
+                <div class="input-group-prepend">
+                    <span class="input-group-text"><i class="material-icons"></i></span>
+                </div>
+                <input type="number" class="form-control" placeholder="Broj putnika" id="BrojPutnikaFilter" formControlName="BrojPutnikaFilter">
+            </div>
+        </div>
+        <div class="col-md-4">
+            <div class="input-group form-group">
+                <div class="input-group-prepend">
+                    <span class="input-group-text"><i class="material-icons"></i></span>
+                </div>
+                <input type="number" class="form-control" placeholder="Cena od" id="CenaOdFilter" formControlName="CenaOdFilter">
+            </div>
+        </div>
+        <div class="col-md-4">
+            <div class="input-group form-group">
+                <div class="input-group-prepend">
+                    <span class="input-group-text"><i class="material-icons"></i></span>
+                </div>
+                <input type="number" class="form-control" placeholder="Cena do" id="CenaDoFilter" formControlName="CenaDoFilter">
+            </div>
+        </div>
+        <div>
+            <div class="col-md-4">
+                <button class="btn btn-success" [disabled]="!formModel.valid"  type="submit">Pretraži</button>
+            </div>
+        </div>
+    </div>
+</form>
+
+    <h3>Spisak vozila koja su u ponudi: </h3>
+
+    <table class="table table-secondary" border="1">
+        <thead class="thead-dark">
+            <tr>
+                <th>Naziv</th>
+                <th>Marka</th>
+                <th>Model</th>
+                <th>Godina proizvodnje</th>
+                <th>Broj sedišta</th>
+                <th>Tip vozila</th>
+                <th>  </th>
+            </tr>
+        </thead>
+        <tbody>
+            <tr *ngFor="let item of filteredVozila">
+                <td>{{item.naziv}}</td>
+                <td>{{item.marka}}</td>
+                <td>{{item.model}}</td>
+                <td>{{item.godinaProizvodnje}}</td>
+                <td>{{item.brojSedista}}</td>
+                <td>{{item.tipVozila}}</td>
+                <td><button *ngIf="Getuloga() == '1'" class="btn btn-success"  (click)="rezervisi(item)">Rezerviši</button></td>
+            </tr>
+        </tbody>
+    </table>
+
+    <!-- spisak filijala -->
+    
+</div>

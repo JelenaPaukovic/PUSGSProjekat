@@ -1,18 +1,16 @@
 import { Component, OnInit } from '@angular/core';
 import { FormGroup, FormControl, Validators } from '@angular/forms';
-import {Letovi} from 'src/app/entities/letovi/letovi';
-import {LetoviService} from 'src/app/services/letovi/letovi.service';
-import {Vozilo} from 'src/app/entities/vozilo/vozilo';
-import {VoziloService} from 'src/app/services/vozilo/vozilo.service';
-import {PromenaLozinkeComponent} from 'src/app/promena-lozinke/promena-lozinke.component';
+import { Destinacija } from 'src/app/entities/destinacija/destinacija';
+import { DestinacijaService } from 'src/app/services/destinacija-service/destinacija.service';
+import { Vozilo } from 'src/app/entities/vozilo/vozilo';
+import { VoziloService } from 'src/app/services/vozilo/vozilo.service';
+import { PromeniLozinkuComponent } from '../promeni-lozinku/promeni-lozinku.component';
 import { environment } from 'src/environments/environment';
 import { NavbarComponent } from '../navbar/navbar.component';
-import {RezervacijaVozilaService} from 'src/app/services/rezervacija-vozila/rezervacija-vozila.service';
-import {RezervacijaLetovaService} from 'src/app/services/rezervacija-letova/rezervacija-letova.service';
-import { RezervacijaVozila } from 'src/app/entities/rezervacija-vozila/rezervacija-vozila';
-import {RezervacijaLetova} from 'src/app/entities/rezervacija-letova/rezervacija-letova';
-
-
+import { RezervacijaVozilaService } from 'src/app/services/rezervacijaVozila/rezervacija-vozila.service';
+import { RezervacijaDestinacijeService } from 'src/app/services/rezervacijaDestinacije/rezervacija-destinacije.service';
+import { RezervacijaVozila } from 'src/app/entities/rezervacijaVozila/rezervacijaVozila';
+import { RezervacijaDestinacije } from 'src/app/entities/rezervacijaDestinacije/rezervacijaDestinacije';
 
 
 @Component({
@@ -30,19 +28,19 @@ export class HomepageFormaComponent implements OnInit {
   izmena:any;
 
   rezervacijeVozila:Array<RezervacijaVozila>;
-  rezervacijeLetova:Array<RezervacijaLetova>;
+  rezervacijeDestinacija:Array<RezervacijaDestinacije>;
 
   rezervacijaVozilaZaOcenjivanje:RezervacijaVozila;
-  rezervacijaLetovaZaOcenjivanje:RezervacijaLetova;
+  rezervacijaDestinacijaZaOcenjivanje:RezervacijaDestinacije;
 
-  constructor(private servisRezervacijaVozila:RezervacijaVozilaService,private servisRezervacijaLet:RezervacijaLetovaService) { }
+  constructor(private servisRezervacijaVozila:RezervacijaVozilaService,private servisRezervacijaDest:RezervacijaDestinacijeService ) { }
 
   ngOnInit(): void {
     this.izmena = localStorage.getItem("sifraIzmenjena");
     this.getSvojaVozila();
-    this.getSvojiLetovi();
-
+    this.getSvojeDestinacije();
   }
+
   get Getuloga() {
     return NavbarComponent.uloga;
   }
@@ -64,32 +62,33 @@ export class HomepageFormaComponent implements OnInit {
       );
   }
 
-   //metoda za uzimanje samo tvojih rezervacija destinacija
-   getSvojiLetovi():void
-   {
-     this.servisRezervacijaLet.getRezervacijeZaOdredjenog(localStorage.getItem('userName')).subscribe(
-       (res: any) => {
-         this.rezervacijeLetova = new Array<RezervacijaLetova>();
- 
-         res.forEach(element => {
-           this.rezervacijeLetova.push(element);
-         });
-         
-         //console.log(this.rezervacijeDestinacija);
-       }
-       );
-   }
+  //metoda za uzimanje samo tvojih rezervacija destinacija
+  getSvojeDestinacije():void
+  {
+    this.servisRezervacijaDest.getRezervacijeZaOdredjenog(localStorage.getItem('userName')).subscribe(
+      (res: any) => {
+        this.rezervacijeDestinacija = new Array<RezervacijaDestinacije>();
 
-   oceniLetoveIAvio():void{
-    let ocenaLet = (<HTMLInputElement> document.getElementById("ocenaLet")).value;
+        res.forEach(element => {
+          this.rezervacijeDestinacija.push(element);
+        });
+        
+        //console.log(this.rezervacijeDestinacija);
+      }
+      );
+  }
+
+  oceniDestinacijuIAvio():void{
+    let ocenaDest = (<HTMLInputElement> document.getElementById("ocenaDest")).value;
     let ocenaAvio = (<HTMLInputElement> document.getElementById("ocenaAvio")).value;
 
-    this.servisRezervacijaLet.oceni(this.rezervacijaLetovaZaOcenjivanje.id,+ocenaLet,+ocenaAvio).subscribe(
+    this.servisRezervacijaDest.oceni(this.rezervacijaDestinacijaZaOcenjivanje.id,+ocenaDest,+ocenaAvio).subscribe(
       (res: any) => {
 
       }
       );
   }
+
 
   oceniServisIVozilo():void{
     let cenaServis = (<HTMLInputElement> document.getElementById("cenaServis")).value;
@@ -102,12 +101,11 @@ export class HomepageFormaComponent implements OnInit {
       );
   }
 
-  oceniLet(rez:RezervacijaLetova):void{
-    this.rezervacijaLetovaZaOcenjivanje=rez;
+  oceniDestinaciju(rez:RezervacijaDestinacije):void{
+    this.rezervacijaDestinacijaZaOcenjivanje=rez;
   }
 
   oceniVoziloZaRentACar(rez:RezervacijaVozila):void{
     this.rezervacijaVozilaZaOcenjivanje=rez;
   }
-
 }

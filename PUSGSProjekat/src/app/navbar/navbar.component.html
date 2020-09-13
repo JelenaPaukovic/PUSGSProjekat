@@ -1,39 +1,5 @@
-<!--<nav class="navbar navbar-expand-sm navbar-light bg-light" style="background-color: #e3f2fd;">
-    <a routerLink="" class="navbar-brand"> °°° AvioAuto agencija J&B °°° Dobrodošli!</a>
-
-    <div class="collapse navbar-collapse">
-        <ul class="navbar-nav mr-auto">
-           
-            <li class="nav-item" *ngIf="Getuloga == '3'">
-                <a class="btn btn-info my-2 my-sm-0" type="btn" routerLink="/registracija" style="margin-left :5px">Registracija korisnika</a>
-            </li>
-
-            <li class="nav-item" *ngIf="Getuloga == '3'">
-                <a class="btn btn-info my-2 my-sm-0" type="btn" routerLink="/prijava" style="margin-left :5px">Prijava korisnika</a>
-            </li>
-
-            <li class="nav-item">
-                <a class="btn btn-info my-2 my-sm-0" type="btn" routerLink="/rentacar-servis" style="margin-left :5px">Rent-a-car servisi</a>
-            </li>
-            
-            <li class="nav-item">
-                <a class="btn btn-info my-2 my-sm-0" type="btn" routerLink="/avio-servis" style="margin-left :5px">Aviokompanije</a>
-            </li>
-
-            <li class="nav-item">
-                <a class="btn btn-info my-2 my-sm-0" type="btn" routerLink="/prelaz" style="margin-left :5px">ADMIN
-                </a>
-            </li>
-            <li class="nav-item" *ngIf="Getuloga != '3'" >
-                <button class="btn btn-outline-light  my-2 ml-5 my-sm-0" type="btn" (click)="odjaviSe()" style="margin-left :5px">Odjavite se</button>
-            </li>
-        </ul>
-    </div>
-</nav>
--->
-
 <nav class="navbar navbar-expand-sm navbar-dark bg-dark">
-    <a routerLink="" class="navbar-brand">°°° AvioAuto agencija J&B °°° Dobrodošli! </a>
+    <a routerLink="" class="navbar-brand">Dobro došli na sajt ...    </a>
     <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
       <span class="navbar-toggler-icon"></span>
     </button>
@@ -41,17 +7,17 @@
     <div class="collapse navbar-collapse" id="navbarSupportedContent">
       <ul class="navbar-nav mr-auto">
         <li class="nav-item active">
-            <a class="btn btn-outline-light my-2 my-sm-0" type="btn" routerLink="/avio-servis" style="margin-left :5px">Avio-kompanije</a>
+            <a class="btn btn-outline-light my-2 my-sm-0" type="btn" routerLink="/avio-kompanija-pocetna" style="margin-left :5px">Avio-kompanije</a>
         </li>
         <li class="nav-item">
-            <a class="btn btn-outline-light my-2 my-sm-0" type="btn" routerLink="/rentacar-servis" style="margin-left :5px">Rent-a-car servisi</a>
+            <a class="btn btn-outline-light my-2 my-sm-0" type="btn" routerLink="/ren-a-car" style="margin-left :5px">Rent-a-car servisi</a>
         </li>
         <li class="nav-item" *ngIf="Getuloga == '4'">
             <a class="btn btn-outline-light my-2 my-sm-0" type="btn" routerLink="/profil" style="margin-left :5px">Profil administratora sistema</a>
         </li>
        
         <li *ngIf="Getuloga == '3'">
-          <a class="btn btn-outline-light my-2 my-sm-0" type="btn" routerLink="/profilRentAdmina" >Profil rent-a-car administratora</a>
+          <a class="btn btn-outline-light my-2 my-sm-0" type="btn" routerLink="/profilRent" >Profil rent-a-car administratora</a>
         </li>
         <li *ngIf="Getuloga == '2'">
             <a class="btn btn-outline-light my-2 my-sm-0" type="btn" routerLink="/profilAdminAvio">Profil administratora avio-kompanije</a>

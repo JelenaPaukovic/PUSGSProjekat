@@ -43,6 +43,22 @@ import {AdminSistemComponent} from './admin-sistem/admin-sistem.component';
 ////import { GoogleLoginProvider, FacebookLoginProvider, AuthService } from 'angular-6-social-login';  
 //import { SocialLoginModule, AuthServiceConfig } from 'angular-6-social-login';  
 import { ChartsModule, WavesModule } from 'angular-bootstrap-md';
+import { PromeniLozinkuComponent } from './promeni-lozinku/promeni-lozinku/promeni-lozinku.component';
+import { RentAdminProfilComponent } from './rent-admin-profil/rent-admin-profil/rent-admin-profil.component';
+import { RentFilterdeComponent } from './rent-filterde/rent-filterde.component';
+import { AvioProfilComponent } from './avio-profil/avio-profil.component';
+import { DodajAkompFormaComponent } from './dodaj-akomp-forma/dodaj-akomp-forma.component';
+import { AviokompanijePocetnaComponent } from './aviokompanije-pocetna/aviokompanije-pocetna.component';
+import { AviokompanijeFilteredComponent } from './aviokompanije-filtered/aviokompanije-filtered.component';
+import { PrijavaFormaComponent } from './prijava-forma/prijava-forma.component';
+import { RentIzvestajComponent } from './rent-izvestaj/rent-izvestaj.component';
+import { RegistracijaAdminComponent } from './registracija-admin/registracija-admin.component';
+import { RentPocetnaComponent } from './rent-pocetna/rent-pocetna.component';
+import { RentProfilComponent } from './rent-profil/rent-profil.component';
+import { DodajRecarFormaComponent } from './dodaj-recar-forma/dodaj-recar-forma.component';
+import { RegistracijaFormaComponent } from './registracija-forma/registracija-forma.component';
+import { AdminSistemProfilComponent } from './admin-sistem-profil/admin-sistem-profil.component';
+import { AvioPocetnaComponent } from './avio-pocetna/avio-pocetna.component';
 //import { AuthServiceConfig } from 'angular-6-social-login';
 
 
@@ -106,7 +122,23 @@ export function provideConfig()
     HomepageFormaComponent,
     AdminRegistracijaComponent,
     IzvestajAvioComponent,
-    AdminSistemComponent
+    AdminSistemComponent,
+    PromeniLozinkuComponent,
+    RentAdminProfilComponent,
+    RentFilterdeComponent,
+    AvioProfilComponent,
+    DodajAkompFormaComponent,
+    AviokompanijePocetnaComponent,
+    AviokompanijeFilteredComponent,
+    PrijavaFormaComponent,
+    RentIzvestajComponent,
+    RegistracijaAdminComponent,
+    RentPocetnaComponent,
+    RentProfilComponent,
+    DodajRecarFormaComponent,
+    RegistracijaFormaComponent,
+    AdminSistemProfilComponent,
+    AvioPocetnaComponent
   ],
   imports: [
     BrowserModule,

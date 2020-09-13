@@ -1,0 +1,20 @@
+<hr/>
+<h5 style="background-color: #b8d9c1; border-style:double;" align = "center">Rezultati filtriranja po zadatim parametrima</h5>
+<table class="table" border="1" bgcolor="#b8d9c1">
+    <thead class="thead-dark">
+        <tr>
+            <th>Naziv</th>
+            <th>Sedište avio-kompanije</th>
+            <th>Prosečna ocena avio-kompanije</th>
+            <th>Detalji</th>
+        </tr>
+    </thead>
+    <tbody>
+        <tr *ngFor="let aircompany of filteredAirCompanies">
+            <td>{{aircompany.nazivAvioKompanije}}</td>
+            <td>{{aircompany.adresa}}</td>
+            <td>{{aircompany.infoPrtljag}}</td>
+            <td> <button class="btn btn-success" routerLink="/avio-kompanija-pocetna/{{aircompany.id}}/profilKompanije">Detalji</button></td>
+        </tr>
+    </tbody>
+</table>

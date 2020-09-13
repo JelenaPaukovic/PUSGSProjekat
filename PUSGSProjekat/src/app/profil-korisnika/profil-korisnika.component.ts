@@ -2,8 +2,8 @@ import { Component, OnInit } from '@angular/core';
 import { FormGroup, FormControl, Validators } from '@angular/forms';
 import { Korisnik } from 'src/app/entities/korisnik/korisnik';
 import { AvionService } from 'src/app/services/avion/avion.service';
-import { KorisnikService } from 'src/app/services/korisnik/korisnik.service';
-import { UserService } from 'src/app/services/korisnik/user.service';
+import { KorisnikServiceService } from 'src/app/services/korisnik-service/korisnik-service.service';
+import { UserService } from 'src/app/services/korisnik-service/user.service';
 
 @Component({
   selector: 'app-profil-korisnika',
@@ -12,15 +12,13 @@ import { UserService } from 'src/app/services/korisnik/user.service';
 })
 export class ProfilKorisnikaComponent implements OnInit {
 
-
-
   korisnikPocetnaForma : FormGroup;
 
   allKorisnik: Array<Korisnik>;
   korisnikToEdit: Korisnik;
   korisnik:Korisnik;
 
-  constructor(private korisnikService: KorisnikService, private userService:UserService) {
+  constructor(private korisnikService: KorisnikServiceService,private userService:UserService) {
     //alert("Upravo se pozvao konstruktor komponente Avion");
     this.allKorisnik = new Array<Korisnik>();
     this.korisnikToEdit = new Korisnik("", "", "", "", "", "", "");
@@ -115,6 +113,5 @@ export class ProfilKorisnikaComponent implements OnInit {
       alert('Vaša izmena je sačuvana!');
     }
   }
-
 
 }

@@ -1,209 +1,214 @@
 <div *ngIf="(Getuloga == '2' || Getuloga == '3') && izmena=='false'">
-    <app-promena-lozinke></app-promena-lozinke>
-  </div>
+  <app-promeni-lozinku></app-promeni-lozinku>
+</div>
 
-  <div *ngIf="(Getuloga == '2' && izmena=='true') || (Getuloga == '3' && izmena=='true') || (Getuloga != '2' && Getuloga != '3')">
-    <h2 align = "center" style="background-color: #b8d9c1; border-style:double;">Home page</h2>
-    <hr/>
-    <div class="container">
-        <table class="table table-borderless">
-            <thead>
-                <tr align="center">
-                    <th class="table-light" scope="col">Lista aviokompanija:</th>
-                    <th class="table-success" scope="col">Lista rent-a-car servisa: </th>
-                    <th class="table-light" scope="col">Profil korisnika: </th>
-                    <th class="table-success" scope="col">Lista prijatelja: </th>
-       
-                </tr>
-            </thead>
-            <tbody>
-                <tr>
-                    <td align="center"><button  class="btn btn-success" routerLink="/homepage-forma/avio-kompanija-pocetna">Klikni</button></td>
-                    <td align="center"><button class="btn btn-success" routerLink="/homepage-forma/ren-a-car">Klikni</button></td>
-                    <td align="center"><button class="btn btn-success" routerLink="/homepage-forma/profilKorisnika">Klikni</button></td>
-                    <td align="center"><button class="btn btn-success">Klikni</button></td>
-    
-                </tr>
-            </tbody>
-        </table>
-    </div>
-    <br/>
-    <div class="container">
-        <h3 style="background-color: #b8d9c1; border-style:double;">Spisak rezervisanih letova</h3>
-        <br/> <br/>
 
-        <table class="table" bgcolor="#b8d9c1" border="1">
-            <thead class="thead-dark">
-                <tr>
-                    <th>Pocetni datum</th>
-                    <th>Krajnji datum</th>
-                    <th>Cena</th>
-                    <th>Dugme</th>
-                </tr>
-            </thead>
-            <tbody>
-                <tr *ngFor="let item of rezervacijeLetova">
-                    <td>{{item.pocetniDatum}}</td>
-                    <td>{{item.krajnjiDatum}}</td>
-                    <td>{{item.cena}}</td>
-                    <td><button class="btn btn-success">Otkaži</button></td>
-                    <td *ngIf="item.zavrseno==true"><button class="btn btn-success" data-toggle="modal" data-target="#OceniLet" (click)="oceniLet(item)">Oceni</button></td>
-        
-                </tr>
-            </tbody>
-        </table>
-    </div>
-    <br/>
 
-    <div class="container">
-        <h3 style="background-color: #b8d9c1; border-style:double;">Spisak rezervisanih vozila</h3>
-      
-      
-        <br/> <br/>
-      
-        <table class="table" bgcolor="#b8d9c1" border="1">
-            <thead class="thead-dark">
-                 <tr>
-                  <th>Pocetni datum</th>
-                  <th>Krajnji datum</th>
-                  <th>Cena</th>
-                  <th>Dugme</th>
-                 </tr>
-             </thead>
-             <tbody>
-              <tr *ngFor="let item of rezervacijeVozila">
-                <td>{{item.pocetniDatum}}</td>
-                <td>{{item.krajnjiDatum}}</td>
-                <td>{{item.cena}}</td>
-                <td><button class="btn btn-success">Otkaži</button></td>
-                <td *ngIf="item.zavrseno==true"><button class="btn btn-success" data-toggle="modal" data-target="#OceniVozilo" (click)="oceniVoziloZaRentACar(item)">Oceni</button></td>
-            </tr>
-              </tbody>
-        </table>
-        
+<div *ngIf="(Getuloga == '2' && izmena=='true') || (Getuloga == '3' && izmena=='true') || (Getuloga != '2' && Getuloga != '3')">
+
+<h2 align = "center" style="background-color: #b8d9c1; border-style:double;">Home page</h2>
+<hr/>
+<div class="container">
+<table class="table table-borderless">
+    <thead>
+        <tr align = "center">
+          <th class="table-light" scope="col">Lista avio-kompanija:</th>
+          <th class="table-success" scope="col">    Lista rent-a-car servisa: </th>
+          <th class="table-light" scope="col">Profil korisnika: </th>
+          <th class="table-success" scope="col">Lista prijatelja: </th>
+        </tr>
+      </thead>
+    <tbody>
+      <tr>
+        <td align="center"><button  class="btn btn-success" routerLink="/homepage-forma/avio-kompanija-pocetna">Klikni</button></td>
+        <td align="center"><button class="btn btn-success" routerLink="/homepage-forma/ren-a-car">Klikni</button></td>
+        <td align="center"><button class="btn btn-success" routerLink="/homepage-forma/profilKorisnika">Klikni</button></td>
+        <td align="center"><button class="btn btn-success">Klikni</button></td>
+      </tr>
+    </tbody>
+</table>
+</div>
+<br/>
+<div class="container">
+  <h3 style="background-color: #b8d9c1; border-style:double;">Spisak rezervisanih destinacija</h3>
+
+
+  <br/> <br/>
+
+  <table class="table" bgcolor="#b8d9c1" border="1">
+      <thead class="thead-dark">
+           <tr>
+               <th>Pocetni datum</th>
+               <th>Krajnji datum</th>
+               <th>Cena</th>
+               <th>Dugme</th>
+           </tr>
+       </thead>
+       <tbody>
+           <tr *ngFor="let item of rezervacijeDestinacija">
+               <td>{{item.pocetniDatum}}</td>
+               <td>{{item.krajnjiDatum}}</td>
+               <td>{{item.cena}}</td>
+               <td><button class="btn btn-success">Otkaži</button></td>
+               <td *ngIf="item.zavrseno==true"><button class="btn btn-success" data-toggle="modal" data-target="#OceniDest" (click)="oceniDestinaciju(item)">Oceni</button></td>
+            
+           </tr>
+        </tbody>
+  </table>
+  
+</div>
+<br/>
+<div class="container">
+  <h3 style="background-color: #b8d9c1; border-style:double;">Spisak rezervisanih vozila</h3>
+
+
+  <br/> <br/>
+
+  <table class="table" bgcolor="#b8d9c1" border="1">
+      <thead class="thead-dark">
+           <tr>
+            <th>Pocetni datum</th>
+            <th>Krajnji datum</th>
+            <th>Cena</th>
+            <th>Dugme</th>
+           </tr>
+       </thead>
+       <tbody>
+        <tr *ngFor="let item of rezervacijeVozila">
+          <td>{{item.pocetniDatum}}</td>
+          <td>{{item.krajnjiDatum}}</td>
+          <td>{{item.cena}}</td>
+          <td><button class="btn btn-success">Otkaži</button></td>
+          <td *ngIf="item.zavrseno==true"><button class="btn btn-success" data-toggle="modal" data-target="#OceniVozilo" (click)="oceniVoziloZaRentACar(item)">Oceni</button></td>
+      </tr>
+        </tbody>
+  </table>
+  
+</div>
+
+</div>
+
+
+
+
+<div class="modal fade" id="OceniVozilo" tabindex="-1" role="dialog" aria-labelledby="OceniVozilo" aria-hidden="true">
+  <div class="modal-dialog" role="document">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h5 class="modal-title">Ocenite vozilo</h5>
+        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+          <span aria-hidden="true">&times;</span>
+        </button>
       </div>
 
-  </div>
+      <div  class="modal-body">
+        <div class="tab-content">
+          <form class="form">
 
-  <div class="modal fade" id="OceniVozilo" tabindex="-1" role="dialog" aria-labelledby="OceniVozilo" aria-hidden="true">
-    <div class="modal-dialog" role="document">
-      <div class="modal-content">
-        <div class="modal-header">
-          <h5 class="modal-title">Ocenite vozilo</h5>
-          <button type="button" class="close" data-dismiss="modal" aria-label="Close">
-            <span aria-hidden="true">&times;</span>
-          </button>
-        </div>
-  
-        <div  class="modal-body">
-          <div class="tab-content">
-            <form class="form">
-  
-              <div class="form-group row">
-                <label for="lat" class="col-sm-3 col-form-label">Ocena za vozilo:</label>
-                <div class="col-sm-6">
-                  <select id="cenaVozilo" class="form-control">
-                    <option [value]="1">1</option>
-                    <option [value]="2">2</option>
-                    <option [value]="3">3</option>
-                    <option [value]="4">4</option>
-                    <option [value]="5">5</option>
-                    <option [value]="6">6</option>
-                    <option [value]="7">7</option>
-                    <option [value]="8">8</option>
-                    <option [value]="9">9</option>
-                    <option [value]="10">10</option>
-                  </select>
-                </div>
+            <div class="form-group row">
+              <label for="lat" class="col-sm-3 col-form-label">Ocena za vozilo:</label>
+              <div class="col-sm-6">
+                <select id="cenaVozilo" class="form-control">
+                  <option [value]="1">1</option>
+                  <option [value]="2">2</option>
+                  <option [value]="3">3</option>
+                  <option [value]="4">4</option>
+                  <option [value]="5">5</option>
+                  <option [value]="6">6</option>
+                  <option [value]="7">7</option>
+                  <option [value]="8">8</option>
+                  <option [value]="9">9</option>
+                  <option [value]="10">10</option>
+                </select>
               </div>
-  
-              <div class="form-group row">
-                <label for="lat" class="col-sm-3 col-form-label">Ocena za rent-a-car servis:</label>
-                <div class="col-sm-6">
-                  <select id="cenaServis" class="form-control">
-                    <option [value]="1">1</option>
-                    <option [value]="2">2</option>
-                    <option [value]="3">3</option>
-                    <option [value]="4">4</option>
-                    <option [value]="5">5</option>
-                    <option [value]="6">6</option>
-                    <option [value]="7">7</option>
-                    <option [value]="8">8</option>
-                    <option [value]="9">9</option>
-                    <option [value]="10">10</option>
-                  </select>
-                </div>
-              </div>
-  
-            </form>
-          </div>
-          <div class="modal-footer">
-            <button type="button" class="btn btn-secondary" data-dismiss="modal">Izadji</button>
-            <button type="button" class="btn btn-primary" data-dismiss="modal" (click)="oceniServisIVozilo()">Sačuvaj izmene</button>
-          </div>
-        </div>
-      </div>
-    </div>
-  </div>
+            </div>
 
-  <div class="modal fade" id="OceniLet" tabindex="-1" role="dialog" aria-labelledby="OceniLet" aria-hidden="true">
-    <div class="modal-dialog" role="document">
-      <div class="modal-content">
-        <div class="modal-header">
-          <h5 class="modal-title">Ocenite let</h5>
-          <button type="button" class="close" data-dismiss="modal" aria-label="Close">
-            <span aria-hidden="true">&times;</span>
-          </button>
+            <div class="form-group row">
+              <label for="lat" class="col-sm-3 col-form-label">Ocena za rent-a-car servis:</label>
+              <div class="col-sm-6">
+                <select id="cenaServis" class="form-control">
+                  <option [value]="1">1</option>
+                  <option [value]="2">2</option>
+                  <option [value]="3">3</option>
+                  <option [value]="4">4</option>
+                  <option [value]="5">5</option>
+                  <option [value]="6">6</option>
+                  <option [value]="7">7</option>
+                  <option [value]="8">8</option>
+                  <option [value]="9">9</option>
+                  <option [value]="10">10</option>
+                </select>
+              </div>
+            </div>
+
+          </form>
         </div>
-  
-        <div  class="modal-body">
-          <div class="tab-content">
-            <form class="form"> 
-  
-              <div class="form-group row">
-                <label for="lat" class="col-sm-3 col-form-label">Ocena za avion:</label>
-                <div class="col-sm-6">
-                  <select id="ocenaAvio" class="form-control">
-                    <option [value]="1">1</option>
-                    <option [value]="2">2</option>
-                    <option [value]="3">3</option>
-                    <option [value]="4">4</option>
-                    <option [value]="5">5</option>
-                    <option [value]="6">6</option>
-                    <option [value]="7">7</option>
-                    <option [value]="8">8</option>
-                    <option [value]="9">9</option>
-                    <option [value]="10">10</option>
-                  </select>
-                </div>
-              </div>
-  
-              <div class="form-group row">
-                <label for="lat" class="col-sm-3 col-form-label">Ocena za let:</label>
-                <div class="col-sm-6">
-                  <select id="ocenaLet" class="form-control">
-                    <option [value]="1">1</option>
-                    <option [value]="2">2</option>
-                    <option [value]="3">3</option>
-                    <option [value]="4">4</option>
-                    <option [value]="5">5</option>
-                    <option [value]="6">6</option>
-                    <option [value]="7">7</option>
-                    <option [value]="8">8</option>
-                    <option [value]="9">9</option>
-                    <option [value]="10">10</option>
-                  </select>
-                </div>
-              </div>
-  
-            </form>
-          </div>
-          <div class="modal-footer">
-            <button type="button" class="btn btn-secondary" data-dismiss="modal">Izadji</button>
-            <button type="button" class="btn btn-primary" data-dismiss="modal" (click)="oceniLetoveIAvio()">Sačuvaj izmene</button>
-          </div>
+        <div class="modal-footer">
+          <button type="button" class="btn btn-secondary" data-dismiss="modal">Izadji</button>
+          <button type="button" class="btn btn-primary" data-dismiss="modal" (click)="oceniServisIVozilo()">Sačuvaj izmene</button>
         </div>
       </div>
     </div>
   </div>
-  
+</div>
+
+<div class="modal fade" id="OceniDest" tabindex="-1" role="dialog" aria-labelledby="OceniDest" aria-hidden="true">
+  <div class="modal-dialog" role="document">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h5 class="modal-title">Ocenite destinaciju</h5>
+        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+          <span aria-hidden="true">&times;</span>
+        </button>
+      </div>
+
+      <div  class="modal-body">
+        <div class="tab-content">
+          <form class="form">
+
+            <div class="form-group row">
+              <label for="lat" class="col-sm-3 col-form-label">Ocena za avion:</label>
+              <div class="col-sm-6">
+                <select id="ocenaAvio" class="form-control">
+                  <option [value]="1">1</option>
+                  <option [value]="2">2</option>
+                  <option [value]="3">3</option>
+                  <option [value]="4">4</option>
+                  <option [value]="5">5</option>
+                  <option [value]="6">6</option>
+                  <option [value]="7">7</option>
+                  <option [value]="8">8</option>
+                  <option [value]="9">9</option>
+                  <option [value]="10">10</option>
+                </select>
+              </div>
+            </div>
+
+            <div class="form-group row">
+              <label for="lat" class="col-sm-3 col-form-label">Ocena za destinaciju:</label>
+              <div class="col-sm-6">
+                <select id="ocenaDest" class="form-control">
+                  <option [value]="1">1</option>
+                  <option [value]="2">2</option>
+                  <option [value]="3">3</option>
+                  <option [value]="4">4</option>
+                  <option [value]="5">5</option>
+                  <option [value]="6">6</option>
+                  <option [value]="7">7</option>
+                  <option [value]="8">8</option>
+                  <option [value]="9">9</option>
+                  <option [value]="10">10</option>
+                </select>
+              </div>
+            </div>
+
+          </form>
+        </div>
+        <div class="modal-footer">
+          <button type="button" class="btn btn-secondary" data-dismiss="modal">Izadji</button>
+          <button type="button" class="btn btn-primary" data-dismiss="modal" (click)="oceniDestinacijuIAvio()">Sačuvaj izmene</button>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
