@@ -1,5 +1,5 @@
 import { Injectable } from '@angular/core';
-import { Rentacar } from '../../entities/rentacar/rentacar';
+import { RentACarServis } from '../../entities/rentacar/rentacar';
 import { Vozilo } from '../../entities/vozilo/vozilo';
 import { AbstractFilterParam } from 'src/app/entities/abstract-filter-param/abstract-filter-param';
 import { StringFilterParam } from 'src/app/entities/string-filter-param/string-filter-param';
@@ -12,10 +12,10 @@ import {Observable,of, from } from 'rxjs';
 @Injectable({
   providedIn: 'root'
 })
-export class RentacarService {
+export class RentACarService {
 
   constructor(private fb: FormBuilder, private http: HttpClient) { }
-  readonly BaseURI = 'https://localhost:44330/api';
+  readonly BaseURI = 'https://localhost:44308/api';
 
   formModel = this.fb.group({
     naziv: [''],
@@ -31,12 +31,12 @@ export class RentacarService {
       Odobreno: false
     };
     console.log(body);
-    return this.http.post(this.BaseURI + '/RentacarServis/AddRentACarServis', body);
+    return this.http.post(this.BaseURI + '/RentACarServis/AddRentACarServis', body);
   }
 
   odobri(id:number) {
     console.log(id);
-    return this.http.get(this.BaseURI + '/RentacarServis/OdobriRentACarServis/' + id);
+    return this.http.get(this.BaseURI + '/RentACarServis/OdobriRentACarServis/' + id);
   }
 
   pretrazi(naziv: string, datumOd:string, datumDo:string) {
@@ -46,12 +46,12 @@ export class RentacarService {
       DatumDo: datumDo
     };
     console.log(body);
-    return this.http.put(this.BaseURI + '/RentacarServis/PretragaRentACarServis', body);
+    return this.http.put(this.BaseURI + '/RentACarServis/PretragaRentACarServis', body);
   }
 
-  izmeniRentACarServis(servis: Rentacar)
+  izmeniRentACarServis(servis: RentACarServis)
   {
-    return this.http.post(this.BaseURI + '/RentacarServis/UpdateRentACarServis', servis);
+    return this.http.post(this.BaseURI + '/RentACarServis/UpdateRentACarServis', servis);
   }
 
   loadRentACar() {
@@ -60,10 +60,10 @@ export class RentacarService {
   }
 
 
-  mockedRentACar(): Array<Rentacar> {
-    let allRentACarServis = new Array<Rentacar>();
+  mockedRentACar(): Array<RentACarServis> {
+    let allRentACarServis = new Array<RentACarServis>();
 
-    //const ak1 = new RentacarService(1,'Balkan', 'Jurija Gagarina 25, Novi Beograd', 'Najpovoljniji rent-a-car servis u gradu', 5);
+    //const ak1 = new RentACarServis(1,'Balkan', 'Jurija Gagarina 25, Novi Beograd', 'Najpovoljniji rent-a-car servis u gradu', 5);
     //const ak2 = new RentACarServis(2,'Novi Sad - rentAcar', 'Bulevar Oslobodjenja 123, Novi Sad', 'Servis za rent-a-car sa najnovijim modelima vozila', 5);
     //const ak3 = new RentACarServis(3,'Europa', 'Jovana Dučica 22, Loznica', 'Servis po vašoj meri', 3);
     //const ak4 = new RentACarServis(4,'Novi', 'Ive Andrića 25, Nis', 'servis za rent-a-car', 5);
@@ -98,8 +98,8 @@ export class RentacarService {
     return allAvion;
   }
 
-  filterRentCarServise(allRentACar: Rentacar[], filterParams: AbstractFilterParam[]): Rentacar[] {
-    let filteredRentACar = new Array<Rentacar>();
+  filterRentCarServise(allRentACar: RentACarServis[], filterParams: AbstractFilterParam[]): RentACarServis[] {
+    let filteredRentACar = new Array<RentACarServis>();
     for (const item of allRentACar) {
       let addAirCompany = true;
       for (const filterParam of filterParams) {
@@ -121,26 +121,26 @@ export class RentacarService {
     return filteredRentACar;
   }
 
-  checkNazivFilter(rent: Rentacar, filterParam: AbstractFilterParam): boolean {
+  checkNazivFilter(rent: RentACarServis, filterParam: AbstractFilterParam): boolean {
     //console.log(filterParam instanceof StringFilterParam && filterParam.getFilterParamName() === 'nazivFilter' && !rent.naziv.toLowerCase().includes(filterParam.getFilterParamValue().toLowerCase()));
     return filterParam instanceof StringFilterParam && filterParam.getFilterParamName() === 'nazivFilter' && !rent.naziv.toLowerCase().includes(filterParam.getFilterParamValue().toLowerCase());
   }
 
-  checkVremeFilter(rent: Rentacar, filterParam: AbstractFilterParam): boolean {
+  checkVremeFilter(rent: RentACarServis, filterParam: AbstractFilterParam): boolean {
     //return filterParam instanceof NumberFilterParam && filterParam.getFilterParamName() === 'vremeFilter' && (aircompany.cenaKarte > filterParam.getFilterParamValue());
     return true;
   }
 
   ucitajAdmineRent()
   {
-    return this.http.get('https://localhost:44330/api' + '/ApplicationUser/GetAdminRent');
+    return this.http.get('https://localhost:44308/api' + '/ApplicationUser/GetAdminRent');
   }
 
   ucitajRentACarServise()
   {
-    let allRentACarServis = new Array<Rentacar>();
+    let allRentACarServis = new Array<RentACarServis>();
 
-    var array = this.http.get<Rentacar[]>(this.BaseURI + '/RentacarServis');
+    var array = this.http.get<RentACarServis[]>(this.BaseURI + '/RentACarServis');
 
     //this.http.get(this.BaseURI + '/RentACarServis').pipe(map((res: RentACarServis) => res.json()));
 
@@ -152,44 +152,44 @@ export class RentacarService {
 
   ucitajRentACarServiseOdobrene()
   {
-    var array = this.http.get<Rentacar[]>(this.BaseURI + '/RentacarServis/GetRentACarServisiOdobreni');
+    var array = this.http.get<RentACarServis[]>(this.BaseURI + '/RentACarServis/GetRentACarServisiOdobreni');
     return array;
 
   }
 
   ucitajOdredjeniRentACarServis(id:Number)
   {
-     return this.http.get<Rentacar>(this.BaseURI + '/RentacarServis/'+id);
+     return this.http.get<RentACarServis>(this.BaseURI + '/RentACarServis/'+id);
   }
 
   ucitajRentACarServisZaAdmina(id:string)
   {
-     return this.http.get<Rentacar>(this.BaseURI + '/RentacarServis/GetRentACarServisiZaAdmina/'+id);
+     return this.http.get<RentACarServis>(this.BaseURI + '/RentACarServis/GetRentACarServisiZaAdmina/'+id);
   }
   
-  rentacarPosleAvio(lokacija:string,datum:string)
+  rentACarPosleAvio(lokacija:string,datum:string)
   {
     var body = {
       Lokacija: lokacija,
       Datum: datum,
     };
     //console.log(body);
-    return this.http.put(this.BaseURI + '/RentacarServis/GetRentACarServisPosleAvio', body);
+    return this.http.put(this.BaseURI + '/RentACarServis/GetRentACarServisPosleAvio', body);
   }
 
   mesecniIzvestaj(id:Number)
   {
-     return this.http.get<Number>(this.BaseURI + '/RentacarServis/GetMesecniIzvestaj/'+id);
+     return this.http.get<Number>(this.BaseURI + '/RentACarServis/GetMesecniIzvestaj/'+id);
   }
 
   nedeljniIzvestaj(id:Number)
   {
-    return this.http.get<Number>(this.BaseURI + '/RentacarServis/GetNedeljniIzvestaj/'+id);
+    return this.http.get<Number>(this.BaseURI + '/RentACarServis/GetNedeljniIzvestaj/'+id);
   }
 
   dnevniIzvestaj(id:Number)
   {
-    return this.http.get<Number>(this.BaseURI + '/RentacarServis/GetDnevniIzvestaj/'+id);
+    return this.http.get<Number>(this.BaseURI + '/RentACarServis/GetDnevniIzvestaj/'+id);
   }
 
   odrediPrihode(id:Number,datumOd:String,DatumDo:string)
@@ -201,7 +201,6 @@ export class RentacarService {
     };
 
     console.log(body);
-    return this.http.post(this.BaseURI + '/RentacarServis/Prihodi', body);
+    return this.http.post(this.BaseURI + '/RentACarServis/Prihodi', body);
   }
-  
 }

@@ -9,7 +9,7 @@ import { HttpClient, HttpHeaders } from "@angular/common/http";
 export class VoziloService {
 
   constructor(private fb: FormBuilder, private http: HttpClient) { }
-  readonly BaseURI = 'https://localhost:44330/api';
+  readonly BaseURI = 'https://localhost:44308/api';
 
   loadVozilo() {
     console.log('Učitavanje vozila...');
@@ -27,7 +27,7 @@ export class VoziloService {
       BrojPutnika : BrojPutnikaFilter,
       CenaOd : CenaOdFilter,
       CenaDo : CenaDoFilter,
-      IdRentacar: Id
+      IdRentACar: Id
     };
 
     return this.http.post(this.BaseURI + '/Vozila/PretraziVozila', body);
@@ -41,7 +41,7 @@ export class VoziloService {
       GodinaProizvodnje : item.godinaProizvodnje,
       BrojSedista : item.brojSedista,
       TipVozila : item.tipVozila,
-      RentacarServisID : item.rentacarId,
+      RentACarServisID : item.rentACarId,
       FilijalaID : item.filijalaId
     };
     //console.log(body);
@@ -69,7 +69,9 @@ export class VoziloService {
 
     var array = this.http.get<Vozilo[]>(this.BaseURI + '/Vozila');
 
-    
+    //this.http.get(this.BaseURI + '/RentACarServis').pipe(map((res: RentACarServis) => res.json()));
+
+    //allRentACarServis = Observable.create(observer => { this.http.get(this.BaseURI + '/RentACarServis').map(response => response.json(); })
 
     return array;
 

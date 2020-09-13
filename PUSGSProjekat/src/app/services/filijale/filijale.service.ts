@@ -9,14 +9,14 @@ import { HttpClient, HttpHeaders } from "@angular/common/http";
 export class FilijaleService {
 
   constructor(private fb: FormBuilder, private http: HttpClient) { }
-  readonly BaseURI = 'https://localhost:44330/api';
+  readonly BaseURI = 'https://localhost:44308/api';
 
   dodajFilijalu(item:Filijala) {
     var body = {
       Ulica : item.ulica,
       Broj : item.broj,
       Mesto : item.mesto,
-      RentacarServisID : item.rentacarId,
+      RentACarServisID : item.rentACarId,
     };
     console.log(body);
     return this.http.post(this.BaseURI + '/Filijale/AddFilijala', body);
@@ -28,7 +28,10 @@ export class FilijaleService {
 
     var array = this.http.get<Filijala[]>(this.BaseURI + '/Filijale');
 
-    
+    //this.http.get(this.BaseURI + '/RentACarServis').pipe(map((res: RentACarServis) => res.json()));
+
+    //allRentACarServis = Observable.create(observer => { this.http.get(this.BaseURI + '/RentACarServis').map(response => response.json(); })
+
     return array;
 
   }
@@ -45,7 +48,7 @@ export class FilijaleService {
       Ulica : fil.ulica,
       Broj : fil.broj,
       Mesto : fil.mesto,
-      RentacarServisID : fil.rentacarId,
+      RentACarServisID : fil.rentACarId,
     };
     return this.http.post(this.BaseURI + '/Filijale/UpdateFilijala/', body);
   }

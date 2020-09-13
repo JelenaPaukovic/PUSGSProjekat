@@ -1,7 +1,7 @@
 import { Injectable } from '@angular/core';
 import { FormBuilder, Validators, FormGroup } from '@angular/forms';
 import { HttpClient, HttpHeaders } from "@angular/common/http";
-import { RezervacijaVozila } from '../../entities/rezervacija-vozila/rezervacija-vozila';
+import { RezervacijaVozila } from '../../entities/rezervacijaVozila/rezervacijaVozila';
 
 @Injectable({
   providedIn: 'root'
@@ -9,12 +9,12 @@ import { RezervacijaVozila } from '../../entities/rezervacija-vozila/rezervacija
 export class RezervacijaVozilaService {
 
   constructor(private fb: FormBuilder, private http: HttpClient) { }
-  readonly BaseURI = 'https://localhost:44330/api';
+  readonly BaseURI = 'https://localhost:44308/api';
 
   rezervisiVozilo(rezervacija: RezervacijaVozila)
   {
     var body = {
-      IdRentacar : rezervacija.idRentacar,
+      IdRentACar : rezervacija.idRentACar,
       IdVozila : rezervacija.idVozila,
       IdKlijenta : rezervacija.idKlijenta,
       Cena : rezervacija.cena,

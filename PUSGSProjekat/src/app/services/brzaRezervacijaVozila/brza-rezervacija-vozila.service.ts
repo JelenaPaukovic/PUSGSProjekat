@@ -1,7 +1,7 @@
 import { Injectable } from '@angular/core';
 import { FormBuilder, Validators, FormGroup } from '@angular/forms';
 import { HttpClient, HttpHeaders } from "@angular/common/http";
-import { BrzaRezervacijaVozila } from '../../entities/brza-rezervacija-vozila/brza-rezervacija-vozila';
+import { BrzaRezervacijaVozila } from '../../entities/brzaRezervacijaVozila/brzaRezervacijaVozila';
 
 @Injectable({
   providedIn: 'root'
@@ -9,12 +9,12 @@ import { BrzaRezervacijaVozila } from '../../entities/brza-rezervacija-vozila/br
 export class BrzaRezervacijaVozilaService {
 
   constructor(private fb: FormBuilder, private http: HttpClient) { }
-  readonly BaseURI = 'https://localhost:44330/api';
+  readonly BaseURI = 'https://localhost:44308/api';
 
   dodajBrzuRez(rez:BrzaRezervacijaVozila)
   {
     var body = {
-      IdRentacar : rez.idRentacar,
+      IdRentACar : rez.idRentACar,
       IdVozila : rez.idVozila,
       Popust : rez.popust,
       PocetniDatum : rez.pocetniDatum,
@@ -27,27 +27,30 @@ export class BrzaRezervacijaVozilaService {
     };
 
     console.log(body);
-    return this.http.post(this.BaseURI + '/BrzaRezervacijaVozila/AddBrzaRezervacijaVozila/', body);
+    return this.http.post(this.BaseURI + '/BrzaRezVoz/AddBrzaRezervacijaVozila/', body);
   }
 
   ucitajSveBrzeRez()
   {
-    var array = this.http.get<BrzaRezervacijaVozila[]>(this.BaseURI + '/BrzaRezervacijaVozila');
+    var array = this.http.get<BrzaRezervacijaVozila[]>(this.BaseURI + '/BrzaRezVoz');
 
-    
+    //this.http.get(this.BaseURI + '/RentACarServis').pipe(map((res: RentACarServis) => res.json()));
+
+    //allRentACarServis = Observable.create(observer => { this.http.get(this.BaseURI + '/RentACarServis').map(response => response.json(); })
+
     return array;
 
   }
 
   getBrzaRezZaRent(id:Number)
   {
-    return this.http.get(this.BaseURI + '/BrzaRezervacijaVozila/GetBrzaRezervacijaVozilaZaRent/' + id);
+    return this.http.get(this.BaseURI + '/BrzaRezVoz/GetBrzaRezervacijaVozilaZaRent/' + id);
   }
 
   rezervisiVoziloBrzo(rezervacija: BrzaRezervacijaVozila)
   {
     var body = {
-      IdRentACar : rezervacija.idRentacar,
+      IdRentACar : rezervacija.idRentACar,
       IdVozila : rezervacija.idVozila,
       IdKlijenta : rezervacija.idKlijenta,
       Cena : rezervacija.novaCena,
@@ -56,7 +59,7 @@ export class BrzaRezervacijaVozilaService {
      // Vozilo: rezervacija.vozilo
     };
     
-    return this.http.post(this.BaseURI + '/BrzaRezervacijaVozila/Rezervisi/', body);
+    return this.http.post(this.BaseURI + '/BrzaRezVoz/Rezervisi/', body);
   }
 
 }
