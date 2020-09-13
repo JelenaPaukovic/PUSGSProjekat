@@ -5,7 +5,7 @@ using System.Threading.Tasks;
 
 namespace ProjekatPUSGS.Models
 {
-    public class PretragaServisa
+    public class PretragaRent
     {
         public string Naziv { get; set; }
         public DateTime DatumOd { get; set; }

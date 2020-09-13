@@ -81,5 +81,6 @@ namespace ProjekatPUSGS.Models
         public string alg { get; set; }
 
         public string kid { get; set; }
+
     }
 }

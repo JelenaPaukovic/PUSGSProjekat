@@ -17,7 +17,7 @@ namespace ProjekatPUSGS.Models
 
         public string Mesto { get; set; }
 
-        public int ServisID { get; set; }
+        public int RentACarServisID { get; set; }
 
     }
 }

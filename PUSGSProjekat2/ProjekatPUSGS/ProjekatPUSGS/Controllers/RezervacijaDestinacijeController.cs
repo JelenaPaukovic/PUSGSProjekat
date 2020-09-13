@@ -13,28 +13,27 @@ namespace ProjekatPUSGS.Controllers
 {
     [Route("api/[controller]")]
     [ApiController]
-    public class RezervacijaLetovaController : ControllerBase
+    public class RezervacijaDestinacijeController : ControllerBase
     {
         private readonly AuthenticationContext _context;
-        private RezervacijaLetovaServis servis;
+        private RezervacijaDestinacijeServis servis;
 
-        public RezervacijaLetovaController(AuthenticationContext context)
+        public RezervacijaDestinacijeController(AuthenticationContext context)
         {
             _context = context;
-            servis = new RezervacijaLetovaServis(_context);
+            servis = new RezervacijaDestinacijeServis(_context);
         }
 
         [HttpGet]
-        public async Task<ActionResult<IEnumerable<RezervacijaLetova>>> GetRezervacijeLetova(int id)
+        public async Task<ActionResult<IEnumerable<RezervacijaDestinacije>>> GetRezervacijeDestinacija()
         {
-            return await _context.RezervacijeLetova.ToListAsync();
-
+            return await _context.RezervacijeDestinacija.ToListAsync();
         }
 
         [HttpGet("{id}")]
-        public async Task<ActionResult<RezervacijaLetova>> GetRezervacijaLetova(int id)
+        public async Task<ActionResult<RezervacijaDestinacije>> GetRezervacijaDestinacija(int id)
         {
-            var rezervacija = await _context.RezervacijeLetova.FindAsync(id);
+            var rezervacija = await _context.RezervacijeDestinacija.FindAsync(id);
 
             if (rezervacija == null)
             {
@@ -43,20 +42,21 @@ namespace ProjekatPUSGS.Controllers
 
             return rezervacija;
         }
+
         [HttpGet]
-        [Route("GetRezervacijeLetovaZaOdredjenog/{email}")]
-        public async Task<ActionResult<IEnumerable<RezervacijaLetova>>> GetRezervacijeLetovaZaOdredjenog(string email)
+        [Route("GetRezervacijeDestinacijaZaOdredjenog/{email}")]
+        public async Task<ActionResult<IEnumerable<RezervacijaDestinacije>>> GetRezervacijeDestinacijaZaOdredjenog(string email)
         {
 
 
-            List<RezervacijaLetova> rezervacija = _context.RezervacijeLetova.ToList();
+            List<RezervacijaDestinacije> rezervacija = _context.RezervacijeDestinacija.ToList();
 
             if (rezervacija == null)
             {
-                rezervacija = new List<RezervacijaLetova>();
+                rezervacija = new List<RezervacijaDestinacije>();
             }
 
-            foreach (RezervacijaLetova item in rezervacija.ToList())
+            foreach (RezervacijaDestinacije item in rezervacija.ToList())
             {
                 if (item.IdKlijenta != email)
                 {
@@ -64,7 +64,7 @@ namespace ProjekatPUSGS.Controllers
                 }
             }
 
-            foreach (RezervacijaLetova item in rezervacija.ToList())
+            foreach (RezervacijaDestinacije item in rezervacija.ToList())
             {
                 if (DateTime.Now < item.KrajnjiDatum)
                 {
@@ -77,36 +77,36 @@ namespace ProjekatPUSGS.Controllers
         }
 
         [HttpDelete]
-        [Route("DeleteRezervacijaLetova/{id}")]
-        public async Task<ActionResult<RezervacijaLetova>> DeleteRezervacijaLetova(int id)
+        [Route("DeleteRezervacijaDestinacija/{id}")]
+        public async Task<ActionResult<RezervacijaDestinacije>> DeleteRezervacijaDestinacija(int id)
         {
-            var rezervacija = await _context.RezervacijeLetova.FindAsync(id);
+            var rezervacija = await _context.RezervacijeDestinacija.FindAsync(id);
             if (rezervacija == null)
             {
                 return NotFound();
             }
 
-            _context.RezervacijeLetova.Remove(rezervacija);
+            _context.RezervacijeDestinacija.Remove(rezervacija);
             await _context.SaveChangesAsync();
 
             return rezervacija;
         }
 
-        private bool RezervacijaLetovaExists(int id)
+        private bool RezervacijaDestinacijaExists(int id)
         {
-            return _context.RezervacijeLetova.Any(e => e.Id == id);
+            return _context.RezervacijeDestinacija.Any(e => e.Id == id);
         }
 
         [HttpPost]
-        [Route("AddRezervacijaLetova")]
-        public async Task<ActionResult<RezervacijaLetova>> AddRezervacijaLetova(RezervacijaLetova rezervacija)
+        [Route("AddRezervacijaDestinacija")]
+        public async Task<ActionResult<RezervacijaDestinacije>> AddRezervacijaDestinacija(RezervacijaDestinacije rezervacija)
         {
-            rezervacija.Cena = servis.UkupnaCena(rezervacija);
-            bool dozvola = servis.DodajDatumeLetu(rezervacija);
+            rezervacija.Cena = servis.ukupnaCena(rezervacija);
+            bool dozvola = servis.dodajDatumeDestinaciji(rezervacija);
 
             if (dozvola)
             {
-                _context.RezervacijeLetova.Add(rezervacija);
+                _context.RezervacijeDestinacija.Add(rezervacija);
 
                 try
                 {
@@ -125,8 +125,8 @@ namespace ProjekatPUSGS.Controllers
             }
         }
 
-        [Route("UpdateRezervacijaLetova")]
-        public async Task<IActionResult> UpdateRezervacijaLetova(RezervacijaLetova rezervacija)
+        [Route("UpdateRezervacijaDestinacija")]
+        public async Task<IActionResult> UpdateRezervacijaDestinacija(RezervacijaDestinacije rezervacija)
         {
             _context.Entry(rezervacija).State = EntityState.Modified;
 
@@ -136,7 +136,7 @@ namespace ProjekatPUSGS.Controllers
             }
             catch (DbUpdateConcurrencyException)
             {
-                if (!RezervacijaLetovaExists(rezervacija.Id))
+                if (!RezervacijaDestinacijaExists(rezervacija.Id))
                 {
                     return NotFound();
                 }
@@ -152,12 +152,12 @@ namespace ProjekatPUSGS.Controllers
 
         [HttpPost]
         [Route("Oceni")]
-        public async Task<ActionResult> Oceni(Ocena oceni)
+        public async Task<ActionResult> Oceni(Oceni oceni)
         {
-            RezervacijaLetova rezervacija = _context.RezervacijeLetova.Find(oceni.IdRezervacije);
+            RezervacijaDestinacije rezervacija = _context.RezervacijeDestinacija.Find(oceni.IdRezervacije);
 
-            rezervacija.OcenaZaKomapaniju = oceni.OcenaKompanije;
-            rezervacija.OcenaZaLet = oceni.OcenaVozAvio;
+            rezervacija.OcenaZaKomapaniju = oceni.OcenaKompanija;
+            rezervacija.OcenaZaDestinaciju = oceni.OcenaVozAvio;
 
             _context.Entry(rezervacija).State = EntityState.Modified;
 

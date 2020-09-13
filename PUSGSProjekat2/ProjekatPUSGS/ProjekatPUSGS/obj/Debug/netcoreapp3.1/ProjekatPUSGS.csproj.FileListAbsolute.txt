@@ -1,4 +1,3 @@
-C:\Users\Dragas\Documents\GitHub\PUSGSProjekat\PUSGSProjekat2\ProjekatPUSGS\ProjekatPUSGS\obj\Debug\netcoreapp3.1\ProjekatPUSGS.csprojAssemblyReference.cache
 C:\Users\Dragas\Documents\GitHub\PUSGSProjekat\PUSGSProjekat2\ProjekatPUSGS\ProjekatPUSGS\obj\Debug\netcoreapp3.1\ProjekatPUSGS.csproj.CoreCompileInputs.cache
 C:\Users\Dragas\Documents\GitHub\PUSGSProjekat\PUSGSProjekat2\ProjekatPUSGS\ProjekatPUSGS\obj\Debug\netcoreapp3.1\ProjekatPUSGS.MvcApplicationPartsAssemblyInfo.cache
 C:\Users\Dragas\Documents\GitHub\PUSGSProjekat\PUSGSProjekat2\ProjekatPUSGS\ProjekatPUSGS\obj\Debug\netcoreapp3.1\ProjekatPUSGS.AssemblyInfoInputs.cache

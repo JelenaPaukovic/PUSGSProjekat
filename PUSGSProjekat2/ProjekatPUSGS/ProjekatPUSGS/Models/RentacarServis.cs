@@ -6,15 +6,21 @@ using System.Threading.Tasks;
 
 namespace ProjekatPUSGS.Models
 {
-    public class RentacarServis
+    public class RentACarServis
     {
         [Key]
-        public int IdServis { get; set; }
+        public int Id { get; set; }
+
         public string Naziv { get; set; }
+
         public string Adresa { get; set; }
+
         public string PromotivniOpis { get; set; }
+
         public string Admin { get; set; }
+
         public ICollection<Vozilo> Vozila { get; set; }
+
         public double cenaPrviDan { get; set; }
 
         public double cenaSledeciDan { get; set; }
@@ -22,5 +28,7 @@ namespace ProjekatPUSGS.Models
         public bool Odobreno { get; set; }
 
         public double Ocena { get; set; }
+
+        
     }
 }

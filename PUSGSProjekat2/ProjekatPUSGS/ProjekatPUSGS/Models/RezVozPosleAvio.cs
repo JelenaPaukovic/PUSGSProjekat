@@ -5,7 +5,7 @@ using System.Threading.Tasks;
 
 namespace ProjekatPUSGS.Models
 {
-    public class RezervacijaVozilaPosleAvio
+    public class RezVozPosleAvio
     {
         public string Lokacija { get; set; }
 

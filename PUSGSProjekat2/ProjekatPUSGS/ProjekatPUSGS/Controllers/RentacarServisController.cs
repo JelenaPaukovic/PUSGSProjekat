@@ -13,41 +13,40 @@ namespace ProjekatPUSGS.Controllers
 {
     [Route("api/[controller]")]
     [ApiController]
-    public class RentacarServisController : ControllerBase
+    public class RentACarServisController : ControllerBase
     {
         private readonly AuthenticationContext _context;
-        private CarServis servis;
-        public RentacarServisController(AuthenticationContext context)
+        private RentServis servis;
+
+        public RentACarServisController(AuthenticationContext context)
         {
             _context = context;
-            servis = new CarServis(context);
+            servis = new RentServis(context);
         }
 
-        
         [HttpGet]
-        public async Task<ActionResult<IEnumerable<RentacarServis>>> GetServisi()
+        public async Task<ActionResult<IEnumerable<RentACarServis>>> GetRentACarServisi()
         {
-            //return await _context.Servisi.ToListAsync();
+            //_context.RentACarServisi.Include("Vozila").ToList();
+            //return await _context.RentACarServisi.ToListAsync();
 
-            List<RentacarServis> servisi = _context.Servisi.ToList();
+            List<RentACarServis> servisi = _context.RentACarServisi.ToList();
 
-            foreach (RentacarServis item in servisi.ToList())
+            foreach (RentACarServis item in servisi.ToList())
             {
-                item.Ocena = servis.ProsecnaOcenaZaRentACar(item.IdServis);
+                item.Ocena = servis.ProsecnaOcenaZaRentACar(item.Id);
             }
 
             return servisi;
         }
 
-
-
         [HttpGet]
         [Route("GetRentACarServisiOdobreni")]
-        public async Task<ActionResult<IEnumerable<RentacarServis>>> GetRentACarServisiOdobreni()
+        public async Task<ActionResult<IEnumerable<RentACarServis>>> GetRentACarServisiOdobreni()
         {
-            List<RentacarServis> servisi = _context.Servisi.ToList();
+            List<RentACarServis> servisi = _context.RentACarServisi.ToList();
 
-            foreach (RentacarServis item in servisi.ToList())
+            foreach (RentACarServis item in servisi.ToList())
             {
                 if (item.Odobreno == false)
                 {
@@ -55,9 +54,9 @@ namespace ProjekatPUSGS.Controllers
                 }
             }
 
-            foreach (RentacarServis item in servisi.ToList())
+            foreach (RentACarServis item in servisi.ToList())
             {
-                item.Ocena = servis.ProsecnaOcenaZaRentACar(item.IdServis);
+                item.Ocena = servis.ProsecnaOcenaZaRentACar(item.Id);
             }
 
             return servisi;
@@ -65,7 +64,7 @@ namespace ProjekatPUSGS.Controllers
 
         [HttpPut]
         [Route("GetRentACarServisPosleAvio")]
-        public async Task<ActionResult<RentacarServis>> GetRentACarServisPosleAvio(RezervacijaVozilaPosleAvio rez)
+        public async Task<ActionResult<RentACarServis>> GetRentACarServisPosleAvio(RezVozPosleAvio rez)
         {
             List<Filijala> filijale = _context.Filijale.ToList();
 
@@ -77,16 +76,16 @@ namespace ProjekatPUSGS.Controllers
                 }
             }
 
-            RentacarServis rent = new RentacarServis();
+            RentACarServis rent = new RentACarServis();
 
             if (filijale.Count == 0)
             {
                 // nema servisa u tom mestu
-                rent = _context.Servisi.FirstOrDefault();
+                rent = _context.RentACarServisi.FirstOrDefault();
             }
             else
             {
-                rent = _context.Servisi.Find(filijale[0].ServisID);
+                rent = _context.RentACarServisi.Find(filijale[0].RentACarServisID);
             }
 
             return rent;
@@ -94,11 +93,11 @@ namespace ProjekatPUSGS.Controllers
 
         [HttpGet]
         [Route("GetRentACarServisiZaAdmina/{id}")]
-        public async Task<ActionResult<IEnumerable<RentacarServis>>> GetRentACarServisiZaAdmina(string id)
+        public async Task<ActionResult<IEnumerable<RentACarServis>>> GetRentACarServisiZaAdmina(string id)
         {
-            List<RentacarServis> servisi = _context.Servisi.ToList();
+            List<RentACarServis> servisi = _context.RentACarServisi.ToList();
 
-            foreach (RentacarServis item in servisi.ToList())
+            foreach (RentACarServis item in servisi.ToList())
             {
                 if (item.Admin != id)
                 {
@@ -110,9 +109,9 @@ namespace ProjekatPUSGS.Controllers
         }
 
         [HttpGet("{id}")]
-        public async Task<ActionResult<RentacarServis>> GetRentACarServis(int id)
+        public async Task<ActionResult<RentACarServis>> GetRentACarServis(int id)
         {
-            var serviss = await _context.Servisi.FindAsync(id);
+            var serviss = await _context.RentACarServisi.FindAsync(id);
 
             if (serviss == null)
             {
@@ -126,16 +125,16 @@ namespace ProjekatPUSGS.Controllers
 
         [HttpDelete]
         [Route("DeleteRentACarServis/{id}")]
-        public async Task<ActionResult<RentacarServis>> DeleteRentACarServis(int id)
+        public async Task<ActionResult<RentACarServis>> DeleteRentACarServis(int id)
         {
-            var servisi = await _context.Servisi.FindAsync(id);
+            var servisi = await _context.RentACarServisi.FindAsync(id);
             if (servisi == null)
             {
                 return NotFound();
             }
 
 
-            _context.Servisi.Remove(servisi);
+            _context.RentACarServisi.Remove(servisi);
             await _context.SaveChangesAsync();
 
             return servisi;
@@ -143,9 +142,9 @@ namespace ProjekatPUSGS.Controllers
 
         [HttpGet]
         [Route("OdobriRentACarServis/{id}")]
-        public async Task<ActionResult<RentacarServis>> OdobriRentACarServis(int id)
+        public async Task<ActionResult<RentACarServis>> OdobriRentACarServis(int id)
         {
-            var servisi = await _context.Servisi.FindAsync(id);
+            var servisi = await _context.RentACarServisi.FindAsync(id);
             if (servisi == null)
             {
                 return NotFound();
@@ -167,15 +166,15 @@ namespace ProjekatPUSGS.Controllers
 
         private bool RentACarServisExists(int id)
         {
-            return _context.Servisi.Any(e => e.IdServis == id);
+            return _context.RentACarServisi.Any(e => e.Id == id);
         }
 
         [HttpPost]
         [Route("AddRentACarServis")]
-        public async Task<IActionResult> AddRentACarServis(RentacarServis servis)
+        public async Task<IActionResult> AddRentACarServis(RentACarServis servis)
         {
 
-            _context.Servisi.Add(servis);
+            _context.RentACarServisi.Add(servis);
 
             await _context.SaveChangesAsync();
 
@@ -185,7 +184,7 @@ namespace ProjekatPUSGS.Controllers
         }
 
         [Route("UpdateRentACarServis")]
-        public async Task<IActionResult> UpdateRentACarServis(RentacarServis servis)
+        public async Task<IActionResult> UpdateRentACarServis(RentACarServis servis)
         {
             _context.Entry(servis).State = EntityState.Modified;
 
@@ -195,7 +194,7 @@ namespace ProjekatPUSGS.Controllers
             }
             catch (DbUpdateConcurrencyException)
             {
-                if (!RentACarServisExists(servis.IdServis))
+                if (!RentACarServisExists(servis.Id))
                 {
                     return NotFound();
                 }
@@ -210,11 +209,11 @@ namespace ProjekatPUSGS.Controllers
 
         [HttpPut]
         [Route("PretragaRentACarServis")]
-        public List<RentacarServis> PretragaRentACarServis(PretragaServisa pretraga)
+        public List<RentACarServis> PretragaRentACarServis(PretragaRent pretraga)
         {
-            List<RentacarServis> servisi = _context.Servisi.ToList();
+            List<RentACarServis> servisi = _context.RentACarServisi.ToList();
 
-            foreach (RentacarServis item in servisi.ToList())
+            foreach (RentACarServis item in servisi.ToList())
             {
                 if (item.Odobreno == false)
                 {
@@ -222,9 +221,9 @@ namespace ProjekatPUSGS.Controllers
                 }
             }
 
-            List<RentacarServis> rezultat = new List<RentacarServis>();
+            List<RentACarServis> rezultat = new List<RentACarServis>();
 
-            foreach (RentacarServis item in servisi)
+            foreach (RentACarServis item in servisi)
             {
                 if (item.Naziv.ToLower().Contains(pretraga.Naziv.ToLower()))
                 {
@@ -232,10 +231,10 @@ namespace ProjekatPUSGS.Controllers
                 }
             }
 
-            foreach (RentacarServis item in rezultat.ToList())
+            foreach (RentACarServis item in rezultat.ToList())
             {
-                VoziloController vc = new VoziloController(_context);
-                List<Vozilo> vozila = vc.VozilaZaOdredjeniServis(item.IdServis);
+                VozilaController vc = new VozilaController(_context);
+                List<Vozilo> vozila = vc.VozilaZaOdredjeniServis(item.Id);
 
                 foreach (Vozilo voz in vozila.ToList())
                 {
@@ -293,9 +292,11 @@ namespace ProjekatPUSGS.Controllers
 
         [HttpPost]
         [Route("Prihodi")]
-        public async Task<ActionResult<double>> Prihodi(Prihodi p)
+        public async Task<ActionResult<double>> Prihodi(PrihodiZaPeriod pp)
         {
-            return servis.OdrediPrihodeZaPeriod(p);
+            return servis.OdrediPrihodeZaPeriod(pp);
         }
+
+
     }
 }

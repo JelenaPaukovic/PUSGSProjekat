@@ -8,11 +8,11 @@ using System.Threading.Tasks;
 
 namespace ProjekatPUSGS.Servisi
 {
-    public class RezervacijaVozilaServis
+    public class RezervacijaServis
     {
         private readonly AuthenticationContext _context;
 
-        public RezervacijaVozilaServis(AuthenticationContext context)
+        public RezervacijaServis(AuthenticationContext context)
         {
             _context = context;
         }
@@ -23,7 +23,7 @@ namespace ProjekatPUSGS.Servisi
             DateTime pocetni = rezervacija.PocetniDatum;
             DateTime krajnji = rezervacija.KrajnjiDatum;
 
-            RentacarServis rentACar = _context.Servisi.Find(rezervacija.IdServisa);
+            RentACarServis rentACar = _context.RentACarServisi.Find(rezervacija.IdRentACar);
 
             double ukupnaCena = rentACar.cenaPrviDan;
 
@@ -46,7 +46,7 @@ namespace ProjekatPUSGS.Servisi
             DateTime pocetni = rezervacija.PocetniDatum;
             DateTime krajnji = rezervacija.KrajnjiDatum;
 
-            RentacarServis rentACar = _context.Servisi.Find(rezervacija.IdServisa);
+            RentACarServis rentACar = _context.RentACarServisi.Find(rezervacija.IdRentACar);
 
             double ukupnaCena = rentACar.cenaPrviDan;
 
@@ -64,7 +64,28 @@ namespace ProjekatPUSGS.Servisi
             return ukupnaCena;
         }
 
-        
+        //public double ukupnaCena(RezervacijaVozila rezervacija)
+        //{
+        //    DateTime pocetni = rezervacija.PocetniDatum;
+        //    DateTime krajnji = rezervacija.KrajnjiDatum;
+
+        //    RentACarServis rentACar = _context.RentACarServisi.Find(rezervacija.IdRentACar);
+
+        //    double ukupnaCena = rentACar.cenaPrviDan;
+
+        //    if (pocetni != krajnji)
+        //    {
+        //        TimeSpan ts = new TimeSpan(1, 0, 0, 0);
+
+        //        while (pocetni != krajnji)
+        //        {
+        //            pocetni += ts;
+        //            ukupnaCena += rentACar.cenaSledeciDan;
+        //        }
+        //    }
+
+        //    return ukupnaCena;
+        //}
 
         public bool dodajDatumeVozilu(RezervacijaVozila rezervacija)
         {
@@ -72,7 +93,9 @@ namespace ProjekatPUSGS.Servisi
             DateTime krajnji = rezervacija.KrajnjiDatum;
 
             Vozilo vozilo = _context.Vozila.Find(rezervacija.IdVozila);
-          
+            //_context.Entry(vozilo).OriginalValues["RowVersion"] = rezervacija.Vozilo.RowVersion;
+            //vozilo.RowVersion = rezervacija.Vozilo.RowVersion;
+            //Vozilo vozilo = rezervacija.Vozilo;
             if (vozilo.RowVersion.Length != rezervacija.Vozilo.RowVersion.Length)
             {
                 return false;
@@ -107,7 +130,20 @@ namespace ProjekatPUSGS.Servisi
             return true;
         }
 
-      
+        //public async Task DodajUBazuVozilo(Vozilo vozilo)
+        //{
+        //    _context.Entry(vozilo).State = EntityState.Modified;
+
+        //    try
+        //    {
+        //        //await _context.SaveChangesAsync();
+        //    }
+        //    catch (DbUpdateConcurrencyException e)
+        //    {
+        //        //return false;
+        //    }
+        //}
+
         public Vozilo dodajDatumeVozilu(BrzaRezervacijaVozila rezervacija)
         {
             DateTime pocetni = rezervacija.PocetniDatum;
@@ -142,5 +178,6 @@ namespace ProjekatPUSGS.Servisi
 
             return vozilo;
         }
+
     }
 }

@@ -5,12 +5,12 @@ using System.Threading.Tasks;
 
 namespace ProjekatPUSGS.Models
 {
-    public class PromenaLozinke
+    public class IzmenaSIfre
     {
         public string Email { get; set; }
 
-        public string NovaLozinka { get; set; }
+        public string NovaSifra { get; set; }
 
-        public string StaraLozinka { get; set; }
+        public string StaraSifra { get; set; }
     }
 }

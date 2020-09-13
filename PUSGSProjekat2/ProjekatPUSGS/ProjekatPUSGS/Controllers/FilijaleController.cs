@@ -101,7 +101,7 @@ namespace ProjekatPUSGS.Controllers
         [Route("GetFilijalaZaOdredjeniServis/{id}")]
         public async Task<ActionResult<IEnumerable<Filijala>>> GetFilijalaZaOdredjeniServis(int id)
         {
-            List<Filijala> filijala = await _context.Filijale.Where(x => x.ServisID == id).ToListAsync();
+            List<Filijala> filijala = await _context.Filijale.Where(x => x.RentACarServisID == id).ToListAsync();
 
             if (filijala == null)
             {
@@ -111,5 +111,6 @@ namespace ProjekatPUSGS.Controllers
 
             return filijala;
         }
+
     }
 }

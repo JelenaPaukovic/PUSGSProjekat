@@ -5,10 +5,10 @@ using System.Threading.Tasks;
 
 namespace ProjekatPUSGS.Models
 {
-    public class Ocena
+    public class Oceni
     {
         public int IdRezervacije { get; set; }
-        public int OcenaKompanije { get; set; }
+        public int OcenaKompanija { get; set; }
         public int OcenaVozAvio { get; set; }
     }
 }

@@ -6,22 +6,31 @@ using System.ComponentModel.DataAnnotations;
 
 namespace ProjekatPUSGS.Models
 {
-    public class BrzaRezervacijaLetova
+    public class BrzaRezervacijaDestinacija
     {
         [Key]
-        public int IdRez { get; set; }
-        public int IdAvioKompanije { get; set; }
-        public int IdLeta { get; set; }
+        public int Id { get; set; }
+
+        public int IdAirCompany { get; set; }
+
+        public int IdDestinacije { get; set; }
+
         public double NovaCena { get; set; }
+
         public double PocetnaCena { get; set; }
+
         public double Popust { get; set; }
+
         public bool Zavrseno { get; set; }
+
         public string IdKlijenta { get; set; }
-        public DateTime PocetniDatum { get; set;}
+
+        public DateTime PocetniDatum { get; set; }
+
         public DateTime KrajnjiDatum { get; set; }
 
         [Timestamp]
-        public byte[] RedVerzija { get; set; }
+        public byte[] RowVersion { get; set; }
 
     }
 }

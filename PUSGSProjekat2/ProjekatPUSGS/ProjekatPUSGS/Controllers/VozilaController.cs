@@ -13,15 +13,14 @@ namespace ProjekatPUSGS.Controllers
 {
     [Route("api/[controller]")]
     [ApiController]
-    public class VoziloController : ControllerBase
+    public class VozilaController : ControllerBase
     {
         private readonly AuthenticationContext _context;
-        private CarServis servis;
-
-        public VoziloController(AuthenticationContext context)
+        private RentServis servis;
+        public VozilaController(AuthenticationContext context)
         {
             _context = context;
-            servis = new CarServis(context);
+            servis = new RentServis(context);
         }
 
         [HttpGet]
@@ -33,7 +32,7 @@ namespace ProjekatPUSGS.Controllers
 
             foreach (Vozilo item in servisi.ToList())
             {
-                item.Ocena = servis.ProsecnaOcenaZaVozilo(item.IdVozilo);
+                item.Ocena = servis.ProsecnaOcenaZaVozilo(item.Id);
             }
 
             return servisi;
@@ -73,7 +72,7 @@ namespace ProjekatPUSGS.Controllers
 
         private bool VoziloExists(int id)
         {
-            return _context.Vozila.Any(e => e.IdVozilo == id);
+            return _context.Vozila.Any(e => e.Id == id);
         }
 
         [HttpPost]
@@ -85,7 +84,7 @@ namespace ProjekatPUSGS.Controllers
 
             await _context.SaveChangesAsync();
 
-            return CreatedAtAction("GetVozilo", new { id = vozilo.IdVozilo }, vozilo);
+            return CreatedAtAction("GetVozilo", new { id = vozilo.Id }, vozilo);
         }
 
         [Route("UpdateVozilo")]
@@ -99,7 +98,7 @@ namespace ProjekatPUSGS.Controllers
             }
             catch (DbUpdateConcurrencyException)
             {
-                if (!VoziloExists(vozilo.IdVozilo))
+                if (!VoziloExists(vozilo.Id))
                 {
                     return NotFound();
                 }
@@ -116,7 +115,7 @@ namespace ProjekatPUSGS.Controllers
         [Route("GetVozilaZaOdredjeniServis/{id}")]
         public async Task<ActionResult<IEnumerable<Vozilo>>> GetVozilaZaOdredjeniServis(int id)
         {
-            List<Vozilo> vozila = await _context.Vozila.Where(x => x.IdServisa == id).ToListAsync();
+            List<Vozilo> vozila = await _context.Vozila.Where(x => x.RentACarServisID == id).ToListAsync();
 
             if (vozila == null)
             {
@@ -129,7 +128,7 @@ namespace ProjekatPUSGS.Controllers
 
         public List<Vozilo> VozilaZaOdredjeniServis(int id)
         {
-            List<Vozilo> vozila = _context.Vozila.Where(x => x.IdServisa == id).ToList();
+            List<Vozilo> vozila = _context.Vozila.Where(x => x.RentACarServisID == id).ToList();
 
             if (vozila == null)
             {
@@ -143,7 +142,7 @@ namespace ProjekatPUSGS.Controllers
         [Route("PretraziVozila")]
         public List<Vozilo> PretraziVozila(PretragaVozila pretraga)
         {
-            List<Vozilo> vozila = _context.Vozila.Where(x => x.IdServisa == pretraga.IdServisa).ToList();
+            List<Vozilo> vozila = _context.Vozila.Where(x => x.RentACarServisID == pretraga.IdRentACar).ToList();
 
             foreach (Vozilo item in vozila.ToList())
             {

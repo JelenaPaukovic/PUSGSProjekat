@@ -23,6 +23,6 @@ namespace ProjekatPUSGS.Models
 
         public int CenaDo { get; set; }
 
-        public int IdServisa { get; set; }
+        public int IdRentACar { get; set; }
     }
 }

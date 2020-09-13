@@ -16,12 +16,12 @@ namespace ProjekatPUSGS.Controllers
     public class RezervacijaVozilaController : ControllerBase
     {
         private readonly AuthenticationContext _context;
-        private RezervacijaVozilaServis servis;
+        private RezervacijaServis servis;
 
         public RezervacijaVozilaController(AuthenticationContext context)
         {
             _context = context;
-            servis = new RezervacijaVozilaServis(_context);
+            servis = new RezervacijaServis(_context);
         }
 
         [HttpGet]
@@ -152,12 +152,12 @@ namespace ProjekatPUSGS.Controllers
 
         [HttpPost]
         [Route("Oceni")]
-        public async Task<ActionResult> Oceni(Ocena ocena)
+        public async Task<ActionResult> Oceni(Oceni oceni)
         {
-            RezervacijaVozila rezervacija = _context.RezervacijeVozila.Find(ocena.IdRezervacije);
+            RezervacijaVozila rezervacija = _context.RezervacijeVozila.Find(oceni.IdRezervacije);
 
-            rezervacija.OcenaZaServis = ocena.OcenaKompanije;
-            rezervacija.OcenaZaVozilo = ocena.OcenaVozAvio;
+            rezervacija.OcenaZaRentACar = oceni.OcenaKompanija;
+            rezervacija.OcenaZaVozilo = oceni.OcenaVozAvio;
 
             _context.Entry(rezervacija).State = EntityState.Modified;
 
@@ -172,5 +172,6 @@ namespace ProjekatPUSGS.Controllers
 
             return Ok();
         }
+
     }
 }

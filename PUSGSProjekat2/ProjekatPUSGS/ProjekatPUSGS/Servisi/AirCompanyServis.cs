@@ -9,26 +9,26 @@ using ProjekatPUSGS.Models;
 
 namespace ProjekatPUSGS.Servisi
 {
-    public class AvioKompanijaServis
+    public class AirCompanyServis
     {
         private readonly AuthenticationContext _context;
 
-        public AvioKompanijaServis(AuthenticationContext context)
+        public AirCompanyServis(AuthenticationContext context)
         {
             _context = context;
-
         }
 
-        public bool DaLiMozeDaSeOdobri(int idAvioKompanije)
+        public bool DaLiMozeDaSeOdobri(int idAirCompany)
         {
             bool temp = true;
-            Aviokompanija servis = _context.Kompanije.Find(idAvioKompanije);
 
-            if (servis.CenaPrviDan == 0 || servis.CenaSledeciDan == 0)
+            AirCompany servis = _context.AvioKompanije.Find(idAirCompany);
+
+            if (servis.cenaPrviDan == 0 || servis.cenaSledeciDan == 0)
             {
                 temp = false;
-
             }
+
             return temp;
         }
 
@@ -38,17 +38,17 @@ namespace ProjekatPUSGS.Servisi
             double zbirOcena = 0;
             double brojOcena = 0;
 
-            List<RezervacijaLetova> lista = _context.RezervacijeLetova.ToList();
+            List<RezervacijaDestinacije> lista = _context.RezervacijeDestinacija.ToList();
 
-            foreach (RezervacijaLetova item in lista.ToList())
+            foreach (RezervacijaDestinacije item in lista.ToList())
             {
-                if (item.IdAvioKompanije != avioId)
+                if (item.IdAirCompany != avioId)
                 {
                     lista.Remove(item);
                 }
             }
 
-            foreach (RezervacijaLetova item in lista)
+            foreach (RezervacijaDestinacije item in lista)
             {
                 if (item.OcenaZaKomapaniju != 0)
                 {
@@ -75,21 +75,21 @@ namespace ProjekatPUSGS.Servisi
             double zbirOcena = 0;
             double brojOcena = 0;
 
-            List<RezervacijaLetova> lista = _context.RezervacijeLetova.ToList();
+            List<RezervacijaDestinacije> lista = _context.RezervacijeDestinacija.ToList();
 
-            foreach (RezervacijaLetova item in lista.ToList())
+            foreach (RezervacijaDestinacije item in lista.ToList())
             {
-                if (item.IdLeta != letId)
+                if (item.IdDestinacije != letId)
                 {
                     lista.Remove(item);
                 }
             }
 
-            foreach (RezervacijaLetova item in lista)
+            foreach (RezervacijaDestinacije item in lista)
             {
-                if (item.OcenaZaLet != 0)
+                if (item.OcenaZaDestinaciju != 0)
                 {
-                    zbirOcena += item.OcenaZaLet;
+                    zbirOcena += item.OcenaZaDestinaciju;
                     brojOcena++;
                 }
             }
@@ -109,11 +109,11 @@ namespace ProjekatPUSGS.Servisi
         }
         public List<int> BrojNaMesecnomNivou(int avioId)
         {
-            List<RezervacijaLetova> lista = _context.RezervacijeLetova.ToList();
+            List<RezervacijaDestinacije> lista = _context.RezervacijeDestinacija.ToList();
 
-            foreach (RezervacijaLetova item in lista.ToList())
+            foreach (RezervacijaDestinacije item in lista.ToList())
             {
-                if (item.IdAvioKompanije != avioId)
+                if (item.IdAirCompany != avioId)
                 {
                     lista.Remove(item);
                 }
@@ -126,7 +126,7 @@ namespace ProjekatPUSGS.Servisi
                 rezultat.Add(0);
             }
 
-            foreach (RezervacijaLetova item in lista)
+            foreach (RezervacijaDestinacije item in lista)
             {
                 DateTime pocetni = item.PocetniDatum;
                 DateTime krajnji = item.KrajnjiDatum;
@@ -150,11 +150,11 @@ namespace ProjekatPUSGS.Servisi
 
         public List<int> BrojNaNedeljnomNivou(int avioId)
         {
-            List<RezervacijaLetova> lista = _context.RezervacijeLetova.ToList();
+            List<RezervacijaDestinacije> lista = _context.RezervacijeDestinacija.ToList();
 
-            foreach (RezervacijaLetova item in lista.ToList())
+            foreach (RezervacijaDestinacije item in lista.ToList())
             {
-                if (item.IdAvioKompanije != avioId)
+                if (item.IdAirCompany != avioId)
                 {
                     lista.Remove(item);
                 }
@@ -170,7 +170,7 @@ namespace ProjekatPUSGS.Servisi
             var currentCulture = CultureInfo.CurrentCulture;
 
 
-            foreach (RezervacijaLetova item in lista)
+            foreach (RezervacijaDestinacije item in lista)
             {
                 DateTime pocetni = item.PocetniDatum;
                 DateTime krajnji = item.KrajnjiDatum;
@@ -201,11 +201,11 @@ namespace ProjekatPUSGS.Servisi
 
         public List<int> BrojNaDnevnomNivou(int avioId)
         {
-            List<RezervacijaLetova> lista = _context.RezervacijeLetova.ToList();
+            List<RezervacijaDestinacije> lista = _context.RezervacijeDestinacija.ToList();
 
-            foreach (RezervacijaLetova item in lista.ToList())
+            foreach (RezervacijaDestinacije item in lista.ToList())
             {
-                if (item.IdAvioKompanije != avioId)
+                if (item.IdAirCompany != avioId)
                 {
                     lista.Remove(item);
                 }
@@ -221,7 +221,7 @@ namespace ProjekatPUSGS.Servisi
             var currentCulture = CultureInfo.CurrentCulture;
 
 
-            foreach (RezervacijaLetova item in lista)
+            foreach (RezervacijaDestinacije item in lista)
             {
                 DateTime pocetni = item.PocetniDatum;
                 DateTime krajnji = item.KrajnjiDatum;
@@ -255,13 +255,13 @@ namespace ProjekatPUSGS.Servisi
             return rezultat;
         }
 
-        public double OdrediPrihodeZaPeriod(Prihodi p)
+        public double OdrediPrihodeZaPeriod(PrihodiZaPeriod p)
         {
-            List<RezervacijaLetova> lista = _context.RezervacijeLetova.ToList();
+            List<RezervacijaDestinacije> lista = _context.RezervacijeDestinacija.ToList();
 
-            foreach (RezervacijaLetova item in lista.ToList())
+            foreach (RezervacijaDestinacije item in lista.ToList())
             {
-                if (item.IdAvioKompanije != p.IdServisa)
+                if (item.IdAirCompany != p.IdRentACar)
                 {
                     lista.Remove(item);
                 }
@@ -269,7 +269,7 @@ namespace ProjekatPUSGS.Servisi
 
             double ukupniPrihodi = 0;
 
-            foreach (RezervacijaLetova item in lista)
+            foreach (RezervacijaDestinacije item in lista)
             {
                 if (p.PocetniDatum >= item.PocetniDatum && p.PocetniDatum <= item.KrajnjiDatum)
                 {

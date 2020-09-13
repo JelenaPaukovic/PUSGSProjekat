@@ -9,11 +9,11 @@ using System.Threading.Tasks;
 
 namespace ProjekatPUSGS.Servisi
 {
-    public class CarServis
+    public class RentServis
     {
         private readonly AuthenticationContext _context;
 
-        public CarServis(AuthenticationContext context)
+        public RentServis(AuthenticationContext context)
         {
             _context = context;
         }
@@ -22,7 +22,7 @@ namespace ProjekatPUSGS.Servisi
         {
             bool temp = true;
 
-            RentacarServis servis = _context.Servisi.Find(idRentACar);
+            RentACarServis servis = _context.RentACarServisi.Find(idRentACar);
 
             if (servis.cenaPrviDan == 0 || servis.cenaSledeciDan == 0)
             {
@@ -44,7 +44,7 @@ namespace ProjekatPUSGS.Servisi
 
             foreach (RezervacijaVozila item in lista.ToList())
             {
-                if (item.IdServisa != rentACarId)
+                if (item.IdRentACar != rentACarId)
                 {
                     lista.Remove(item);
                 }
@@ -85,7 +85,7 @@ namespace ProjekatPUSGS.Servisi
 
             foreach (RezervacijaVozila item in lista.ToList())
             {
-                if (item.IdServisa != rentACarId)
+                if (item.IdRentACar != rentACarId)
                 {
                     lista.Remove(item);
                 }
@@ -136,7 +136,7 @@ namespace ProjekatPUSGS.Servisi
 
             foreach (RezervacijaVozila item in lista.ToList())
             {
-                if (item.IdServisa != rentACarId)
+                if (item.IdRentACar != rentACarId)
                 {
                     lista.Remove(item);
                 }
@@ -196,7 +196,7 @@ namespace ProjekatPUSGS.Servisi
 
             foreach (RezervacijaVozila item in lista.ToList())
             {
-                if (item.IdServisa != rentACarId)
+                if (item.IdRentACar != rentACarId)
                 {
                     lista.Remove(item);
                 }
@@ -204,9 +204,9 @@ namespace ProjekatPUSGS.Servisi
 
             foreach (RezervacijaVozila item in lista)
             {
-                if (item.OcenaZaServis != 0)
+                if (item.OcenaZaRentACar != 0)
                 {
-                    zbirOcena += item.OcenaZaServis;
+                    zbirOcena += item.OcenaZaRentACar;
                     brojOcena++;
                 }
             }
@@ -263,13 +263,13 @@ namespace ProjekatPUSGS.Servisi
 
         }
 
-        public double OdrediPrihodeZaPeriod(Prihodi p)
+        public double OdrediPrihodeZaPeriod(PrihodiZaPeriod pp)
         {
             List<RezervacijaVozila> lista = _context.RezervacijeVozila.ToList();
 
             foreach (RezervacijaVozila item in lista.ToList())
             {
-                if (item.IdServisa != p.IdServisa)
+                if (item.IdRentACar != pp.IdRentACar)
                 {
                     lista.Remove(item);
                 }
@@ -279,11 +279,11 @@ namespace ProjekatPUSGS.Servisi
 
             foreach (RezervacijaVozila item in lista)
             {
-                if (p.PocetniDatum >= item.PocetniDatum && p.PocetniDatum <= item.KrajnjiDatum)
+                if (pp.PocetniDatum >= item.PocetniDatum && pp.PocetniDatum <= item.KrajnjiDatum)
                 {
                     ukupniPrihodi += item.Cena;
                 }
-                else if (p.KrajnjiDatum >= item.PocetniDatum && p.KrajnjiDatum <= item.KrajnjiDatum)
+                else if (pp.KrajnjiDatum >= item.PocetniDatum && pp.KrajnjiDatum <= item.KrajnjiDatum)
                 {
                     ukupniPrihodi += item.Cena;
                 }

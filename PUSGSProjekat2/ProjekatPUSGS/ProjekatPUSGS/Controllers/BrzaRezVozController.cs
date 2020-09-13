@@ -13,15 +13,15 @@ namespace ProjekatPUSGS.Controllers
 {
     [Route("api/[controller]")]
     [ApiController]
-    public class BrzaRezervacijaVozilaController : ControllerBase
+    public class BrzaRezVozController : ControllerBase
     {
         private readonly AuthenticationContext _context;
-        private RezervacijaVozilaServis servis;
+        private RezervacijaServis servis;
 
-        public BrzaRezervacijaVozilaController(AuthenticationContext context)
+        public BrzaRezVozController(AuthenticationContext context)
         {
             _context = context;
-            servis = new RezervacijaVozilaServis(_context);
+            servis = new RezervacijaServis(_context);
         }
 
         [HttpGet]
@@ -48,7 +48,7 @@ namespace ProjekatPUSGS.Controllers
         [Route("GetBrzaRezervacijaVozilaZaRent/{id}")]
         public async Task<ActionResult<IEnumerable<BrzaRezervacijaVozila>>> GetBrzaRezervacijaVozilaZaRent(int id)
         {
-            List<BrzaRezervacijaVozila> lista = _context.BrzeRezervacijeVozila.Where(x => x.IdServisa == id).ToList();
+            List<BrzaRezervacijaVozila> lista = _context.BrzeRezervacijeVozila.Where(x => x.IdRentACar == id).ToList();
 
             if (lista == null)
             {
@@ -95,7 +95,7 @@ namespace ProjekatPUSGS.Controllers
 
             RezervacijaVozila rez = new RezervacijaVozila();
             rez.IdKlijenta = rezervacija.IdKlijenta;
-            rez.IdServisa = rezervacija.IdServisa;
+            rez.IdRentACar = rezervacija.IdRentACar;
             rez.IdVozila = rezervacija.IdVozila;
             rez.Cena = rezervacija.NovaCena;
             rez.KrajnjiDatum = rezervacija.KrajnjiDatum;
@@ -126,7 +126,7 @@ namespace ProjekatPUSGS.Controllers
         [Route("AddBrzaRezervacijaVozila")]
         public async Task<ActionResult<BrzaRezervacijaVozila>> AddBrzaRezervacijaVozila(BrzaRezervacijaVozila rezervacija)
         {
-            RentacarServis rentservis = _context.Servisi.Find(rezervacija.IdServisa);
+            RentACarServis rentservis = _context.RentACarServisi.Find(rezervacija.IdRentACar);
 
             rezervacija.PocetnaCena = servis.ukupnaCena(rezervacija);
             rezervacija.NovaCena = rezervacija.PocetnaCena - rezervacija.PocetnaCena * rezervacija.Popust / 100;
@@ -169,7 +169,7 @@ namespace ProjekatPUSGS.Controllers
             DateTime pocetni = rezervacija.PocetniDatum;
             DateTime krajnji = rezervacija.KrajnjiDatum;
 
-            RentacarServis rentACar = _context.Servisi.Find(rezervacija.IdServisa);
+            RentACarServis rentACar = _context.RentACarServisi.Find(rezervacija.IdRentACar);
 
             double ukupnaCena = rentACar.cenaPrviDan;
 

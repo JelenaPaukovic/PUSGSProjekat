@@ -1,28 +1,36 @@
-﻿using Newtonsoft.Json;
-using System;
+﻿using System;
 using System.Collections.Generic;
-using System.ComponentModel.DataAnnotations;
-using System.ComponentModel.DataAnnotations.Schema;
 using System.Linq;
 using System.Threading.Tasks;
+using System.ComponentModel.DataAnnotations;
+using System.ComponentModel.DataAnnotations.Schema;
+using Newtonsoft.Json;
+
 
 namespace ProjekatPUSGS.Models
 {
-    public class Vozilo
+    public class Destinacija
     {
         [Key]
         public int Id { get; set; }
-        public string Naziv { get; set; }
-        public string Marka { get; set; }
-        public string Model { get; set; }
-        public int GodinaProizvodnje { get; set; }
-        public int BrojSedista { get; set; }
-        public string TipVozila { get; set; }
-        public int RentACarServisID { get; set; }
 
-        public int ilijalaID { get; set; }
+        public string NazivDestinacije { get; set; }
 
-        public double Ocena { get; set; }
+        public string datumVremeSletanja { get; set; }
+
+        public string datumVremePoletanja { get; set; }
+
+        public string vremePutovanja { get; set; }
+
+        public string duzinaPutovanja { get; set; }
+
+        public int brojPresedanja { get; set; }
+
+        public string lokacijaPresedanja { get; set; }
+
+        public string cenaKarte { get; set; }
+
+        public int AirCompanyID { get; set; }
 
         [NotMapped]
         public List<DateTime> ZauzetiDatumi { get; set; }
@@ -50,5 +58,6 @@ namespace ProjekatPUSGS.Models
                 ZauzetiDatumi = new List<DateTime>();
             }
         }
+
     }
 }

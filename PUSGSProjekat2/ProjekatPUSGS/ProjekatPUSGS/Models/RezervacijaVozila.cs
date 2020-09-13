@@ -13,7 +13,7 @@ namespace ProjekatPUSGS.Models
         [Key]
         public int Id { get; set; }
 
-        public int IdServisa { get; set; }
+        public int IdRentACar { get; set; }
 
         public int IdVozila { get; set; }
 
@@ -27,7 +27,7 @@ namespace ProjekatPUSGS.Models
 
         public DateTime KrajnjiDatum { get; set; }
 
-        public int OcenaZaServis { get; set; }
+        public int OcenaZaRentACar { get; set; }
         public int OcenaZaVozilo { get; set; }
 
         [NotMapped]

@@ -11,27 +11,28 @@ using ProjekatPUSGS.Servisi;
 
 namespace ProjekatPUSGS.Controllers
 {
+
     [Route("api/[controller]")]
     [ApiController]
-    public class AviokompanijaController : ControllerBase
+    public class AirCompanyController : ControllerBase
     {
         private readonly AuthenticationContext _context;
-        private AvioKompanijaServis servis;
+        private AirCompanyServis servis;
 
-        public AviokompanijaController(AuthenticationContext context)
+        public AirCompanyController(AuthenticationContext context)
         {
             _context = context;
-            servis = new AvioKompanijaServis(context);
+            servis = new AirCompanyServis(context);
         }
 
         // GET: api/Books
         [HttpGet]
-        public async Task<ActionResult<IEnumerable<Aviokompanija>>> GetKomapnije()
+        public async Task<ActionResult<IEnumerable<AirCompany>>> GetKomapnije()
         {
-            List<Aviokompanija> servisi = _context.Kompanije.ToList();
-            foreach (Aviokompanija item in servisi.ToList())
+            List<AirCompany> servisi = _context.AvioKompanije.ToList();
+            foreach (AirCompany item in servisi.ToList())
             {
-                item.Ocena = servis.ProsecnaOcenaZaAvio(item.IdAvio);
+                item.Ocena = servis.ProsecnaOcenaZaAvio(item.Id);
             }
             return servisi;
             //return await _context.Kompanije.ToListAsync();
@@ -39,26 +40,24 @@ namespace ProjekatPUSGS.Controllers
 
         // GET: api/Books/5
         [HttpGet("{id}")]
-        public async Task<ActionResult<Aviokompanija>> GetKomapnije(int id)
+        public async Task<ActionResult<AirCompany>> GetAviokompanija(int id)
         {
-            var kompanije = await _context.Kompanije.FindAsync(id);
+            var aviokompanija = await _context.AvioKompanije.FindAsync(id);
 
-            if (kompanije == null)
+            if (aviokompanija == null)
             {
                 return NotFound();
             }
-            kompanije.Ocena = servis.ProsecnaOcenaZaAvio(id);
 
-            return kompanije;
+            return aviokompanija;
         }
-
         // PUT: api/Books/5
         // To protect from overposting attacks, please enable the specific properties you want to bind to, for
         // more details see https://aka.ms/RazorPagesCRUD.
-        [Route("UpdateKompanija")]
-        public async Task<IActionResult> UpdateKompanija(Aviokompanija kompanija)
+        [Route("UpdateAviokompanija")]
+        public async Task<IActionResult> UpdateAviokompanija(AirCompany aviokompanija)
         {
-            _context.Entry(kompanija).State = EntityState.Modified;
+            _context.Entry(aviokompanija).State = EntityState.Modified;
 
             try
             {
@@ -66,7 +65,7 @@ namespace ProjekatPUSGS.Controllers
             }
             catch (DbUpdateConcurrencyException)
             {
-                if (!KompanijaExists(kompanija.IdAvio))
+                if (!AirCompanyExists(aviokompanija.Id))
                 {
                     return NotFound();
                 }
@@ -83,41 +82,46 @@ namespace ProjekatPUSGS.Controllers
         // To protect from overposting attacks, please enable the specific properties you want to bind to, for
         // more details see https://aka.ms/RazorPagesCRUD.
         [HttpPost]
-        [Route("AddKompanija")]
-        public async Task<ActionResult<Aviokompanija>> AddKompanija(Aviokompanija kompanija)
+        [Route("AddAviokompanija")]
+        public async Task<ActionResult<AirCompany>> AddAviokompanija(AirCompany aviokompanija)
         {
 
-            _context.Kompanije.Add(kompanija);
+            _context.AvioKompanije.Add(aviokompanija);
 
             await _context.SaveChangesAsync();
 
-            return CreatedAtAction("GetKompanije", new { id = kompanija.IdAvio }, kompanija);
+            var result = _context.Entry(aviokompanija).Entity;
+
+            return Ok(result);
+
+            // return CreatedAtAction("GetAviokompanija", new { id = aviokompanija.Id }, aviokompanija);
         }
 
         // DELETE: api/Books/5
         [HttpDelete]
-        [Route("DeleteKompanija/{id}")]
-        public async Task<ActionResult<Aviokompanija>> DeleteKompanija(int id)
+        [Route("DeleteAviokompanija/{id}")]
+        public async Task<ActionResult<AirCompany>> DeleteAviokompanija(int id)
         {
-            var kompanije = await _context.Kompanije.FindAsync(id);
-            if (kompanije == null)
+            var aviokompanije = await _context.AvioKompanije.FindAsync(id);
+            if (aviokompanije == null)
             {
                 return NotFound();
             }
 
-            _context.Kompanije.Remove(kompanije);
+            _context.AvioKompanije.Remove(aviokompanije);
             await _context.SaveChangesAsync();
 
-            return kompanije;
+            return aviokompanije;
         }
+
 
         [HttpGet]
         [Route("GetAvioKompanijaZaAdmina/{id}")]
-        public async Task<ActionResult<IEnumerable<Aviokompanija>>> GetAvioKompanijaZaAdmina(string id)
+        public async Task<ActionResult<IEnumerable<AirCompany>>> GetAvioKompanijaZaAdmina(string id)
         {
-            List<Aviokompanija> servisi = _context.Kompanije.ToList();
+            List<AirCompany> servisi = _context.AvioKompanije.ToList();
 
-            foreach (Aviokompanija item in servisi.ToList())
+            foreach (AirCompany item in servisi.ToList())
             {
                 if (item.Admin != id)
                 {
@@ -129,11 +133,11 @@ namespace ProjekatPUSGS.Controllers
         }
         [HttpGet]
         [Route("GetAviokompanijaOdobreno")]
-        public async Task<ActionResult<IEnumerable<Aviokompanija>>> GetAviokompanijaOdobreno()
+        public async Task<ActionResult<IEnumerable<AirCompany>>> GetAviokompanijaOdobreno()
         {
-            List<Aviokompanija> servisi = _context.Kompanije.ToList();
+            List<AirCompany> servisi = _context.AvioKompanije.ToList();
 
-            foreach (Aviokompanija item in servisi.ToList())
+            foreach (AirCompany item in servisi.ToList())
             {
                 if (item.Odobreno == false)
                 {
@@ -141,18 +145,18 @@ namespace ProjekatPUSGS.Controllers
                 }
             }
 
-            foreach (Aviokompanija item in servisi.ToList())
+            foreach (AirCompany item in servisi.ToList())
             {
-                item.Ocena = servis.ProsecnaOcenaZaAvio(item.IdAvio);
+                item.Ocena = servis.ProsecnaOcenaZaAvio(item.Id);
             }
 
             return servisi;
         }
         [HttpGet]
         [Route("OdobriAvio/{id}")]
-        public async Task<ActionResult<Aviokompanija>> OdobriAvio(int id)
+        public async Task<ActionResult<AirCompany>> OdobriAvio(int id)
         {
-            var servisi = await _context.Kompanije.FindAsync(id);
+            var servisi = await _context.AvioKompanije.FindAsync(id);
             if (servisi == null)
             {
                 return NotFound();
@@ -171,9 +175,9 @@ namespace ProjekatPUSGS.Controllers
 
             return servisi;
         }
-        private bool KompanijaExists(int id)
+        private bool AirCompanyExists(int id)
         {
-            return _context.Kompanije.Any(e => e.IdAvio == id);
+            return _context.AvioKompanije.Any(e => e.Id == id);
         }
 
 
@@ -200,7 +204,7 @@ namespace ProjekatPUSGS.Controllers
 
         [HttpPost]
         [Route("Prihodi")]
-        public async Task<ActionResult<double>> Prihodi(Prihodi p)
+        public async Task<ActionResult<double>> Prihodi(PrihodiZaPeriod p)
         {
             return servis.OdrediPrihodeZaPeriod(p);
         }

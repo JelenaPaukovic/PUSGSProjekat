@@ -5,9 +5,9 @@ using System.Threading.Tasks;
 
 namespace ProjekatPUSGS.Models
 {
-    public class Prihodi
+    public class PrihodiZaPeriod
     {
-        public int IdServisa { get; set; }
+        public int IdRentACar { get; set; }
         public DateTime PocetniDatum { get; set; }
         public DateTime KrajnjiDatum { get; set; }
     }
