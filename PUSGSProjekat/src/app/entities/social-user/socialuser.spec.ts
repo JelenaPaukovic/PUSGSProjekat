@@ -1,4 +1,4 @@
-import { SocialUser } from './social-user';
+import { SocialUser } from './socialuser';
 
 describe('SocialUser', () => {
   it('should create an instance', () => {

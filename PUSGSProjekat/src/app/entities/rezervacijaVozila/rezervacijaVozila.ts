@@ -3,7 +3,7 @@ import { Vozilo } from '../vozilo/vozilo';
 
 export class RezervacijaVozila {
     id: number;
-    idRentacar: number;
+    idRentACar: number;
     idVozila: number;
     idKlijenta: string;
     cena: number;
@@ -12,9 +12,9 @@ export class RezervacijaVozila {
     vozilo:Vozilo;
     zavrseno:boolean;
 
-    constructor(id:number, idRentacar: number, idVozila: number, idKlijenta: string, cena: number,pocetniDatum:string,krajnjiDatum:string,vozilo:Vozilo) {
+    constructor(id:number, idRentACar: number, idVozila: number, idKlijenta: string, cena: number,pocetniDatum:string,krajnjiDatum:string,vozilo:Vozilo) {
         this.id = id;
-        this.idRentacar = idRentacar;
+        this.idRentACar = idRentACar;
         this.idVozila = idVozila;
         this.idKlijenta = idKlijenta;
         this.cena = cena;

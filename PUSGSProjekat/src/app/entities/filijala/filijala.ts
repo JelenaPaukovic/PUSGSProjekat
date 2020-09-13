@@ -1,12 +1,12 @@
 import { NumberValueAccessor } from '@angular/forms';
-import { Rentacar } from '../rentacar/rentacar';
+import { RentACarServis } from '../rentacar/rentacar';
 
 export class Filijala {
     id: number;
     ulica: string;
     broj: number;
     mesto: string;
-    rentacarId:number;
+    rentACarId:number;
 
     constructor(id:number, ulica: string, broj: number, mesto: string) {
         this.id = id;

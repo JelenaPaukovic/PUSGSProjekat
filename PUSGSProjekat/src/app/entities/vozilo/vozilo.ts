@@ -1,5 +1,5 @@
 import { NumberValueAccessor } from '@angular/forms';
-import { Rentacar } from '../rentacar/rentacar';
+import { RentACarServis } from '../rentacar/rentacar';
 
 export class Vozilo {
     id: number;
@@ -9,7 +9,7 @@ export class Vozilo {
     godinaProizvodnje: number;
     brojSedista: number;
     tipVozila: string;
-    rentacarId:number;
+    rentACarId:number;
     filijalaId:number;
     rowVersion:any[];
     ocena:number;

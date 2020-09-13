@@ -1,8 +1,7 @@
-import {Avion} from './avion';
-import { Avio } from '../avio/avio';
+import { Avion } from './avion';
 
-describe('Avion', () => {
-    it('should create an instance', () => {
-        expect(new Avio()).toBeTruthy();
-    });
+describe('Avio', () => {
+  it('should create an instance', () => {
+    expect(new Avion()).toBeTruthy();
+  });
 });

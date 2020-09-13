@@ -1,8 +1,7 @@
 import { NumberValueAccessor } from '@angular/forms';
-import {Vozilo} from '../vozilo/vozilo';
+import { Vozilo } from '../vozilo/vozilo';
 
-export class Rentacar{
-
+export class RentACarServis {
     id: number;
     naziv: string;
     adresa: string;
@@ -14,7 +13,7 @@ export class Rentacar{
     odobreno:boolean;
     admin:string;
 
-    constructor(id:number, naziv: string, adresa: string, promotivniOpis: string, ocena: number, admin:string) {
+    constructor(id:number, naziv: string, adresa: string, promotivniOpis: string, ocena: number,admin:string) {
         this.id = id;
         this.naziv = naziv;
         this.adresa = adresa;

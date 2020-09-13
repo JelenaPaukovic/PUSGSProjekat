@@ -1,7 +1,7 @@
-import { Rentacar } from './rentacar';
+import { RentACarServis } from './rentacar';
 
-describe('Rentacar', () => {
+describe('RentACarServis', () => {
   it('should create an instance', () => {
-    expect(new Rentacar()).toBeTruthy();
+    expect(new RentACarServis()).toBeTruthy();
   });
 });
