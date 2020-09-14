@@ -225,9 +225,9 @@ namespace ProjekatPUSGS.Migrations
                     b.ToTable("AspNetUserTokens");
                 });
 
-            modelBuilder.Entity("ProjekatPUSGS.Models.Aviokompanija", b =>
+            modelBuilder.Entity("ProjekatPUSGS.Models.AirCompany", b =>
                 {
-                    b.Property<int>("IdAvio")
+                    b.Property<int>("Id")
                         .ValueGeneratedOnAdd()
                         .HasColumnType("int")
                         .HasAnnotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn);
@@ -238,28 +238,22 @@ namespace ProjekatPUSGS.Migrations
                     b.Property<string>("Adresa")
                         .HasColumnType("nvarchar(max)");
 
-                    b.Property<double>("CenaPrviDan")
-                        .HasColumnType("float");
-
-                    b.Property<double>("CenaSledeciDan")
-                        .HasColumnType("float");
-
                     b.Property<string>("Cenovnik")
                         .HasColumnType("nvarchar(max)");
 
-                    b.Property<string>("DestinacijePoslovanja")
+                    b.Property<string>("DestNaKojimPosluje")
                         .HasColumnType("nvarchar(max)");
 
                     b.Property<string>("InfoPrtljag")
                         .HasColumnType("nvarchar(max)");
 
-                    b.Property<string>("KonfSegmenataIMesta")
+                    b.Property<string>("KonfigSegMesta")
                         .HasColumnType("nvarchar(max)");
 
                     b.Property<string>("Letovi")
                         .HasColumnType("nvarchar(max)");
 
-                    b.Property<string>("Naziv")
+                    b.Property<string>("NazivAvioKompanije")
                         .HasColumnType("nvarchar(max)");
 
                     b.Property<double>("Ocena")
@@ -271,29 +265,35 @@ namespace ProjekatPUSGS.Migrations
                     b.Property<string>("PromotivniOpis")
                         .HasColumnType("nvarchar(max)");
 
-                    b.Property<string>("SpisakKarataSaPopustom")
+                    b.Property<string>("SpisakKarataSaPopustomZaBrzuRez")
                         .HasColumnType("nvarchar(max)");
 
-                    b.HasKey("IdAvio");
+                    b.Property<double>("cenaPrviDan")
+                        .HasColumnType("float");
 
-                    b.ToTable("Kompanije");
+                    b.Property<double>("cenaSledeciDan")
+                        .HasColumnType("float");
+
+                    b.HasKey("Id");
+
+                    b.ToTable("AvioKompanije");
                 });
 
-            modelBuilder.Entity("ProjekatPUSGS.Models.BrzaRezervacijaLetova", b =>
+            modelBuilder.Entity("ProjekatPUSGS.Models.BrzaRezervacijaDestinacija", b =>
                 {
-                    b.Property<int>("IdRez")
+                    b.Property<int>("Id")
                         .ValueGeneratedOnAdd()
                         .HasColumnType("int")
                         .HasAnnotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn);
 
-                    b.Property<int>("IdAvioKompanije")
+                    b.Property<int>("IdAirCompany")
+                        .HasColumnType("int");
+
+                    b.Property<int>("IdDestinacije")
                         .HasColumnType("int");
 
                     b.Property<string>("IdKlijenta")
                         .HasColumnType("nvarchar(max)");
-
-                    b.Property<int>("IdLeta")
-                        .HasColumnType("int");
 
                     b.Property<DateTime>("KrajnjiDatum")
                         .HasColumnType("datetime2");
@@ -310,7 +310,7 @@ namespace ProjekatPUSGS.Migrations
                     b.Property<double>("Popust")
                         .HasColumnType("float");
 
-                    b.Property<byte[]>("RedVerzija")
+                    b.Property<byte[]>("RowVersion")
                         .IsConcurrencyToken()
                         .ValueGeneratedOnAddOrUpdate()
                         .HasColumnType("rowversion");
@@ -318,9 +318,9 @@ namespace ProjekatPUSGS.Migrations
                     b.Property<bool>("Zavrseno")
                         .HasColumnType("bit");
 
-                    b.HasKey("IdRez");
+                    b.HasKey("Id");
 
-                    b.ToTable("BrzeRezervacijeLetova");
+                    b.ToTable("BrzeRezervacijeDestinacije");
                 });
 
             modelBuilder.Entity("ProjekatPUSGS.Models.BrzaRezervacijaVozila", b =>
@@ -333,7 +333,7 @@ namespace ProjekatPUSGS.Migrations
                     b.Property<string>("IdKlijenta")
                         .HasColumnType("nvarchar(max)");
 
-                    b.Property<int>("IdServisa")
+                    b.Property<int>("IdRentACar")
                         .HasColumnType("int");
 
                     b.Property<int>("IdVozila")
@@ -367,6 +367,55 @@ namespace ProjekatPUSGS.Migrations
                     b.ToTable("BrzeRezervacijeVozila");
                 });
 
+            modelBuilder.Entity("ProjekatPUSGS.Models.Destinacija", b =>
+                {
+                    b.Property<int>("Id")
+                        .ValueGeneratedOnAdd()
+                        .HasColumnType("int")
+                        .HasAnnotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn);
+
+                    b.Property<int>("AirCompanyID")
+                        .HasColumnType("int");
+
+                    b.Property<string>("NazivDestinacije")
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<byte[]>("RowVersion")
+                        .IsConcurrencyToken()
+                        .ValueGeneratedOnAddOrUpdate()
+                        .HasColumnType("rowversion");
+
+                    b.Property<string>("ZauzetiDatumiString")
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<int>("brojPresedanja")
+                        .HasColumnType("int");
+
+                    b.Property<string>("cenaKarte")
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<string>("datumVremePoletanja")
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<string>("datumVremeSletanja")
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<string>("duzinaPutovanja")
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<string>("lokacijaPresedanja")
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<string>("vremePutovanja")
+                        .HasColumnType("nvarchar(max)");
+
+                    b.HasKey("Id");
+
+                    b.HasIndex("AirCompanyID");
+
+                    b.ToTable("Destinacije");
+                });
+
             modelBuilder.Entity("ProjekatPUSGS.Models.Filijala", b =>
                 {
                     b.Property<int>("Id")
@@ -380,7 +429,7 @@ namespace ProjekatPUSGS.Migrations
                     b.Property<string>("Mesto")
                         .HasColumnType("nvarchar(max)");
 
-                    b.Property<int>("ServisID")
+                    b.Property<int>("RentACarServisID")
                         .HasColumnType("int");
 
                     b.Property<string>("Ulica")
@@ -391,56 +440,9 @@ namespace ProjekatPUSGS.Migrations
                     b.ToTable("Filijale");
                 });
 
-            modelBuilder.Entity("ProjekatPUSGS.Models.Letovi", b =>
+            modelBuilder.Entity("ProjekatPUSGS.Models.RentACarServis", b =>
                 {
-                    b.Property<int>("IdLet")
-                        .ValueGeneratedOnAdd()
-                        .HasColumnType("int")
-                        .HasAnnotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn);
-
-                    b.Property<string>("BrojPresedanja")
-                        .HasColumnType("nvarchar(max)");
-
-                    b.Property<int>("CenaKarte")
-                        .HasColumnType("int");
-
-                    b.Property<string>("DatumIVremePoletanja")
-                        .HasColumnType("nvarchar(max)");
-
-                    b.Property<string>("DatumIVremeSletanja")
-                        .HasColumnType("nvarchar(max)");
-
-                    b.Property<string>("DatumiZazuzeti")
-                        .HasColumnType("nvarchar(max)");
-
-                    b.Property<string>("DuzinaPutovanja")
-                        .HasColumnType("nvarchar(max)");
-
-                    b.Property<int>("IdAvioKompanije")
-                        .HasColumnType("int");
-
-                    b.Property<string>("LokacijaPresedanja")
-                        .HasColumnType("nvarchar(max)");
-
-                    b.Property<string>("NazivDestinacije")
-                        .HasColumnType("nvarchar(max)");
-
-                    b.Property<byte[]>("RedVerzija")
-                        .IsConcurrencyToken()
-                        .ValueGeneratedOnAddOrUpdate()
-                        .HasColumnType("rowversion");
-
-                    b.Property<string>("VremePutovanja")
-                        .HasColumnType("nvarchar(max)");
-
-                    b.HasKey("IdLet");
-
-                    b.ToTable("Let");
-                });
-
-            modelBuilder.Entity("ProjekatPUSGS.Models.RentacarServis", b =>
-                {
-                    b.Property<int>("IdServis")
+                    b.Property<int>("Id")
                         .ValueGeneratedOnAdd()
                         .HasColumnType("int")
                         .HasAnnotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn);
@@ -469,12 +471,12 @@ namespace ProjekatPUSGS.Migrations
                     b.Property<double>("cenaSledeciDan")
                         .HasColumnType("float");
 
-                    b.HasKey("IdServis");
+                    b.HasKey("Id");
 
-                    b.ToTable("Servisi");
+                    b.ToTable("RentACarServisi");
                 });
 
-            modelBuilder.Entity("ProjekatPUSGS.Models.RezervacijaLetova", b =>
+            modelBuilder.Entity("ProjekatPUSGS.Models.RezervacijaDestinacije", b =>
                 {
                     b.Property<int>("Id")
                         .ValueGeneratedOnAdd()
@@ -484,36 +486,36 @@ namespace ProjekatPUSGS.Migrations
                     b.Property<double>("Cena")
                         .HasColumnType("float");
 
-                    b.Property<string>("DatumiZauzeti")
-                        .HasColumnType("nvarchar(max)");
+                    b.Property<int>("IdAirCompany")
+                        .HasColumnType("int");
 
-                    b.Property<int>("IdAvioKompanije")
+                    b.Property<int>("IdDestinacije")
                         .HasColumnType("int");
 
                     b.Property<string>("IdKlijenta")
                         .HasColumnType("nvarchar(max)");
 
-                    b.Property<int>("IdLeta")
-                        .HasColumnType("int");
-
                     b.Property<DateTime>("KrajnjiDatum")
                         .HasColumnType("datetime2");
+
+                    b.Property<int>("OcenaZaDestinaciju")
+                        .HasColumnType("int");
 
                     b.Property<int>("OcenaZaKomapaniju")
                         .HasColumnType("int");
 
-                    b.Property<int>("OcenaZaLet")
-                        .HasColumnType("int");
-
                     b.Property<DateTime>("PocetniDatum")
                         .HasColumnType("datetime2");
+
+                    b.Property<string>("ZauzetiDatumiString")
+                        .HasColumnType("nvarchar(max)");
 
                     b.Property<bool>("Zavrseno")
                         .HasColumnType("bit");
 
                     b.HasKey("Id");
 
-                    b.ToTable("RezervacijeLetova");
+                    b.ToTable("RezervacijeDestinacija");
                 });
 
             modelBuilder.Entity("ProjekatPUSGS.Models.RezervacijaVozila", b =>
@@ -529,7 +531,7 @@ namespace ProjekatPUSGS.Migrations
                     b.Property<string>("IdKlijenta")
                         .HasColumnType("nvarchar(max)");
 
-                    b.Property<int>("IdServisa")
+                    b.Property<int>("IdRentACar")
                         .HasColumnType("int");
 
                     b.Property<int>("IdVozila")
@@ -538,7 +540,7 @@ namespace ProjekatPUSGS.Migrations
                     b.Property<DateTime>("KrajnjiDatum")
                         .HasColumnType("datetime2");
 
-                    b.Property<int>("OcenaZaServis")
+                    b.Property<int>("OcenaZaRentACar")
                         .HasColumnType("int");
 
                     b.Property<int>("OcenaZaVozilo")
@@ -560,7 +562,7 @@ namespace ProjekatPUSGS.Migrations
 
             modelBuilder.Entity("ProjekatPUSGS.Models.Vozilo", b =>
                 {
-                    b.Property<int>("IdVozilo")
+                    b.Property<int>("Id")
                         .ValueGeneratedOnAdd()
                         .HasColumnType("int")
                         .HasAnnotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn);
@@ -569,12 +571,6 @@ namespace ProjekatPUSGS.Migrations
                         .HasColumnType("int");
 
                     b.Property<int>("GodinaProizvodnje")
-                        .HasColumnType("int");
-
-                    b.Property<int>("IdFilijale")
-                        .HasColumnType("int");
-
-                    b.Property<int>("IdServisa")
                         .HasColumnType("int");
 
                     b.Property<string>("Marka")
@@ -589,7 +585,7 @@ namespace ProjekatPUSGS.Migrations
                     b.Property<double>("Ocena")
                         .HasColumnType("float");
 
-                    b.Property<int?>("RentacarServisIdServis")
+                    b.Property<int>("RentACarServisID")
                         .HasColumnType("int");
 
                     b.Property<byte[]>("RowVersion")
@@ -603,9 +599,12 @@ namespace ProjekatPUSGS.Migrations
                     b.Property<string>("ZauzetiDatumiString")
                         .HasColumnType("nvarchar(max)");
 
-                    b.HasKey("IdVozilo");
+                    b.Property<int>("ilijalaID")
+                        .HasColumnType("int");
 
-                    b.HasIndex("RentacarServisIdServis");
+                    b.HasKey("Id");
+
+                    b.HasIndex("RentACarServisID");
 
                     b.ToTable("Vozila");
                 });
@@ -629,7 +628,7 @@ namespace ProjekatPUSGS.Migrations
                     b.Property<string>("Telefon")
                         .HasColumnType("nvarchar(max)");
 
-                    b.Property<int>("UlogaKorisnika")
+                    b.Property<int>("Uloga")
                         .HasColumnType("int");
 
                     b.HasDiscriminator().HasValue("Korisnik");
@@ -686,11 +685,22 @@ namespace ProjekatPUSGS.Migrations
                         .IsRequired();
                 });
 
+            modelBuilder.Entity("ProjekatPUSGS.Models.Destinacija", b =>
+                {
+                    b.HasOne("ProjekatPUSGS.Models.AirCompany", null)
+                        .WithMany("Destinacije")
+                        .HasForeignKey("AirCompanyID")
+                        .OnDelete(DeleteBehavior.Cascade)
+                        .IsRequired();
+                });
+
             modelBuilder.Entity("ProjekatPUSGS.Models.Vozilo", b =>
                 {
-                    b.HasOne("ProjekatPUSGS.Models.RentacarServis", null)
+                    b.HasOne("ProjekatPUSGS.Models.RentACarServis", null)
                         .WithMany("Vozila")
-                        .HasForeignKey("RentacarServisIdServis");
+                        .HasForeignKey("RentACarServisID")
+                        .OnDelete(DeleteBehavior.Cascade)
+                        .IsRequired();
                 });
 #pragma warning restore 612, 618
         }

@@ -41,14 +41,12 @@ namespace ProjekatPUSGS.Migrations
                     LockoutEnabled = table.Column<bool>(nullable: false),
                     AccessFailedCount = table.Column<int>(nullable: false),
                     Discriminator = table.Column<string>(nullable: false),
-                    IdKorisnik = table.Column<int>(nullable: true),
                     Ime = table.Column<string>(nullable: true),
                     Prezime = table.Column<string>(nullable: true),
-                    EmailAdresa = table.Column<string>(nullable: true),
-                    Lozinka = table.Column<string>(nullable: true),
                     Grad = table.Column<string>(nullable: true),
-                    BrojTelefona = table.Column<string>(nullable: true),
-                    UlogaKorisnika = table.Column<int>(nullable: true)
+                    Telefon = table.Column<string>(nullable: true),
+                    Uloga = table.Column<int>(nullable: true),
+                    IzmenjenaLozinka = table.Column<bool>(nullable: true)
                 },
                 constraints: table =>
                 {
@@ -56,77 +54,153 @@ namespace ProjekatPUSGS.Migrations
                 });
 
             migrationBuilder.CreateTable(
-                name: "Kompanije",
+                name: "AvioKompanije",
                 columns: table => new
                 {
-                    IdAvio = table.Column<int>(nullable: false)
+                    Id = table.Column<int>(nullable: false)
                         .Annotation("SqlServer:Identity", "1, 1"),
-                    Naziv = table.Column<string>(nullable: true),
+                    NazivAvioKompanije = table.Column<string>(nullable: true),
+                    Admin = table.Column<string>(nullable: true),
                     Adresa = table.Column<string>(nullable: true),
                     PromotivniOpis = table.Column<string>(nullable: true),
-                    Destinacije = table.Column<string>(nullable: true),
+                    DestNaKojimPosluje = table.Column<string>(nullable: true),
                     Letovi = table.Column<string>(nullable: true),
-                    SpisakKarataSaPopustom = table.Column<string>(nullable: true),
-                    KonfSegmenataIMesta = table.Column<string>(nullable: true),
-                    CenovnikIInfoOPrtljagu = table.Column<string>(nullable: true)
+                    SpisakKarataSaPopustomZaBrzuRez = table.Column<string>(nullable: true),
+                    KonfigSegMesta = table.Column<string>(nullable: true),
+                    Cenovnik = table.Column<string>(nullable: true),
+                    InfoPrtljag = table.Column<string>(nullable: true),
+                    cenaPrviDan = table.Column<double>(nullable: false),
+                    cenaSledeciDan = table.Column<double>(nullable: false),
+                    Odobreno = table.Column<bool>(nullable: false),
+                    Ocena = table.Column<double>(nullable: false)
                 },
                 constraints: table =>
                 {
-                    table.PrimaryKey("PK_Kompanije", x => x.IdAvio);
+                    table.PrimaryKey("PK_AvioKompanije", x => x.Id);
                 });
 
             migrationBuilder.CreateTable(
-                name: "Let",
+                name: "BrzeRezervacijeDestinacije",
                 columns: table => new
                 {
-                    IdLet = table.Column<int>(nullable: false)
+                    Id = table.Column<int>(nullable: false)
                         .Annotation("SqlServer:Identity", "1, 1"),
-                    DatumIVremePoletanja = table.Column<DateTime>(nullable: false),
-                    DatumIVremeSletanja = table.Column<DateTime>(nullable: false),
-                    VremePutovanja = table.Column<DateTime>(nullable: false),
-                    DuzinaPutovanja = table.Column<DateTime>(nullable: false),
-                    BrojILokacijePresedanja = table.Column<string>(nullable: true),
-                    CenaKarte = table.Column<int>(nullable: false)
+                    IdAirCompany = table.Column<int>(nullable: false),
+                    IdDestinacije = table.Column<int>(nullable: false),
+                    NovaCena = table.Column<double>(nullable: false),
+                    PocetnaCena = table.Column<double>(nullable: false),
+                    Popust = table.Column<double>(nullable: false),
+                    Zavrseno = table.Column<bool>(nullable: false),
+                    IdKlijenta = table.Column<string>(nullable: true),
+                    PocetniDatum = table.Column<DateTime>(nullable: false),
+                    KrajnjiDatum = table.Column<DateTime>(nullable: false),
+                    RowVersion = table.Column<byte[]>(rowVersion: true, nullable: true)
                 },
                 constraints: table =>
                 {
-                    table.PrimaryKey("PK_Let", x => x.IdLet);
+                    table.PrimaryKey("PK_BrzeRezervacijeDestinacije", x => x.Id);
                 });
 
             migrationBuilder.CreateTable(
-                name: "Servisi",
+                name: "BrzeRezervacijeVozila",
                 columns: table => new
                 {
-                    IdServis = table.Column<int>(nullable: false)
+                    Id = table.Column<int>(nullable: false)
+                        .Annotation("SqlServer:Identity", "1, 1"),
+                    IdRentACar = table.Column<int>(nullable: false),
+                    IdVozila = table.Column<int>(nullable: false),
+                    NovaCena = table.Column<double>(nullable: false),
+                    PocetnaCena = table.Column<double>(nullable: false),
+                    Popust = table.Column<double>(nullable: false),
+                    Zavrseno = table.Column<bool>(nullable: false),
+                    IdKlijenta = table.Column<string>(nullable: true),
+                    PocetniDatum = table.Column<DateTime>(nullable: false),
+                    KrajnjiDatum = table.Column<DateTime>(nullable: false),
+                    RowVersion = table.Column<byte[]>(rowVersion: true, nullable: true)
+                },
+                constraints: table =>
+                {
+                    table.PrimaryKey("PK_BrzeRezervacijeVozila", x => x.Id);
+                });
+
+            migrationBuilder.CreateTable(
+                name: "Filijale",
+                columns: table => new
+                {
+                    Id = table.Column<int>(nullable: false)
+                        .Annotation("SqlServer:Identity", "1, 1"),
+                    Ulica = table.Column<string>(nullable: true),
+                    Broj = table.Column<int>(nullable: false),
+                    Mesto = table.Column<string>(nullable: true),
+                    RentACarServisID = table.Column<int>(nullable: false)
+                },
+                constraints: table =>
+                {
+                    table.PrimaryKey("PK_Filijale", x => x.Id);
+                });
+
+            migrationBuilder.CreateTable(
+                name: "RentACarServisi",
+                columns: table => new
+                {
+                    Id = table.Column<int>(nullable: false)
                         .Annotation("SqlServer:Identity", "1, 1"),
                     Naziv = table.Column<string>(nullable: true),
                     Adresa = table.Column<string>(nullable: true),
                     PromotivniOpis = table.Column<string>(nullable: true),
-                    CenovnikUsluga = table.Column<string>(nullable: true),
-                    SpisakVozila = table.Column<string>(nullable: true),
-                    Filijale = table.Column<string>(nullable: true)
+                    Admin = table.Column<string>(nullable: true),
+                    cenaPrviDan = table.Column<double>(nullable: false),
+                    cenaSledeciDan = table.Column<double>(nullable: false),
+                    Odobreno = table.Column<bool>(nullable: false),
+                    Ocena = table.Column<double>(nullable: false)
                 },
                 constraints: table =>
                 {
-                    table.PrimaryKey("PK_Servisi", x => x.IdServis);
+                    table.PrimaryKey("PK_RentACarServisi", x => x.Id);
                 });
 
             migrationBuilder.CreateTable(
-                name: "Vozila",
+                name: "RezervacijeDestinacija",
                 columns: table => new
                 {
-                    IdVozilo = table.Column<int>(nullable: false)
+                    Id = table.Column<int>(nullable: false)
                         .Annotation("SqlServer:Identity", "1, 1"),
-                    Naziv = table.Column<string>(nullable: true),
-                    Marka = table.Column<string>(nullable: true),
-                    Model = table.Column<string>(nullable: true),
-                    GodinaProizvodnje = table.Column<string>(nullable: true),
-                    BrojSedista = table.Column<int>(nullable: false),
-                    TipVozila = table.Column<string>(nullable: true)
+                    IdAirCompany = table.Column<int>(nullable: false),
+                    IdDestinacije = table.Column<int>(nullable: false),
+                    Cena = table.Column<double>(nullable: false),
+                    Zavrseno = table.Column<bool>(nullable: false),
+                    IdKlijenta = table.Column<string>(nullable: true),
+                    PocetniDatum = table.Column<DateTime>(nullable: false),
+                    KrajnjiDatum = table.Column<DateTime>(nullable: false),
+                    OcenaZaKomapaniju = table.Column<int>(nullable: false),
+                    OcenaZaDestinaciju = table.Column<int>(nullable: false),
+                    ZauzetiDatumiString = table.Column<string>(nullable: true)
                 },
                 constraints: table =>
                 {
-                    table.PrimaryKey("PK_Vozila", x => x.IdVozilo);
+                    table.PrimaryKey("PK_RezervacijeDestinacija", x => x.Id);
+                });
+
+            migrationBuilder.CreateTable(
+                name: "RezervacijeVozila",
+                columns: table => new
+                {
+                    Id = table.Column<int>(nullable: false)
+                        .Annotation("SqlServer:Identity", "1, 1"),
+                    IdRentACar = table.Column<int>(nullable: false),
+                    IdVozila = table.Column<int>(nullable: false),
+                    Cena = table.Column<double>(nullable: false),
+                    Zavrseno = table.Column<bool>(nullable: false),
+                    IdKlijenta = table.Column<string>(nullable: true),
+                    PocetniDatum = table.Column<DateTime>(nullable: false),
+                    KrajnjiDatum = table.Column<DateTime>(nullable: false),
+                    OcenaZaRentACar = table.Column<int>(nullable: false),
+                    OcenaZaVozilo = table.Column<int>(nullable: false),
+                    ZauzetiDatumiString = table.Column<string>(nullable: true)
+                },
+                constraints: table =>
+                {
+                    table.PrimaryKey("PK_RezervacijeVozila", x => x.Id);
                 });
 
             migrationBuilder.CreateTable(
@@ -235,6 +309,64 @@ namespace ProjekatPUSGS.Migrations
                         onDelete: ReferentialAction.Cascade);
                 });
 
+            migrationBuilder.CreateTable(
+                name: "Destinacije",
+                columns: table => new
+                {
+                    Id = table.Column<int>(nullable: false)
+                        .Annotation("SqlServer:Identity", "1, 1"),
+                    NazivDestinacije = table.Column<string>(nullable: true),
+                    datumVremeSletanja = table.Column<string>(nullable: true),
+                    datumVremePoletanja = table.Column<string>(nullable: true),
+                    vremePutovanja = table.Column<string>(nullable: true),
+                    duzinaPutovanja = table.Column<string>(nullable: true),
+                    brojPresedanja = table.Column<int>(nullable: false),
+                    lokacijaPresedanja = table.Column<string>(nullable: true),
+                    cenaKarte = table.Column<string>(nullable: true),
+                    AirCompanyID = table.Column<int>(nullable: false),
+                    ZauzetiDatumiString = table.Column<string>(nullable: true),
+                    RowVersion = table.Column<byte[]>(rowVersion: true, nullable: true)
+                },
+                constraints: table =>
+                {
+                    table.PrimaryKey("PK_Destinacije", x => x.Id);
+                    table.ForeignKey(
+                        name: "FK_Destinacije_AvioKompanije_AirCompanyID",
+                        column: x => x.AirCompanyID,
+                        principalTable: "AvioKompanije",
+                        principalColumn: "Id",
+                        onDelete: ReferentialAction.Cascade);
+                });
+
+            migrationBuilder.CreateTable(
+                name: "Vozila",
+                columns: table => new
+                {
+                    Id = table.Column<int>(nullable: false)
+                        .Annotation("SqlServer:Identity", "1, 1"),
+                    Naziv = table.Column<string>(nullable: true),
+                    Marka = table.Column<string>(nullable: true),
+                    Model = table.Column<string>(nullable: true),
+                    GodinaProizvodnje = table.Column<int>(nullable: false),
+                    BrojSedista = table.Column<int>(nullable: false),
+                    TipVozila = table.Column<string>(nullable: true),
+                    RentACarServisID = table.Column<int>(nullable: false),
+                    ilijalaID = table.Column<int>(nullable: false),
+                    Ocena = table.Column<double>(nullable: false),
+                    ZauzetiDatumiString = table.Column<string>(nullable: true),
+                    RowVersion = table.Column<byte[]>(rowVersion: true, nullable: true)
+                },
+                constraints: table =>
+                {
+                    table.PrimaryKey("PK_Vozila", x => x.Id);
+                    table.ForeignKey(
+                        name: "FK_Vozila_RentACarServisi_RentACarServisID",
+                        column: x => x.RentACarServisID,
+                        principalTable: "RentACarServisi",
+                        principalColumn: "Id",
+                        onDelete: ReferentialAction.Cascade);
+                });
+
             migrationBuilder.CreateIndex(
                 name: "IX_AspNetRoleClaims_RoleId",
                 table: "AspNetRoleClaims",
@@ -273,6 +405,16 @@ namespace ProjekatPUSGS.Migrations
                 column: "NormalizedUserName",
                 unique: true,
                 filter: "[NormalizedUserName] IS NOT NULL");
+
+            migrationBuilder.CreateIndex(
+                name: "IX_Destinacije_AirCompanyID",
+                table: "Destinacije",
+                column: "AirCompanyID");
+
+            migrationBuilder.CreateIndex(
+                name: "IX_Vozila_RentACarServisID",
+                table: "Vozila",
+                column: "RentACarServisID");
         }
 
         protected override void Down(MigrationBuilder migrationBuilder)
@@ -293,13 +435,22 @@ namespace ProjekatPUSGS.Migrations
                 name: "AspNetUserTokens");
 
             migrationBuilder.DropTable(
-                name: "Kompanije");
+                name: "BrzeRezervacijeDestinacije");
 
             migrationBuilder.DropTable(
-                name: "Let");
+                name: "BrzeRezervacijeVozila");
 
             migrationBuilder.DropTable(
-                name: "Servisi");
+                name: "Destinacije");
+
+            migrationBuilder.DropTable(
+                name: "Filijale");
+
+            migrationBuilder.DropTable(
+                name: "RezervacijeDestinacija");
+
+            migrationBuilder.DropTable(
+                name: "RezervacijeVozila");
 
             migrationBuilder.DropTable(
                 name: "Vozila");
@@ -309,6 +460,12 @@ namespace ProjekatPUSGS.Migrations
 
             migrationBuilder.DropTable(
                 name: "AspNetUsers");
+
+            migrationBuilder.DropTable(
+                name: "AvioKompanije");
+
+            migrationBuilder.DropTable(
+                name: "RentACarServisi");
         }
     }
 }

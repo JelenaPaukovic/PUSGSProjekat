@@ -7,6 +7,14 @@
   <ItemGroup>
     <Compile Remove="Migrations\20200515150224_migracija1.cs" />
     <Compile Remove="Migrations\20200515150224_migracija1.Designer.cs" />
+    <Compile Remove="Migrations\20200812163557_migracija1.cs" />
+    <Compile Remove="Migrations\20200812163557_migracija1.Designer.cs" />
+    <Compile Remove="Migrations\20200831164313_migracija3.cs" />
+    <Compile Remove="Migrations\20200831164313_migracija3.Designer.cs" />
+    <Compile Remove="Migrations\20200902134803_migracija4.cs" />
+    <Compile Remove="Migrations\20200902134803_migracija4.Designer.cs" />
+    <Compile Remove="Migrations\20200902154224_migracija5.cs" />
+    <Compile Remove="Migrations\20200902154224_migracija5.Designer.cs" />
   </ItemGroup>
 
   <ItemGroup>
@@ -29,6 +37,10 @@
     <PackageReference Include="Microsoft.IdentityModel.Tokens" Version="5.6.0" />
     <PackageReference Include="Microsoft.VisualStudio.Web.CodeGeneration.Design" Version="3.1.4" />
     <PackageReference Include="System.IdentityModel.Tokens.Jwt" Version="5.6.0" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <Folder Include="Migrations\" />
   </ItemGroup>
 
 

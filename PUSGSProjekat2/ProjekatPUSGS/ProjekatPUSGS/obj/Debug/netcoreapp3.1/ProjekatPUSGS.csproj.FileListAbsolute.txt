@@ -492,3 +492,4 @@ C:\Users\Jelena\Documents\GitHub\PUSGSProjekat\PUSGSProjekat2\ProjekatPUSGS\Proj
 C:\Users\Jelena\Documents\GitHub\PUSGSProjekat\PUSGSProjekat2\ProjekatPUSGS\ProjekatPUSGS\obj\Debug\netcoreapp3.1\ProjekatPUSGS.dll
 C:\Users\Jelena\Documents\GitHub\PUSGSProjekat\PUSGSProjekat2\ProjekatPUSGS\ProjekatPUSGS\obj\Debug\netcoreapp3.1\ProjekatPUSGS.pdb
 C:\Users\Jelena\Documents\GitHub\PUSGSProjekat\PUSGSProjekat2\ProjekatPUSGS\ProjekatPUSGS\obj\Debug\netcoreapp3.1\ProjekatPUSGS.genruntimeconfig.cache
+C:\Users\Dragas\Documents\GitHub\PUSGSProjekat\PUSGSProjekat2\ProjekatPUSGS\ProjekatPUSGS\obj\Debug\netcoreapp3.1\ProjekatPUSGS.csprojAssemblyReference.cache
