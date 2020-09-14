@@ -168,4 +168,30 @@ export class AircompaniesService {
   {
      return this.http.get<AirCompanies>(this.BaseURI + '/AirComapny/GetAirComapnyZaAdmina/'+id);
   }
+
+  mesecniIzvestaj(id:Number)
+  {
+     return this.http.get<Number>(this.BaseURI + '/AirCompany/GetMesecniIzvestaj/'+id);
+  }
+
+  nedeljniIzvestaj(id:Number)
+  {
+    return this.http.get<Number>(this.BaseURI + '/AirCompany/GetNedeljniIzvestaj/'+id);
+  }
+
+  dnevniIzvestaj(id:Number)
+  {
+    return this.http.get<Number>(this.BaseURI + '/AirCompany/GetDnevniIzvestaj/'+id);
+  }
+  odrediPrihode(id:Number,datumOd:String,DatumDo:string)
+  {
+    var body = {
+      IdRentACar: +id,
+      PocetniDatum: datumOd,
+      KrajnjiDatum: DatumDo
+    };
+
+    console.log(body);
+    return this.http.post(this.BaseURI + '/AirCompany/Prihodi', body);
+  }
 }

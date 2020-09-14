@@ -1,8 +1,9 @@
 import { Component, OnInit } from '@angular/core';
 import {ActivatedRoute} from '@angular/router';
-import {AvioService} from 'src/app/services/avio/avio.service';
+import {AircompaniesService} from 'src/app/services/aircompanies-service/aircompanies.service';
 import {animate, trigger, state, style, transition} from '@angular/animations';
 import { timeout } from 'rxjs/operators';
+import { ChartsModule, WavesModule } from 'angular-bootstrap-md'
 
 @Component({
   selector: 'app-izvestaj-avio',
@@ -14,7 +15,7 @@ export class IzvestajAvioComponent implements OnInit {
   id:number;
   rezultat: string;
 
-  constructor (private route: ActivatedRoute, private servisAvio: AvioService) {
+  constructor (private route: ActivatedRoute, private servisAvio: AircompaniesService) {
     this.rezultat = "Rezultat: ______";
     route.params.subscribe(params => { this.id = params['id']; });
       for(var i=0;i<53;i++)

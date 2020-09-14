@@ -1,152 +1,101 @@
 import { NgModule } from '@angular/core';
 import { Routes, RouterModule } from '@angular/router';
-import { RegistracijaKorisnikaComponent } from './registracija-korisnika/registracija-korisnika.component';
-import { PrijavaKorisnikaComponent } from './prijava-korisnika/prijava-korisnika.component';
-import { RentacarServisComponent } from './rentacar-servis/rentacar-servis.component';
-import { AvioServisComponent } from './avio-servis/avio-servis.component';
-import { RentacarPodaciComponent } from './rentacar-podaci/rentacar-podaci.component';
-import { AvioPodaciComponent } from './avio-podaci/avio-podaci.component';
-import { PrelazComponent } from './prelaz/prelaz.component';
-import { AvioDodajComponent } from './avio-dodaj/avio-dodaj.component';
-import { RentacarDodajComponent } from './rentacar-dodaj/rentacar-dodaj.component';
-import { DodajAdminaRentComponent } from './dodaj-admina-rent/dodaj-admina-rent.component';
-import { DodajAdminaAvioComponent } from './dodaj-admina-avio/dodaj-admina-avio.component';
-import { HomeComponent } from './home/home.component';
-import { ProfilAvioAdminaComponent } from './profil-avio-admina/profil-avio-admina.component';
-import { ProfilKorisnikaComponent } from './profil-korisnika/profil-korisnika.component';
+import { PrijavaFormaComponent } from './prijava-forma/prijava-forma.component';
+import { RegistracijaFormaComponent } from './registracija-forma/registracija-forma.component';
+import { AdminSistemProfilComponent } from './admin-sistem-profil/admin-sistem-profil.component';
+import { DodajAkompFormaComponent } from './dodaj-akomp-forma/dodaj-akomp-forma.component';
+import { DodajRecarFormaComponent } from './dodaj-recar-forma/dodaj-recar-forma.component';
 import { NavbarComponent } from './navbar/navbar.component';
-import { AdminRegistracijaComponent } from './admin-registracija/admin-registracija.component';
+import { AvioPocetnaComponent} from './avio-pocetna/avio-pocetna.component';
+import { RentPocetnaComponent} from './rent-pocetna/rent-pocetna.component';
+import { RentProfilComponent} from './rent-profil/rent-profil.component';
+import { HomepageFormaComponent } from './homepage-forma/homepage-forma.component';
+import { RentAdminProfilComponent } from './rent-admin-profil/rent-admin-profil.component';
+import {AviokompanijePocetnaComponent} from './aviokompanije-pocetna/aviokompanije-pocetna.component'
+import {ProfilKorisnikaComponent} from './profil-korisnika/profil-korisnika.component'
+import {AviokompAdminProfilComponent} from './aviokomp-admin-profil/aviokomp-admin-profil.component'
+import { AvioProfilComponent} from './avio-profil/avio-profil.component';
 import { AppComponent } from './app.component';
-import { ProfilRentacarAdminaComponent } from './profil-rentacar-admina/profil-rentacar-admina.component';
-import { IzvestajRentacarComponent } from './izvestaj-rentacar/izvestaj-rentacar.component';
-import {HomepageFormaComponent} from './homepage-forma/homepage-forma.component';
-import {AdminSistemComponent} from './admin-sistem/admin-sistem.component';
-
+import { RegistracijaAdminComponent } from './registracija-admin/registracija-admin.component';
+import { RentIzvestajComponent } from './rent-izvestaj/rent-izvestaj.component';
+import {IzvestajAvioComponent} from './izvestaj-avio/izvestaj-avio.component';
 
 const routes: Routes = [
   {
     path: "pocetna",
-    component : NavbarComponent
-  
+    component: NavbarComponent
   },
-  
   {
     path: "prijava",
-    component: PrijavaKorisnikaComponent
+    component: PrijavaFormaComponent
   },
-
   {
     path: "registracija",
-    component: RegistracijaKorisnikaComponent
+    component: RegistracijaFormaComponent
   },
-
   {
     path: "registracijaAdmin",
-    component: AdminRegistracijaComponent
+    component: RegistracijaAdminComponent
   },
-
   {
     path: "pocetna",
     component: AppComponent
   },
-
-
-  {
-    path: "dodaj-avio",
-    component: AvioDodajComponent
-  },
-  {
-    path: "dodaj-rentacar",
-    component: RentacarDodajComponent
-  },
   {
     path: "profil",
-    component: AdminSistemComponent
-  },
-  /*{
-    path: "rentacar-servis",
-    component: RentacarServisComponent
+    component: AdminSistemProfilComponent
   },
   {
-    path: "avio-servis",
-    component: AvioServisComponent
-  },*/
-
-  {
-    path: "rentacar-servis",
-    children: [{ path: "", component: RentacarServisComponent },
-    { path: ":id/rentacar-podaci", component: RentacarPodaciComponent }]
-  },
-
-  {
-    path: "avio-servis",
-    children: [{ path: "", component: AvioServisComponent },
-    { path: ":id/avio-podaci", component: AvioPodaciComponent }]
-  },
-
-  /*{
-    path: "prelaz",
-    component: PrelazComponent
-  },*/
-
-  /*{
-    path: "avio-dodaj",
-    component: AvioDodajComponent
-  },
-
-  {
-    path: "rentacar-dodaj",
-    component: RentacarDodajComponent
-  },
-
- /* {
-    path: "dodaj-admina-rent",
-    component: DodajAdminaRentComponent
-  },
-
-  {
-    path: "dodaj-admina-avio",
-    component: DodajAdminaAvioComponent
-  },*/
-  {
-    path: "profilRentAdmina",
-   // component: RentAdminProfilComponent,
-   children: [
-    { path: "", component: ProfilRentacarAdminaComponent },
-    { path: ":id/izvestaj", component: IzvestajRentacarComponent },
-  ]
-  },
-
-  {
-    path: "rentacar-servis",
-    children: [{ path: "", component: RentacarServisComponent },
-    { path: ":id/rentacar-podaci", component: RentacarPodaciComponent }]
+    path: "admin-avio",
+    component: DodajAkompFormaComponent
   },
   {
-    path: "avio-servis",
-    children: [{ path: "", component: AvioServisComponent },
-    { path: ":id/avio-podaci", component: AvioPodaciComponent }]
+    path: "admin-rent",
+    component: DodajRecarFormaComponent
   },
   {
-    path: "profilAdminAvio",
-    children:[
-      { path: "", component: ProfilAvioAdminaComponent},
-      { path: "profilKorisnika", component: ProfilKorisnikaComponent},
-      { path: "avio", component: ProfilAvioAdminaComponent},
-      ]
-
+    path: "avio",
+    component: AvioPocetnaComponent
   },
-
+  {
+    path: "ren-a-car",
+    children: [
+      { path: "", component: RentPocetnaComponent },
+      { path: ":id/detalji", component: RentProfilComponent },
+    ]
+  },
   {
     path: "homepage-forma",
     children:[
       { path: "", component: HomepageFormaComponent},
       { path: "profilKorisnika", component: ProfilKorisnikaComponent},
-      { path: "avio-servis", component: AvioServisComponent},
-      { path: "rentacar-servis", component: RentacarServisComponent},
+      { path: "avio-kompanija-pocetna", component: AviokompanijePocetnaComponent},
+      { path: "ren-a-car", component: RentPocetnaComponent},
       ]
   },
-
+  {
+    path: "profilRent",
+   // component: RentAdminProfilComponent,
+   children: [
+    { path: "", component: RentAdminProfilComponent },
+    { path: ":id/izvestaj", component: RentIzvestajComponent },
+  ]
+  },
+  {
+    path: "avio-kompanija-pocetna",
+    children: [
+      { path: "", component: AviokompanijePocetnaComponent },
+      { path: ":id/profilKompanije", component: AvioProfilComponent },
+    ]
+  },
+  {
+    path: "profilAdminAvio",
+    children:[
+      { path: "", component: AviokompAdminProfilComponent},
+      { path: "profilKorisnika", component: ProfilKorisnikaComponent},
+      { path: "avio", component: AvioPocetnaComponent},
+      ]
+  },
 ];
 
 @NgModule({
